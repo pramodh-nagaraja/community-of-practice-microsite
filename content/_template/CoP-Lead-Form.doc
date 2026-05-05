@@ -1,0 +1,270 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+      xmlns:w="urn:schemas-microsoft-com:office:word"
+      xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta charset="UTF-8">
+<title>CoP Information Form</title>
+<!--[if gte mso 9]><xml>
+<w:WordDocument>
+  <w:View>Normal</w:View>
+  <w:Zoom>100</w:Zoom>
+  <w:DoNotOptimizeForBrowser/>
+</w:WordDocument>
+</xml><![endif]-->
+<style>
+  @page { margin: 2.0cm 2.5cm; }
+  body  { font-family: Calibri, sans-serif; font-size: 11pt; color: #1a1a1a; line-height: 1.4; }
+
+  /* ── Title block ── */
+  .title      { font-size: 22pt; font-weight: bold; color: #A100FF; text-align: center; margin: 0 0 4pt; }
+  .subtitle   { font-size: 9.5pt; font-style: italic; text-align: center; color: #444; margin: 0 0 18pt; }
+
+  /* ── Section headings ── */
+  .sec-head   { font-size: 12pt; font-weight: bold; color: #ffffff;
+                background: #A100FF; padding: 6pt 10pt; margin: 16pt 0 6pt;
+                mso-shading: #A100FF; mso-pattern: none; }
+  .sub-head   { font-size: 11pt; font-weight: bold; color: #5700AB; margin: 12pt 0 4pt; }
+
+  /* ── Instructions ── */
+  .instr      { font-size: 9.5pt; font-style: italic; color: #555; margin: 0 0 8pt; }
+
+  /* ── Field labels ── */
+  .flabel     { font-size: 10.5pt; font-weight: bold; margin: 10pt 0 0; }
+  .fhint      { font-size: 9pt; font-weight: normal; font-style: italic; color: #666; }
+
+  /* ── Answer lines ── */
+  .ans        { border: none; border-bottom: 1pt solid #888;
+                width: 100%; height: 22pt; display: block; margin: 2pt 0 6pt; }
+  .ans-tall   { border: none; border-bottom: 1pt solid #888;
+                width: 100%; height: 22pt; display: block; margin: 2pt 0 0; }
+
+  /* ── Divider ── */
+  hr          { border: none; border-top: 1.5pt solid #A100FF; margin: 14pt 0; }
+
+  /* ── Tables ── */
+  table.form  { border-collapse: collapse; width: 100%; margin: 6pt 0 10pt; font-size: 10pt; }
+  table.form th {
+    background: #A100FF; color: #fff; font-weight: bold; font-size: 10pt;
+    padding: 6pt 8pt; border: 1pt solid #8800dd; text-align: left;
+  }
+  table.form td {
+    border: 1pt solid #d0a0ff; padding: 5pt 8pt; vertical-align: top;
+    min-height: 20pt; height: 22pt;
+  }
+  table.form tr:nth-child(even) td { background: #faf5ff; }
+  table.form td.fill  { min-height: 22pt; }
+
+  /* ── Checklist ── */
+  .chk        { font-size: 10.5pt; margin: 3pt 0; }
+  .box        { font-size: 12pt; }
+
+  /* ── Send-to line ── */
+  .sendto     { font-size: 10.5pt; margin: 14pt 0 4pt; }
+  .sendto b   { color: #A100FF; }
+
+  /* ── Footer ── */
+  .footer     { font-size: 9pt; font-style: italic; color: #888; text-align: center; margin-top: 16pt; }
+</style>
+</head>
+<body>
+
+<!-- ══ TITLE ══════════════════════════════════════════════════ -->
+<p class="title">Community of Practice</p>
+<p class="title">Information Form</p>
+<p class="subtitle">Complete all sections and return to Pramodh Nagaraja (pramodh.nagaraja@accenture.com) with leadership photos.<br>
+Fields marked <i>(optional)</i> can be skipped if not applicable.</p>
+<hr>
+
+<!-- ══ SECTION 1 ══════════════════════════════════════════════ -->
+<div class="sec-head">SECTION 1 &mdash; CoP Page Details</div>
+
+<p class="flabel">CoP Full Name &nbsp;<span class="fhint">(e.g., Cloud Engineering)</span></p>
+<span class="ans">&nbsp;</span>
+
+<p class="flabel">One-Line Tagline &nbsp;<span class="fhint">(shown on the hero banner)</span></p>
+<span class="ans">&nbsp;</span>
+
+<p class="flabel">Description &nbsp;<span class="fhint">(2&ndash;3 sentences shown below the tagline)</span></p>
+<span class="ans-tall">&nbsp;</span>
+<span class="ans-tall">&nbsp;</span>
+<span class="ans" style="margin-bottom:8pt;">&nbsp;</span>
+
+<p class="flabel">Accent / Brand Colour &nbsp;<span class="fhint">(tick one or write your hex code)</span></p>
+<table class="form">
+  <tr><th>Option</th><th>Colour</th><th>Hex Code</th><th>Select Here (&check;)</th></tr>
+  <tr><td>Accenture Purple (default)</td><td>Purple</td><td>#A100FF</td><td class="fill">&nbsp;</td></tr>
+  <tr><td>Electric Blue</td><td>Blue</td><td>#0057B8</td><td class="fill">&nbsp;</td></tr>
+  <tr><td>Teal</td><td>Teal</td><td>#00BABC</td><td class="fill">&nbsp;</td></tr>
+  <tr><td>Green</td><td>Green</td><td>#009B77</td><td class="fill">&nbsp;</td></tr>
+  <tr><td>Orange</td><td>Orange</td><td>#E8650A</td><td class="fill">&nbsp;</td></tr>
+  <tr><td>Custom</td><td>&mdash;</td><td>#______</td><td class="fill">&nbsp;</td></tr>
+</table>
+<p class="instr">Note: The CoP icon will be assigned by Pramodh from the standard QBE icon set &mdash; leave blank.</p>
+<hr>
+
+<!-- ══ SECTION 2 ══════════════════════════════════════════════ -->
+<div class="sec-head">SECTION 2 &mdash; Community Stats</div>
+
+<p class="flabel">Number of current members</p>
+<span class="ans">&nbsp;</span>
+
+<p class="flabel">Number of certifications achieved so far &nbsp;<span class="fhint">(optional)</span></p>
+<span class="ans">&nbsp;</span>
+
+<p class="flabel">Number of sessions held to date &nbsp;<span class="fhint">(optional)</span></p>
+<span class="ans">&nbsp;</span>
+
+<p class="flabel">Year CoP was launched</p>
+<span class="ans">&nbsp;</span>
+<hr>
+
+<!-- ══ SECTION 3 ══════════════════════════════════════════════ -->
+<div class="sec-head">SECTION 3 &mdash; Mission, Vision and Values</div>
+
+<p class="flabel">Mission Statement &nbsp;<span class="fhint">(1&ndash;2 sentences: what your CoP does and for whom)</span></p>
+<span class="ans-tall">&nbsp;</span>
+<span class="ans" style="margin-bottom:8pt;">&nbsp;</span>
+
+<p class="flabel">Vision Statement &nbsp;<span class="fhint">(1&ndash;2 sentences: where you want to be in 3&ndash;5 years)</span></p>
+<span class="ans-tall">&nbsp;</span>
+<span class="ans" style="margin-bottom:8pt;">&nbsp;</span>
+
+<p class="flabel">Values &nbsp;<span class="fhint">(short statement or list of 3&ndash;5 core values)</span></p>
+<span class="ans-tall">&nbsp;</span>
+<span class="ans" style="margin-bottom:8pt;">&nbsp;</span>
+<hr>
+
+<!-- ══ SECTION 4 ══════════════════════════════════════════════ -->
+<div class="sec-head">SECTION 4 &mdash; Join and Contact</div>
+
+<p class="flabel">Email address for join requests &nbsp;<span class="fhint">(e.g., yourname@accenture.com)</span></p>
+<span class="ans">&nbsp;</span>
+
+<p class="flabel">Topics members can express interest in &nbsp;<span class="fhint">(comma separated &mdash; e.g., Cloud Architecture, DevOps, AWS, Azure, GCP)</span></p>
+<span class="ans">&nbsp;</span>
+<hr>
+
+<!-- ══ SECTION 5 ══════════════════════════════════════════════ -->
+<div class="sec-head">SECTION 5 &mdash; Leadership Team</div>
+<p class="instr">Provide details for up to 3 leaders. Attach headshot photos as separate image files named FirstnameLastname.jpg (e.g., JohnSmith.jpg).</p>
+
+<p class="sub-head">Leader 1 &mdash; Executive Sponsor</p>
+<table class="form">
+  <tr><th style="width:35%;">Field</th><th>Your Answer</th></tr>
+  <tr><td>Full Name</td><td class="fill">&nbsp;</td></tr>
+  <tr><td>Initials (2 chars)</td><td class="fill">&nbsp;</td></tr>
+  <tr><td>Job Title / Role</td><td class="fill">&nbsp;</td></tr>
+  <tr><td>Accenture Email</td><td class="fill">&nbsp;</td></tr>
+  <tr><td>Photo File Name</td><td>e.g., JohnSmith.jpg</td></tr>
+</table>
+
+<p class="sub-head">Leader 2 &mdash; Global Lead &nbsp;<span class="fhint">(optional)</span></p>
+<table class="form">
+  <tr><th style="width:35%;">Field</th><th>Your Answer</th></tr>
+  <tr><td>Full Name</td><td class="fill">&nbsp;</td></tr>
+  <tr><td>Initials (2 chars)</td><td class="fill">&nbsp;</td></tr>
+  <tr><td>Job Title / Role</td><td class="fill">&nbsp;</td></tr>
+  <tr><td>Accenture Email</td><td class="fill">&nbsp;</td></tr>
+  <tr><td>Photo File Name</td><td>e.g., JaneSmith.jpg</td></tr>
+</table>
+
+<p class="sub-head">Leader 3 &mdash; CoP Lead</p>
+<table class="form">
+  <tr><th style="width:35%;">Field</th><th>Your Answer</th></tr>
+  <tr><td>Full Name</td><td class="fill">&nbsp;</td></tr>
+  <tr><td>Initials (2 chars)</td><td class="fill">&nbsp;</td></tr>
+  <tr><td>Job Title / Role</td><td class="fill">&nbsp;</td></tr>
+  <tr><td>Accenture Email</td><td class="fill">&nbsp;</td></tr>
+  <tr><td>Photo File Name</td><td>e.g., YourName.jpg</td></tr>
+</table>
+<hr>
+
+<!-- ══ SECTION 6 &mdash; CUSTOM ══════════════════════════════════════ -->
+<div class="sec-head">SECTION 6 &mdash; Custom / Additional Information &nbsp;<i style="font-weight:normal;">(optional)</i></div>
+<p class="instr">Use this section for anything specific to your CoP that does not fit the standard template above &mdash; unique programs, spotlight initiatives, recognition schemes, custom certification pathways, featured tools or vendors, or any other page feature you would like included.</p>
+
+<table class="form">
+  <tr><th style="width:35%;">Item Name</th><th>Details / Description</th></tr>
+  <tr><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td></tr>
+  <tr><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td></tr>
+  <tr><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td></tr>
+  <tr><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td></tr>
+  <tr><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td></tr>
+</table>
+
+<p class="flabel">Any other notes, special requirements, or requests for the page?</p>
+<span class="ans-tall">&nbsp;</span>
+<span class="ans-tall">&nbsp;</span>
+<span class="ans" style="margin-bottom:8pt;">&nbsp;</span>
+<hr>
+
+<!-- ══ SECTION 7 &mdash; MEMBERS ════════════════════════════════════ -->
+<div class="sec-head">SECTION 7 &mdash; Members</div>
+<p class="instr">List all current members. For Certification Level use one of: <b>Foundation</b>, <b>Associate</b>, or <b>Expert</b>.
+If your CoP uses different certification names, write them in the Notes column and Pramodh will align them.</p>
+
+<table class="form">
+  <tr><th>Full Name</th><th style="width:12%;">Initials</th><th style="width:22%;">Certification Level</th><th style="width:16%;">Notes</th></tr>
+  <tr><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td>Foundation</td><td class="fill">&nbsp;</td></tr>
+  <tr><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td>Associate</td><td class="fill">&nbsp;</td></tr>
+  <tr><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td>Expert</td><td class="fill">&nbsp;</td></tr>
+  <tr><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td></tr>
+  <tr><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td></tr>
+  <tr><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td></tr>
+  <tr><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td></tr>
+  <tr><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td></tr>
+  <tr><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td></tr>
+  <tr><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td></tr>
+  <tr><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td></tr>
+  <tr><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td></tr>
+  <tr><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td></tr>
+  <tr><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td></tr>
+  <tr><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td></tr>
+  <tr><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td></tr>
+  <tr><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td></tr>
+  <tr><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td></tr>
+  <tr><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td></tr>
+  <tr><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td></tr>
+  <tr><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td></tr>
+  <tr><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td></tr>
+  <tr><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td></tr>
+  <tr><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td></tr>
+  <tr><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td></tr>
+</table>
+<hr>
+
+<!-- ══ SECTION 8 &mdash; EVENTS ═════════════════════════════════════ -->
+<div class="sec-head">SECTION 8 &mdash; Upcoming Events &nbsp;<i style="font-weight:normal;">(optional)</i></div>
+<p class="instr">List any upcoming webinars, workshops, or sessions you want shown on the CoP page.</p>
+
+<table class="form">
+  <tr>
+    <th style="width:6%;">Day</th>
+    <th style="width:14%;">Month &amp; Year</th>
+    <th style="width:22%;">Event Title</th>
+    <th>Short Description</th>
+    <th style="width:14%;">Type</th>
+    <th style="width:16%;">Time / Time Zone</th>
+  </tr>
+  <tr><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td>Webinar</td><td class="fill">&nbsp;</td></tr>
+  <tr><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td>Workshop</td><td class="fill">&nbsp;</td></tr>
+  <tr><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td class="fill">&nbsp;</td><td>Boot Camp</td><td class="fill">&nbsp;</td></tr>
+</table>
+<p class="instr">Type options: Webinar, Workshop, Boot Camp, Hackathon, Demo, Case Study, Town Hall</p>
+<hr>
+
+<!-- ══ SECTION 9 &mdash; CHECKLIST ══════════════════════════════════ -->
+<div class="sec-head">SECTION 9 &mdash; Checklist Before Sending</div>
+
+<p class="chk"><span class="box">&#9634;</span>&nbsp; All sections above completed (skip only optional ones)</p>
+<p class="chk"><span class="box">&#9634;</span>&nbsp; Leader 1 (Executive Sponsor) photo attached</p>
+<p class="chk"><span class="box">&#9634;</span>&nbsp; Leader 2 (Global Lead) photo attached <i>(if applicable)</i></p>
+<p class="chk"><span class="box">&#9634;</span>&nbsp; Leader 3 (CoP Lead) photo attached</p>
+<p class="chk"><span class="box">&#9634;</span>&nbsp; Photo files named as FirstnameLastname.jpg</p>
+
+<p class="sendto"><b>Send completed form + photo files to:</b>&nbsp;&nbsp;pramodh.nagaraja@accenture.com</p>
+<hr>
+<p class="footer">Template version 1.1 &mdash; QBE N&amp;O CoP Microsite</p>
+
+</body>
+</html>

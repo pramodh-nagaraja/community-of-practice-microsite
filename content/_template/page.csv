@@ -1,0 +1,15 @@
+key,value
+name,Your CoP Name Here
+tagline,One-line tagline shown on the hero section
+description,Longer description paragraph shown below the tagline (2-3 sentences).
+accentColor,#A100FF
+icon,/YourIcon.png
+memberCount,0
+certCount,0
+sessionsHeld,0
+launchYear,2026
+mission,Your mission statement here.
+vision,Your vision statement here.
+values,Your values statement here.
+joinEmail,cop-lead@accenture.com
+joinInterests,General|Certifications|Knowledge Sharing|Events

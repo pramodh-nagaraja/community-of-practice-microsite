@@ -1,0 +1,22 @@
+# Build output — managed by CI/CD
+dist/
+
+# Dependencies
+node_modules/
+
+# Local env files
+*.local
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/settings.json
+.vs/
+.idea/
+*.suo
+*.user
