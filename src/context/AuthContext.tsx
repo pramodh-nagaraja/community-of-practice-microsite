@@ -9,7 +9,28 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-const APPROVED_EMAILS = ['pramodh.nagaraja@accenture.com'];
+const APPROVED_EMAILS = [
+  'u.challa@accenture.com',
+  'priti.ranjit.das@accenture.com',
+  'shweta.dedhia@accenture.com',
+  'v.devathi@accenture.com',
+  'kavitha.mallya@accenture.com',
+  'sagar.melupalleppa@accenture.com',
+  'shrimoyee.mukherjee@accenture.com',
+  'pramodh.nagaraja@accenture.com',
+  'piyush.a.rana@accenture.com',
+  'raghav.a.ranjan@accenture.com',
+  'srikar.rao.deshpande@accenture.com',
+  'devi.r.rao.katuru@accenture.com',
+  'kaseeswar.reddy@accenture.com',
+  'd.roshan.shetty@accenture.com',
+  'shlesha.sahay@accenture.com',
+  'dharshan.surendran@accenture.com',
+  'vijay.k.seshu.hejeeb@accenture.com',
+  'r.g.subramanian@accenture.com',
+  'srinivas.vinnakota@accenture.com',
+  'ashish.nageet@accenture.com'
+];
 const STORAGE_KEY = 'cop_auth';
 const SESSION_DURATION = 30 * 24 * 60 * 60 * 1000; // 30 days
 
