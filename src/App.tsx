@@ -1,7 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
 import './App.css'
-import { useAuth } from './context/AuthContext'
-import { LoginPage } from './LoginPage'
 import {
   MEMBERS, SW_NOMINEES, STAGE_META,
   AVATAR_COLORS, SW_COLORS,
@@ -81,7 +79,6 @@ function Navbar() {
   const [menuOpen, setMenuOpen]         = useState(false)
   const [progress, setProgress]         = useState(0)
   const [activeSection, setActiveSection] = useState('hero')
-  const { userEmail, logout } = useAuth()
 
   useEffect(() => {
     const onScroll = () => {
@@ -146,10 +143,6 @@ function Navbar() {
           ))}
           <li>
             <button onClick={() => scrollTo('join')} className="nav-link nav-cta">Join CoP</button>
-          </li>
-          <li className="nav-user-info">
-            <span className="nav-user-email">{userEmail}</span>
-            <button onClick={logout} className="nav-logout-btn">Sign Out</button>
           </li>
         </ul>
       </div>
@@ -1349,8 +1342,6 @@ function SolarWindsCertification() {
 }
 
 function App() {
-  const { isAuthenticated } = useAuth()
-
   useEffect(() => {
     const els = document.querySelectorAll('.reveal')
     const io = new IntersectionObserver(
@@ -1362,10 +1353,6 @@ function App() {
     els.forEach(el => io.observe(el))
     return () => io.disconnect()
   }, [])
-
-  if (!isAuthenticated) {
-    return <LoginPage />
-  }
 
   return (
     <div className="app">

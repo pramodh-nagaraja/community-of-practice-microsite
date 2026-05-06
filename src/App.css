@@ -215,40 +215,6 @@ body {
   background: var(--acc-purple-dark) !important;
 }
 
-.nav-user-info {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-left: 20px;
-  padding-left: 20px;
-  border-left: 1px solid rgba(161, 0, 255, 0.3);
-}
-
-.nav-user-email {
-  font-size: 0.8rem;
-  color: rgba(232, 204, 255, 0.8);
-  font-weight: 500;
-}
-
-.nav-logout-btn {
-  background: rgba(161, 0, 255, 0.2);
-  border: 1px solid rgba(161, 0, 255, 0.4);
-  color: rgba(232, 204, 255, 0.9);
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding: 6px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.2s;
-  font-family: inherit;
-}
-
-.nav-logout-btn:hover {
-  background: rgba(161, 0, 255, 0.35);
-  border-color: rgba(161, 0, 255, 0.6);
-  color: var(--acc-white);
-}
-
 .nav-toggle {
   display: none;
   background: none;
@@ -3327,27 +3293,6 @@ body {
   .nav-cta {
     margin-left: 0;
     margin-top: 6px;
-    text-align: center;
-  }
-
-  .nav-user-info {
-    margin-left: 0;
-    padding-left: 0;
-    padding-top: 12px;
-    border-left: none;
-    border-top: 1px solid rgba(161, 0, 255, 0.3);
-    margin-top: 6px;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 8px;
-  }
-
-  .nav-user-email {
-    font-size: 0.75rem;
-    text-align: left;
-  }
-
-  .nav-logout-btn {
     text-align: center;
   }
 
