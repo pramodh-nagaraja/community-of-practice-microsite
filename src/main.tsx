@@ -6,6 +6,7 @@ import App        from './App'
 import CoPPage    from './CoPPage'
 import { COMMUNITIES } from './data/communities'
 import { COP_DATA }    from './data/pages/index'
+import { AuthProvider } from './context/AuthContext'
 
 // ═══════════════════════════════════════════════════════════════
 //  Hash-based router — no server config required.
@@ -34,8 +35,8 @@ function Root() {
 
   const route = hash.replace(/^#\/?/, '')
 
-  // N&O CoP — premium custom page (App.tsx)
-  if (route === 'noc') return <App />
+  // N&O CoP — premium custom page (App.tsx) — wrapped with authentication
+  if (route === 'noc') return <AuthProvider><App /></AuthProvider>
 
   // Any other active CoP registered in COP_DATA
   if (route && COP_DATA[route]) {
