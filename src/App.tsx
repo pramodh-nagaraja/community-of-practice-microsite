@@ -26,6 +26,27 @@ function useCountUp(end: number, duration: number, run: boolean): number {
   return val
 }
 
+type Template = 'network' | 'observability'
+
+const TEMPLATE_META: Record<Template, { name: string; subtitle: string; heroTitle: string }> = {
+  network: {
+    name: 'Network and Security',
+    subtitle: 'QBE Account Network Operations and Security Practice',
+    heroTitle: 'Network and Security community of practice',
+  },
+  observability: {
+    name: 'Observability',
+    subtitle: 'QBE Account Observability and Monitoring Practice',
+    heroTitle: 'Observability Community of Practice',
+  },
+}
+
+function getTemplateFromHash(hash = window.location.hash): Template {
+  const route = hash.replace(/^#\/?/, '')
+  const [, section] = route.split('/')
+  return section === 'observability' ? 'observability' : 'network'
+}
+
 /* ── OEM Logo Components ──────────────────────────────── */
 
 function CiscoLogo({ className = '' }: { className?: string }) {
@@ -74,7 +95,7 @@ function DynatraceLogo({ className = '' }: { className?: string }) {
   )
 }
 
-function Navbar() {
+function Navbar({ template }: { template: Template }) {
   const [scrolled, setScrolled]         = useState(false)
   const [menuOpen, setMenuOpen]         = useState(false)
   const [progress, setProgress]         = useState(0)
@@ -91,14 +112,14 @@ function Navbar() {
   }, [])
 
   useEffect(() => {
-    const ids = ['about', 'pathway', 'solarwinds', 'events', 'resources', 'members', 'celebrate', 'team']
+    const ids = ['about', template === 'network' ? 'pathway' : 'solarwinds', 'events', template === 'observability' ? 'resources' : null, 'members', 'celebrate', 'team'].filter(Boolean) as string[]
     const observer = new IntersectionObserver(
       entries => entries.forEach(e => { if (e.isIntersecting) setActiveSection(e.target.id) }),
       { threshold: 0.35 }
     )
     ids.forEach(id => { const el = document.getElementById(id); if (el) observer.observe(el) })
     return () => observer.disconnect()
-  }, [])
+  }, [template])
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
@@ -107,10 +128,9 @@ function Navbar() {
 
   const navItems = [
     { label: 'About',        id: 'about' },
-    { label: 'Certification', id: 'pathway' },
-    { label: 'SolarWinds',   id: 'solarwinds' },
+    { label: template === 'network' ? 'Certification' : 'SolarWinds', id: template === 'network' ? 'pathway' : 'solarwinds' },
     { label: 'Events',       id: 'events' },
-    { label: 'Resources',    id: 'resources' },
+    ...(template === 'observability' ? [{ label: 'Resources', id: 'resources' }] : []),
     { label: 'Members',      id: 'members' },
     { label: '🏅 Celebrate', id: 'celebrate' },
     { label: 'Leadership',   id: 'team' },
@@ -128,8 +148,8 @@ function Navbar() {
         <div className="nav-brand" onClick={() => scrollTo('hero')}>
           <div className="acc-arrow">›</div>
           <div className="nav-brand-text">
-            <span className="nav-brand-main">Network and Observability CoP</span>
-            <span className="nav-brand-sub">QBE | Accenture</span>
+            <span className="nav-brand-main">{TEMPLATE_META[template].heroTitle}</span>
+            <span className="nav-brand-sub">{TEMPLATE_META[template].subtitle}</span>
           </div>
         </div>
         <button className="nav-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
@@ -150,7 +170,7 @@ function Navbar() {
   )
 }
 
-function Hero() {
+function Hero({ template }: { template: Template }) {
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
   }
@@ -197,15 +217,15 @@ function Hero() {
       <div className="hero-content">
         <div className="hero-badges">
           <span className="badge badge-acc">Accenture</span>
-          <span className="badge badge-qbe">QBE Insurance Group</span>
+          <span className="badge badge-qbe">QBE Account</span>
         </div>
         <h1 className="hero-title">
-          Network &amp; Observability
-          <span className="hero-title-accent"> Community of Practice</span>
+          {TEMPLATE_META[template].heroTitle}
         </h1>
         <p className="hero-desc">
-          Driving network excellence and operational observability across QBE's technology landscape.
-          Sharing expertise, advancing capabilities, and building the future of intelligent infrastructure.
+          {template === 'network'
+            ? 'Driving network excellence and security operations across QBE Account’s technology landscape. Sharing expertise and advancing capabilities through a stronger, safer infrastructure.'
+            : 'Driving network excellence and operational observability across QBE Account’s technology landscape. Sharing expertise, advancing capabilities, and building the future of intelligent infrastructure.'}
         </p>
         <div className="hero-actions">
           <button onClick={() => scrollTo('about')} className="btn-primary">Explore CoP</button>
@@ -220,7 +240,7 @@ function Hero() {
   )
 }
 
-function About() {
+function About({ template }: { template: Template }) {
   const pillars = [
     {
       icon: (
@@ -229,7 +249,9 @@ function About() {
         </svg>
       ),
       title: 'Our Mission',
-      desc: 'To elevate network and observability capabilities across QBE — fostering collaboration, sharing knowledge, and driving operational excellence through innovative monitoring solutions.',
+      desc: template === 'network'
+        ? 'To elevate network and security capabilities across QBE Account — fostering collaboration, sharing knowledge, and driving operational excellence across secure infrastructure.'
+        : 'To elevate network and observability capabilities across QBE Account — fostering collaboration, sharing knowledge, and driving operational excellence through innovative monitoring solutions.',
     },
     {
       icon: (
@@ -238,7 +260,9 @@ function About() {
         </svg>
       ),
       title: 'Our Vision',
-      desc: 'A fully observable, self-healing network ecosystem where proactive insights and intelligent automation enable QBE to deliver uninterrupted service at scale.',
+      desc: template === 'network'
+        ? 'A secure, resilient network ecosystem where proactive threat protection and intelligent automation enable QBE Account to deliver uninterrupted service at scale.'
+        : 'A fully observable, self-healing network ecosystem where proactive insights and intelligent automation enable QBE Account to deliver uninterrupted service at scale.',
     },
     {
       icon: (
@@ -257,8 +281,9 @@ function About() {
         <div className="section-label">About the CoP</div>
         <h2 className="section-title">What We Stand For</h2>
         <p className="section-desc">
-          The Network &amp; Observability Community of Practice is a cross-functional group of technology professionals
-          at QBE dedicated to advancing monitoring, observability, and network operations capabilities.
+          {template === 'network'
+            ? 'The Network and Security Community of Practice is a cross-functional group of technology professionals at QBE Account dedicated to advancing network operations and security capabilities.'
+            : 'The Network & Observability Community of Practice is a cross-functional group of technology professionals at QBE Account dedicated to advancing monitoring, observability, and network operations capabilities.'}
         </p>
         <div className="pillars-grid">
           {pillars.map((pillar, i) => (
@@ -340,7 +365,7 @@ function Events() {
         <div className="section-label">Stay Connected</div>
         <h2 className="section-title">Upcoming Sessions</h2>
         <p className="section-desc">
-          Regular knowledge-sharing sessions, workshops, and deep dives. All QBE technology professionals are welcome.
+          Regular knowledge-sharing sessions, workshops, and deep dives. All QBE Account technology professionals are welcome.
         </p>
         <div className="events-grid">
           {events.map((event, i) => (
@@ -530,7 +555,7 @@ function CertificationPathway() {
         <div className="dir-section-header">
           <div>
             <div className="section-label">Achievement Snapshot</div>
-            <h2 className="section-title" style={{ marginBottom: 0 }}>Certification Pathway</h2>
+            <h2 className="section-title" style={{ marginBottom: 0 }}>Network Certification (CCNA)</h2>
           </div>
           <button
             className="collapse-toggle"
@@ -625,12 +650,14 @@ function CertificationPathway() {
 
 type StageFilter = 'all' | 1 | 2 | 3
 
-function Members() {
+function Members({ template }: { template: Template }) {
   const [sectionOpen, setSectionOpen]   = useState(true)
-  const [networkOpen, setNetworkOpen]   = useState(false)
-  const [obsOpen, setObsOpen]           = useState(false)
+  const [streamOpen, setStreamOpen]     = useState(true)
   const [search, setSearch]             = useState('')
   const [activeFilter, setActiveFilter] = useState<StageFilter>('all')
+
+  const isNetwork = template === 'network'
+  const displayCount = isNetwork ? MEMBERS.length : SW_NOMINEES.length
 
   const filters: { key: StageFilter; label: string; count: number }[] = [
     { key: 'all', label: 'All',              count: MEMBERS.length },
@@ -649,15 +676,18 @@ function Members() {
     m.name.toLowerCase().includes(search.toLowerCase())
   )
 
+  const filteredMembers = isNetwork ? filteredNetwork : filteredObs
+
   return (
     <section id="members" className="section members-section">
       <div className="container reveal">
 
-        {/* ── Section header with global collapse ── */}
         <div className="dir-section-header">
           <div>
-            <div className="section-label">Network &amp; Observability</div>
-            <h2 className="section-title" style={{ marginBottom: 0 }}>CoP Members Directory</h2>
+            <div className="section-label">{isNetwork ? 'Network & Security' : 'Observability'}</div>
+            <h2 className="section-title" style={{ marginBottom: 0 }}>
+              {isNetwork ? 'Network Members Directory' : 'Observability Nominees'}
+            </h2>
           </div>
           <button
             className="collapse-toggle"
@@ -671,7 +701,6 @@ function Members() {
 
         {sectionOpen && (
           <>
-            {/* Global search bar */}
             <div className="dir-search-bar">
               <div className="members-search-wrap" style={{ maxWidth: '100%' }}>
                 <svg className="search-icon" viewBox="0 0 20 20" fill="none">
@@ -680,7 +709,7 @@ function Members() {
                 </svg>
                 <input
                   type="text"
-                  placeholder="Search across all streams…"
+                  placeholder={isNetwork ? 'Search network members…' : 'Search observability nominees…'}
                   value={search}
                   onChange={e => setSearch(e.target.value)}
                   className="members-search"
@@ -688,135 +717,103 @@ function Members() {
                 {search && <button className="search-clear" onClick={() => setSearch('')}>✕</button>}
               </div>
               <div className="dir-total-pill">
-                {MEMBERS.length + SW_NOMINEES.length} total · {filteredNetwork.length + filteredObs.length} shown
+                {displayCount} {isNetwork ? 'members' : 'nominees'} · {filteredMembers.length} shown
               </div>
             </div>
 
-            {/* ══════════════════════════════════════
-                STREAM 1 — NETWORK (CCNA)
-            ══════════════════════════════════════ */}
             <div className="stream-block">
               <button
-                className="stream-header network-stream"
-                onClick={() => setNetworkOpen(o => !o)}
+                className={`stream-header ${isNetwork ? 'network-stream' : 'obs-stream'}`}
+                onClick={() => setStreamOpen(o => !o)}
               >
                 <div className="stream-header-left">
-                  <span className="stream-emoji">🌐</span>
+                  <span className="stream-emoji">{isNetwork ? '🌐' : '📊'}</span>
                   <div>
-                    <span className="stream-name">Network Stream</span>
-                    <span className="stream-sub">CCNA Certification Journey</span>
+                    <span className="stream-name">{isNetwork ? 'Network Stream' : 'Observability Stream'}</span>
+                    <span className="stream-sub">
+                      {isNetwork ? 'CCNA Certification Journey' : 'SolarWinds Certification Program'}
+                    </span>
                   </div>
                 </div>
                 <div className="stream-header-right">
-                  <span className="stream-pill">{MEMBERS.length} members</span>
-                  <span className="stream-toggle">{networkOpen ? '−' : '+'}</span>
+                  <span className={`stream-pill ${isNetwork ? '' : 'obs'}`}>
+                    {displayCount} {isNetwork ? 'members' : 'nominees'}
+                  </span>
+                  <span className="stream-toggle">{streamOpen ? '−' : '+'}</span>
                 </div>
               </button>
 
-              {networkOpen && (
+              {streamOpen && (
                 <div className="stream-body">
-                  {/* Stage filter tabs */}
-                  <div className="stage-filters" style={{ marginBottom: 16 }}>
-                    {filters.map(f => (
-                      <button
-                        key={String(f.key)}
-                        className={`stage-filter-btn ${activeFilter === f.key ? 'active' : ''}`}
-                        onClick={() => setActiveFilter(f.key)}
-                      >
-                        {f.label}
-                        <span className="filter-count">{f.count}</span>
-                      </button>
-                    ))}
-                  </div>
+                  {isNetwork && (
+                    <div className="stage-filters" style={{ marginBottom: 16 }}>
+                      {filters.map(f => (
+                        <button
+                          key={String(f.key)}
+                          className={`stage-filter-btn ${activeFilter === f.key ? 'active' : ''}`}
+                          onClick={() => setActiveFilter(f.key)}
+                        >
+                          {f.label}
+                          <span className="filter-count">{f.count}</span>
+                        </button>
+                      ))}
+                    </div>
+                  )}
 
-                  {filteredNetwork.length > 0 ? (
+                  {filteredMembers.length > 0 ? (
                     <div className="members-grid">
-                      {filteredNetwork.map(member => {
-                        const idx  = MEMBERS.findIndex(m => m.name === member.name)
-                        const meta = STAGE_META[member.stage as 1 | 2 | 3]
-                        return (
-                          <div key={member.name} className="member-card">
-                            <div className="member-avatar" style={{ background: AVATAR_COLORS[idx % AVATAR_COLORS.length] }}>
+                      {isNetwork ? (
+                        filteredNetwork.map(member => {
+                          const idx  = MEMBERS.findIndex(m => m.name === member.name)
+                          const meta = STAGE_META[member.stage]
+                          return (
+                            <div key={member.name} className="member-card">
+                              <div className="member-avatar" style={{ background: AVATAR_COLORS[idx % AVATAR_COLORS.length] }}>
+                                {member.initials}
+                              </div>
+                              <div className="member-info">
+                                <h4>{member.name}</h4>
+                                <span className="member-stage-badge"
+                                  style={{ color: meta.text, background: meta.bg, border: `1px solid ${meta.color}22` }}>
+                                  <span className="cert-dot" style={{ background: meta.color }}></span>
+                                  {meta.short}
+                                </span>
+                              </div>
+                            </div>
+                          )
+                        })
+                      ) : (
+                        filteredObs.map((member, i) => (
+                          <div key={member.name} className={`member-card ${member.ccna !== null ? 'multi-prog' : ''}`}>
+                            <div className="member-avatar" style={{ background: SW_COLORS[i % SW_COLORS.length] }}>
                               {member.initials}
                             </div>
                             <div className="member-info">
                               <h4>{member.name}</h4>
-                              <span className="member-stage-badge"
-                                style={{ color: meta.text, background: meta.bg, border: `1px solid ${meta.color}22` }}>
-                                <span className="cert-dot" style={{ background: meta.color }}></span>
-                                {meta.short}
-                              </span>
-                            </div>
-                          </div>
-                        )
-                      })}
-                    </div>
-                  ) : (
-                    <div className="members-empty">
-                      <div className="empty-icon">🔍</div>
-                      <p>No network members match <strong>"{search}"</strong></p>
-                      <button onClick={() => { setSearch(''); setActiveFilter('all') }} className="clear-search-btn">Reset</button>
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-
-            {/* ══════════════════════════════════════
-                STREAM 2 — OBSERVABILITY (SolarWinds)
-            ══════════════════════════════════════ */}
-            <div className="stream-block">
-              <button
-                className="stream-header obs-stream"
-                onClick={() => setObsOpen(o => !o)}
-              >
-                <div className="stream-header-left">
-                  <span className="stream-emoji">📊</span>
-                  <div>
-                    <span className="stream-name">Observability Stream</span>
-                    <span className="stream-sub">SolarWinds Certification Program</span>
-                  </div>
-                </div>
-                <div className="stream-header-right">
-                  <span className="stream-pill obs">{SW_NOMINEES.length} nominees</span>
-                  <span className="stream-toggle">{obsOpen ? '−' : '+'}</span>
-                </div>
-              </button>
-
-              {obsOpen && (
-                <div className="stream-body">
-                  {filteredObs.length > 0 ? (
-                    <div className="members-grid">
-                      {filteredObs.map((nominee, i) => (
-                        <div key={nominee.name} className={`member-card ${nominee.ccna !== null ? 'multi-prog' : ''}`}>
-                          <div className="member-avatar" style={{ background: SW_COLORS[i % SW_COLORS.length] }}>
-                            {nominee.initials}
-                          </div>
-                          <div className="member-info">
-                            <h4>{nominee.name}</h4>
-                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
-                              <span className="member-stage-badge"
-                                style={{ color: '#c45000', background: '#fff3eb', border: '1px solid #ffcba033' }}>
-                                <span className="cert-dot" style={{ background: '#E85D00' }}></span>
-                                SW Nominee
-                              </span>
-                              {nominee.ccna !== null && (
+                              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
                                 <span className="member-stage-badge"
-                                  style={{ color: STAGE_META[nominee.ccna as 2|3].text, background: STAGE_META[nominee.ccna as 2|3].bg, border: `1px solid ${STAGE_META[nominee.ccna as 2|3].color}22` }}>
-                                  <span className="cert-dot" style={{ background: STAGE_META[nominee.ccna as 2|3].color }}></span>
-                                  {STAGE_META[nominee.ccna as 2|3].short}
+                                  style={{ color: '#c45000', background: '#fff3eb', border: '1px solid #ffcba033' }}>
+                                  <span className="cert-dot" style={{ background: '#E85D00' }}></span>
+                                  SW Nominee
                                 </span>
-                              )}
+                                {member.ccna !== null && (
+                                  <span className="member-stage-badge"
+                                    style={{ color: STAGE_META[member.ccna].text, background: STAGE_META[member.ccna].bg, border: `1px solid ${STAGE_META[member.ccna].color}22` }}>
+                                    <span className="cert-dot" style={{ background: STAGE_META[member.ccna].color }}></span>
+                                    {STAGE_META[member.ccna].short}
+                                  </span>
+                                )}
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      ))}
+                        ))
+                      )}
                     </div>
                   ) : (
                     <div className="members-empty">
                       <div className="empty-icon">🔍</div>
-                      <p>No observability nominees match <strong>"{search}"</strong></p>
-                      <button onClick={() => setSearch('')} className="clear-search-btn">Reset</button>
+                      <p>{isNetwork ? 'No network members' : 'No observability nominees'} match <strong>"{search}"</strong></p>
+                      <button onClick={() => { setSearch(''); if (isNetwork) setActiveFilter('all') }} className="clear-search-btn">Reset</button>
                     </div>
                   )}
                 </div>
@@ -829,9 +826,13 @@ function Members() {
   )
 }
 
-function CelebrateLearning() {
+function CelebrateLearning({ template }: { template: Template }) {
   const [imgLoaded, setImgLoaded] = useState(false)
   const [imgError, setImgError] = useState(false)
+
+  const extraNames = template === 'network'
+    ? ['Kuldeep Rahpoot', 'Zubair Ahmed Shaik', 'Bodaoati Koteshwarrao']
+    : []
 
   const particles = Array.from({ length: 20 }, (_, i) => i)
 
@@ -890,18 +891,27 @@ function CelebrateLearning() {
           </div>
 
           <p className="celebrate-context">
-            The first member of the <strong>QBE Network &amp; Observability CoP</strong> to attain
-            CCNA certification through the QBE Network Certification Program —
+            The first member of the <strong>{template === 'network' ? 'QBE Account Network and Security CoP' : 'QBE Account Network & Observability CoP'}</strong> to attain
+            CCNA certification through the QBE Account Network Certification Program —
             a testament to dedication, technical excellence, and continuous learning.
           </p>
 
           <div className="celebrate-orgs">
-            <span className="org-chip">QBE Insurance Group</span>
+            <span className="org-chip">QBE Account</span>
             <span className="org-divider">✦</span>
             <span className="org-chip">Accenture</span>
             <span className="org-divider">✦</span>
-            <span className="org-chip">Network and Observability Community of Practice</span>
+            <span className="org-chip">
+              {template === 'network'
+                ? 'Network and Security Community of Practice'
+                : 'Network and Observability Community of Practice'}
+            </span>
           </div>
+          {extraNames.length > 0 && (
+            <div className="celebrate-additional">
+              Celebrating: {extraNames.join(', ')}
+            </div>
+          )}
         </div>
       </div>
     </section>
@@ -929,7 +939,7 @@ function LeaderPhoto({ src, alt, initials }: { src: string; alt: string; initial
   )
 }
 
-function Leadership() {
+function Leadership({ template }: { template: Template }) {
   const leaders = NETSEC_LEADERS
 
   return (
@@ -938,7 +948,9 @@ function Leadership() {
         <div className="section-label">Meet the Team</div>
         <h2 className="section-title">CoP Leadership</h2>
         <p className="section-desc">
-          Experienced leaders driving network and observability excellence across QBE's global technology footprint.
+          {template === 'network'
+            ? 'Experienced leaders driving network and security excellence across QBE Account’s global technology footprint.'
+            : 'Experienced leaders driving network and observability excellence across QBE Account’s global technology footprint.'}
         </p>
         <div className="leaders-grid">
           {leaders.map((leader, i) => (
@@ -986,18 +998,24 @@ function Leadership() {
   )
 }
 
-function Join() {
+function Join({ template }: { template: Template }) {
   const [formName,     setFormName]     = useState('')
   const [formEmail,    setFormEmail]    = useState('')
   const [formRole,     setFormRole]     = useState('')
   const [formInterest, setFormInterest] = useState('')
   const [formNote,     setFormNote]     = useState('')
 
-  const benefits = [
+  const benefits = template === 'network' ? [
     'Access exclusive knowledge resources and playbooks',
-    'Connect with network & observability experts across QBE',
+    'Connect with network & security experts across QBE Account',
     'Participate in hands-on workshops and tool showcases',
-    "Shape QBE's observability strategy and standards",
+    'Shape QBE Account’s network and security operations',
+    'Earn recognition for your contributions and certifications',
+  ] : [
+    'Access exclusive knowledge resources and playbooks',
+    'Connect with network & observability experts across QBE Account',
+    'Participate in hands-on workshops and tool showcases',
+    "Shape QBE Account's observability strategy and standards",
     'Earn recognition for your contributions and certifications',
   ]
 
@@ -1018,8 +1036,9 @@ function Join() {
             <div className="section-label light">Get Involved</div>
             <h2>Join the Community</h2>
             <p>
-              Whether you're a network engineer, observability practitioner, or technology enthusiast at QBE,
-              there's a place for you in our CoP. Contribute, learn, and grow with us.
+              {template === 'network'
+                ? 'Whether you’re a network or security practitioner at QBE, there’s a place for you in our CoP. Contribute, learn, and grow with us.'
+                : 'Whether you’re an observability practitioner, network engineer, or technology enthusiast at QBE, there’s a place for you in our CoP. Contribute, learn, and grow with us.'}
             </p>
             <ul className="join-benefits">
               {benefits.map((b, i) => (<li key={i}>{b}</li>))}
@@ -1049,17 +1068,16 @@ function Join() {
   )
 }
 
-function Footer() {
+function Footer({ template }: { template: Template }) {
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
   }
 
   const links = [
     { label: 'About CoP',      id: 'about' },
-    { label: 'Certification',  id: 'pathway' },
-    { label: 'SolarWinds',    id: 'solarwinds' },
+    { label: template === 'network' ? 'Certification' : 'SolarWinds', id: template === 'network' ? 'pathway' : 'solarwinds' },
     { label: 'Events',        id: 'events' },
-    { label: 'Resources',     id: 'resources' },
+    ...(template === 'observability' ? [{ label: 'Resources', id: 'resources' }] : []),
     { label: 'Members',       id: 'members' },
     { label: 'Leadership',    id: 'team' },
     { label: 'Join CoP',      id: 'join' },
@@ -1072,11 +1090,12 @@ function Footer() {
           <div className="footer-brand">
             <div className="footer-logo">
               <span className="acc-arrow">›</span>
-              <span>Network and Observability CoP | QBE</span>
+              <span>{template === 'network' ? 'Network and Security CoP | QBE Account' : 'Network and Observability CoP | QBE Account'}</span>
             </div>
             <p>
-              Network &amp; Observability Community of Practice — Building intelligent operations at QBE
-              through shared expertise and collaboration.
+              {template === 'network'
+                ? 'Network and Security Community of Practice — Building intelligent operations at QBE Account through shared expertise and collaboration.'
+                : 'Network & Observability Community of Practice — Building intelligent operations at QBE Account through shared expertise and collaboration.'}
             </p>
             <div className="footer-acc-credit">
               <span>Powered by</span>
@@ -1103,7 +1122,7 @@ function Footer() {
           </div>
         </div>
         <div className="footer-bottom">
-          <p>© 2026 QBE Network &amp; Observability Community of Practice | Accenture. All rights reserved.</p>
+          <p>© 2026 QBE Account {template === 'network' ? 'Network and Security' : 'Network & Observability'} Community of Practice | Accenture. All rights reserved.</p>
         </div>
       </div>
     </footer>
@@ -1341,7 +1360,15 @@ function SolarWindsCertification() {
   )
 }
 
-function App() {
+function App({ initialTemplate }: { initialTemplate?: Template }) {
+  const [template, setTemplate] = useState<Template>(() => initialTemplate ?? getTemplateFromHash())
+
+  useEffect(() => {
+    if (initialTemplate && initialTemplate !== template) {
+      setTemplate(initialTemplate)
+    }
+  }, [initialTemplate, template])
+
   useEffect(() => {
     const els = document.querySelectorAll('.reveal')
     const io = new IntersectionObserver(
@@ -1356,19 +1383,19 @@ function App() {
 
   return (
     <div className="app">
-      <Navbar />
-      <Hero />
-      <About />
+      <Navbar template={template} />
+      <Hero template={template} />
+      <About template={template} />
       <Stats />
-      <CertificationPathway />
-      <SolarWindsCertification />
+      {template === 'network' && <CertificationPathway />}
+      {template === 'observability' && <SolarWindsCertification />}
       <Events />
-      <Resources />
-      <Members />
-      <CelebrateLearning />
-      <Leadership />
-      <Join />
-      <Footer />
+      {template === 'observability' && <Resources />}
+      <Members template={template} />
+      <CelebrateLearning template={template} />
+      <Leadership template={template} />
+      <Join template={template} />
+      <Footer template={template} />
     </div>
   )
 }

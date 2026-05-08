@@ -188,7 +188,7 @@ export const COMMUNITIES: CoPCommunity[] = [
   {
     id: 'netsec',
     name: 'Network & Security',
-    description: 'Building deep expertise in network infrastructure, security architecture, and Cisco certification pathways across QBE.',
+    description: 'Building deep expertise in network infrastructure, security architecture, and Cisco certification pathways across QBE Account.',
     icon: '/Network_and_Security.png',
     accentColor: '#A100FF',
     category: 'Infrastructure',
@@ -196,7 +196,7 @@ export const COMMUNITIES: CoPCommunity[] = [
     leadEmail: 'pramodh.nagaraja@accenture.com',
     memberCount: 34,
     status: 'active',
-    route: '#/noc',
+    route: '#/noc/network',
     highlights: [
       '34 members — Foundation Certified',
       '17 progressed to CCNA Boot Camp',
@@ -207,7 +207,7 @@ export const COMMUNITIES: CoPCommunity[] = [
   {
     id: 'observability',
     name: 'Observability',
-    description: 'Enabling full-stack observability with SolarWinds, monitoring strategy, and visibility across QBE\'s technology landscape.',
+    description: 'Enabling full-stack observability with SolarWinds, monitoring strategy, and visibility across QBE Account\'s technology landscape.',
     icon: '/Observability.png',
     accentColor: '#be185d',
     category: 'Infrastructure',
@@ -215,11 +215,11 @@ export const COMMUNITIES: CoPCommunity[] = [
     leadEmail: 'pramodh.nagaraja@accenture.com',
     memberCount: 11,
     status: 'active',
-    route: '#/noc',
+    route: '#/noc/observability',
     highlights: [
       '11 nominated for SolarWinds Boot Camp',
       'SolarWinds NPM / SAM certification track',
-      'Integrated with Network & Security CoP',
+      'Observability-specific certification journey',
     ],
     lastUpdated: '2026-04-30',
   },

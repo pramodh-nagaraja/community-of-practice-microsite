@@ -32,10 +32,21 @@ function Root() {
     return () => window.removeEventListener('hashchange', sync)
   }, [])
 
+  useEffect(() => {
+    const route = hash.replace(/^#\/?/, '')
+    if (route === 'noc') {
+      window.location.hash = '#/noc/network'
+    }
+  }, [hash])
+
   const route = hash.replace(/^#\/?/, '')
+  const [routeSegment, subRoute] = route.split('/')
 
   // N&O CoP — premium custom page (App.tsx)
-  if (route === 'noc') return <App />
+  if (routeSegment === 'noc') {
+    const template = subRoute === 'observability' ? 'observability' : 'network'
+    return <App key={route} initialTemplate={template} />
+  }
 
   // Any other active CoP registered in COP_DATA
   if (route && COP_DATA[route]) {

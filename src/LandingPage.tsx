@@ -92,7 +92,9 @@ export default function LandingPage() {
     ? COMMUNITIES
     : COMMUNITIES.filter(c => c.status === filter)
 
-  const go = (route: string) => { window.location.hash = route.replace('#/', '') }
+  const go = (route: string) => {
+    window.location.hash = route.startsWith('#/') ? route : route.replace('#/', '')
+  }
 
   return (
     <div className={`lp-root${visible ? ' lp-visible' : ''}`}>
@@ -164,8 +166,8 @@ function LPHeader() {
           <div className="lp-brand-rule" aria-hidden="true" />
 
           {/* ── QBE mark ── */}
-          <div className="lp-logo-qbe" aria-label="QBE">
-            <span className="lp-qbe-text">QBE</span>
+          <div className="lp-logo-qbe" aria-label="QBE Account">
+            <span className="lp-qbe-text">QBE Account</span>
           </div>
           <span className="lp-brand-client">Technology</span>
 
@@ -207,7 +209,7 @@ function LPHero({ activeCount, totalMembers }: { activeCount: number; totalMembe
       <div className="lp-hero-inner">
         <div className="lp-hero-badge">
           <span className="lp-hero-badge-dot" />
-          QBE Technology Program
+          QBE Account Technology Program
         </div>
 
         <h1 className="lp-hero-title">
@@ -216,7 +218,7 @@ function LPHero({ activeCount, totalMembers }: { activeCount: number; totalMembe
 
         <p className="lp-hero-desc">
           Fostering expertise, building certifications, and driving innovation
-          across 15 technology disciplines at QBE — powered by Accenture.
+          across 15 technology disciplines at QBE Account — powered by Accenture.
         </p>
 
         <div className="lp-hero-stats">
@@ -486,8 +488,8 @@ function LPFooter({ latestUpdate }: { latestUpdate: string }) {
             </div>
             <span className="lp-footer-brand-name">Accenture</span>
             <div className="lp-brand-rule lp-brand-rule-sm" aria-hidden="true" />
-            <div className="lp-logo-qbe lp-logo-qbe-sm" aria-label="QBE">
-              <span className="lp-qbe-text">QBE</span>
+            <div className="lp-logo-qbe lp-logo-qbe-sm" aria-label="QBE Account">
+              <span className="lp-qbe-text">QBE Account</span>
             </div>
             <span className="lp-footer-brand-client">Technology</span>
           </div>

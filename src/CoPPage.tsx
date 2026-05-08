@@ -123,7 +123,7 @@ function CPNav({ name, navItems }: { name: string; navItems: { label: string; id
           <div className="cp-acc-arrow">›</div>
           <div className="cp-nav-brand-text">
             <span className="cp-nav-brand-main">{name} CoP</span>
-            <span className="cp-nav-brand-sub">QBE | Accenture</span>
+            <span className="cp-nav-brand-sub">QBE Account | Accenture</span>
           </div>
         </div>
         <button className="cp-nav-toggle" onClick={() => setOpen(o => !o)} aria-label="Toggle menu">
@@ -191,7 +191,7 @@ function CPHero({ data }: { data: CoPPageData }) {
       <div className="cp-hero-content">
         <div className="cp-hero-badges">
           <span className="cp-badge cp-badge-acc">Accenture</span>
-          <span className="cp-badge cp-badge-qbe">QBE Technology</span>
+          <span className="cp-badge cp-badge-qbe">QBE Account Technology</span>
         </div>
 
         <div className="cp-hero-icon-wrap">
@@ -377,7 +377,7 @@ function CPEvents({ events }: { events: CoPEvent[] }) {
         <div className="cp-section-label">Stay Connected</div>
         <h2 className="cp-section-title">Upcoming Sessions</h2>
         <p className="cp-section-desc">
-          Regular knowledge-sharing sessions, workshops, and deep dives. All QBE technology professionals are welcome.
+          Regular knowledge-sharing sessions, workshops, and deep dives. All QBE Account technology professionals are welcome.
         </p>
         <div className="cp-events-grid">
           {events.map((ev, i) => (
@@ -562,11 +562,11 @@ function CPJoin({ data }: { data: CoPPageData }) {
           <div className="cp-join-left">
             <div className="cp-section-label light">Get Involved</div>
             <h2>Join the {data.name} Community</h2>
-            <p>Connect with domain experts at QBE. Contribute, learn, and grow with us.</p>
+            <p>Connect with domain experts at QBE Account. Contribute, learn, and grow with us.</p>
             <ul className="cp-join-benefits">
               {[
                 'Access exclusive knowledge resources and playbooks',
-                'Connect with domain experts across QBE',
+                'Connect with domain experts across QBE Account',
                 'Participate in hands-on workshops and deep dives',
                 'Earn recognition for contributions and certifications',
               ].map((b, i) => <li key={i}>{b}</li>)}
@@ -602,7 +602,7 @@ function CPFooter({ data }: { data: CoPPageData }) {
           <div className="cp-footer-brand">
             <div className="cp-footer-logo">
               <span className="cp-acc-arrow-sm">›</span>
-              <span>{data.name} CoP | QBE</span>
+              <span>{data.name} CoP | QBE Account</span>
             </div>
             <p>{data.tagline}</p>
             <div className="cp-footer-credit">Powered by <strong>Accenture</strong></div>
@@ -613,7 +613,7 @@ function CPFooter({ data }: { data: CoPPageData }) {
           </div>
         </div>
         <div className="cp-footer-bottom">
-          © 2026 QBE {data.name} Community of Practice | Accenture. All rights reserved.
+          © 2026 QBE Account {data.name} Community of Practice | Accenture. All rights reserved.
         </div>
       </div>
     </footer>
