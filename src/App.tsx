@@ -854,8 +854,11 @@ function SpotlightPhoto({ name, initials, src }: { name: string; initials: strin
 
 const BASE = import.meta.env.BASE_URL
 const SPOTLIGHT_PHOTOS: Record<string, string> = {
-  'Syed Ateeb Ahmed': `${BASE}ateeb.jpg`,
-  'Kuldeep Rajpoot': `${BASE}Kuldeep.jpg`,
+  'Syed Ateeb Ahmed':       `${BASE}ateeb.jpg`,
+  'Kuldeep Rajpoot':        `${BASE}Kuldeep.jpg`,
+  'Akanksha Bisht':         `${BASE}Akansha.jpg`,
+  'Shaik Zubair Ahmed':     `${BASE}Zubair.jpg`,
+  'Koteswararao Bodapati':  `${BASE}Koteshwar.jpg`,
 }
 
 function CelebrateLearning({ template }: { template: Template }) {
