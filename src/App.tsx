@@ -854,6 +854,7 @@ function SpotlightPhoto({ name, initials, src }: { name: string; initials: strin
 
 const SPOTLIGHT_PHOTOS: Record<string, string> = {
   'Syed Ateeb Ahmed': '/ateeb.jpg',
+  'Kuldeep Rajpoot': '/Kuldeep.jpg',
 }
 
 function CelebrateLearning({ template }: { template: Template }) {
