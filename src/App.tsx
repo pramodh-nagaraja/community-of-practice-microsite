@@ -826,19 +826,57 @@ function Members({ template }: { template: Template }) {
   )
 }
 
-function CelebrateLearning({ template }: { template: Template }) {
+function SpotlightPhoto({ name, initials, src }: { name: string; initials: string; src?: string }) {
   const [imgLoaded, setImgLoaded] = useState(false)
   const [imgError, setImgError] = useState(false)
+  const showPhoto = !!src && !imgError
+  return (
+    <div className="photo-glow-ring">
+      <div className="photo-inner-ring">
+        {showPhoto && (
+          <img
+            src={src}
+            alt={name}
+            className={`celebrate-photo ${imgLoaded ? 'loaded' : ''}`}
+            onLoad={() => setImgLoaded(true)}
+            onError={() => setImgError(true)}
+          />
+        )}
+        {(!showPhoto || !imgLoaded) && (
+          <div className={`celebrate-avatar ${showPhoto && imgLoaded ? 'hidden' : ''}`}>
+            {initials}
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
 
+const SPOTLIGHT_PHOTOS: Record<string, string> = {
+  'Syed Ateeb Ahmed': '/ateeb.jpg',
+}
+
+function CelebrateLearning({ template }: { template: Template }) {
   const ccnaTiles = template === 'network'
     ? MEMBERS.filter(m => m.stage === 3)
     : []
+
+  const defaultIdx = Math.max(0, ccnaTiles.findIndex(m => m.name === 'Syed Ateeb Ahmed'))
+  const [selectedIdx, setSelectedIdx] = useState(defaultIdx)
+
+  const selected = ccnaTiles[selectedIdx] ?? ccnaTiles[0]
+  const isAteeb = selected?.name === 'Syed Ateeb Ahmed'
+  const copName = template === 'network'
+    ? 'QBE Account Network and Security CoP'
+    : 'QBE Account Network & Observability CoP'
+  const copChip = template === 'network'
+    ? 'Network and Security Community of Practice'
+    : 'Network and Observability Community of Practice'
 
   const particles = Array.from({ length: 20 }, (_, i) => i)
 
   return (
     <section id="celebrate" className="celebrate-section">
-      {/* Floating sparkle particles */}
       <div className="sparkle-bg" aria-hidden="true">
         {particles.map(i => (
           <span key={i} className={`sparkle sparkle-${i}`} />
@@ -847,66 +885,52 @@ function CelebrateLearning({ template }: { template: Template }) {
 
       <div className="container reveal">
         <div className="celebrate-inner">
-          {/* Top label */}
           <div className="celebrate-eyebrow">
             <span className="celebrate-stars">✦ ✦ ✦</span>
             <span className="celebrate-label">Celebrate Learning</span>
             <span className="celebrate-stars">✦ ✦ ✦</span>
           </div>
 
-          {/* Photo + ring */}
-          <div className="celebrate-photo-wrap">
-            <div className="photo-glow-ring">
-              <div className="photo-inner-ring">
-                {!imgError ? (
-                  <img
-                    src="/ateeb.jpg"
-                    alt="Syed Ateeb Ahmed"
-                    className={`celebrate-photo ${imgLoaded ? 'loaded' : ''}`}
-                    onLoad={() => setImgLoaded(true)}
-                    onError={() => setImgError(true)}
-                  />
-                ) : null}
-                {(imgError || !imgLoaded) && (
-                  <div className={`celebrate-avatar ${imgLoaded ? 'hidden' : ''}`}>SA</div>
-                )}
-              </div>
-            </div>
-            {/* CCNA badge pinned to photo */}
+          {/* key causes remount on selection change → CSS zoom-in animation fires */}
+          <div key={`photo-${selectedIdx}`} className="celebrate-photo-wrap">
+            <SpotlightPhoto
+              name={selected?.name ?? ''}
+              initials={selected?.initials ?? ''}
+              src={SPOTLIGHT_PHOTOS[selected?.name ?? '']}
+            />
             <div className="ccna-pin">
               <span className="ccna-pin-icon">🏅</span>
               <span>CCNA Certified</span>
             </div>
           </div>
 
-          {/* Achievement text */}
-          <p className="celebrate-congrats">Congratulations!</p>
-          <h2 className="celebrate-name">Syed Ateeb Ahmed</h2>
-          <p className="celebrate-subtitle">has successfully achieved</p>
+          <div key={`text-${selectedIdx}`} className="celebrate-spotlight-text">
+            <p className="celebrate-congrats">Congratulations!</p>
+            <h2 className="celebrate-name">{selected?.name}</h2>
+            <p className="celebrate-subtitle">has successfully achieved</p>
 
-          <div className="celebrate-cert-block">
-            <CiscoLogo className="celebrate-cisco-logo" />
-            <div className="cert-title-main">CCNA Certification</div>
-            <div className="cert-title-sub">Cisco Certified Network Associate</div>
+            <div className="celebrate-cert-block">
+              <CiscoLogo className="celebrate-cisco-logo" />
+              <div className="cert-title-main">CCNA Certification</div>
+              <div className="cert-title-sub">Cisco Certified Network Associate</div>
+            </div>
+
+            <p className="celebrate-context">
+              {isAteeb
+                ? <>The first member of the <strong>{copName}</strong> to attain CCNA certification through the QBE Account Network Certification Program — a testament to dedication, technical excellence, and continuous learning.</>
+                : <>A proud member of the <strong>{copName}</strong> who has attained CCNA certification through the QBE Account Network Certification Program — a testament to dedication, technical excellence, and continuous learning.</>
+              }
+            </p>
+
+            <div className="celebrate-orgs">
+              <span className="org-chip">QBE Account</span>
+              <span className="org-divider">✦</span>
+              <span className="org-chip">Accenture</span>
+              <span className="org-divider">✦</span>
+              <span className="org-chip">{copChip}</span>
+            </div>
           </div>
 
-          <p className="celebrate-context">
-            The first member of the <strong>{template === 'network' ? 'QBE Account Network and Security CoP' : 'QBE Account Network & Observability CoP'}</strong> to attain
-            CCNA certification through the QBE Account Network Certification Program —
-            a testament to dedication, technical excellence, and continuous learning.
-          </p>
-
-          <div className="celebrate-orgs">
-            <span className="org-chip">QBE Account</span>
-            <span className="org-divider">✦</span>
-            <span className="org-chip">Accenture</span>
-            <span className="org-divider">✦</span>
-            <span className="org-chip">
-              {template === 'network'
-                ? 'Network and Security Community of Practice'
-                : 'Network and Observability Community of Practice'}
-            </span>
-          </div>
           {ccnaTiles.length > 0 && (
             <div className="celebrate-tiles-wrap">
               <p className="celebrate-tiles-heading">
@@ -915,7 +939,15 @@ function CelebrateLearning({ template }: { template: Template }) {
               <div className="celebrate-tiles-track">
                 <div className="celebrate-tiles-scroll">
                   {ccnaTiles.map((member, idx) => (
-                    <div key={member.name} className="celebrate-tile">
+                    <div
+                      key={member.name}
+                      className={`celebrate-tile${idx === selectedIdx ? ' celebrate-tile-active' : ''}`}
+                      onClick={() => setSelectedIdx(idx)}
+                      role="button"
+                      tabIndex={0}
+                      onKeyDown={e => e.key === 'Enter' && setSelectedIdx(idx)}
+                      aria-pressed={idx === selectedIdx}
+                    >
                       <div className="celebrate-tile-ring">
                         <div className="celebrate-tile-ring-inner">
                           <div
