@@ -27,7 +27,10 @@ function Root() {
   const [hash, setHash] = useState(() => window.location.hash)
 
   useEffect(() => {
-    const sync = () => setHash(window.location.hash)
+    const sync = () => {
+      window.scrollTo({ top: 0, behavior: 'instant' })
+      setHash(window.location.hash)
+    }
     window.addEventListener('hashchange', sync)
     return () => window.removeEventListener('hashchange', sync)
   }, [])
