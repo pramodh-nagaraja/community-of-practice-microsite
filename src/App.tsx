@@ -891,9 +891,9 @@ function CelebrateLearning({ template }: { template: Template }) {
             <span className="celebrate-stars">✦ ✦ ✦</span>
           </div>
 
-          {/* key causes remount on selection change → CSS zoom-in animation fires */}
           <div key={`photo-${selectedIdx}`} className="celebrate-photo-wrap">
             <SpotlightPhoto
+              key={selectedIdx}
               name={selected?.name ?? ''}
               initials={selected?.initials ?? ''}
               src={SPOTLIGHT_PHOTOS[selected?.name ?? '']}
