@@ -830,8 +830,8 @@ function CelebrateLearning({ template }: { template: Template }) {
   const [imgLoaded, setImgLoaded] = useState(false)
   const [imgError, setImgError] = useState(false)
 
-  const extraNames = template === 'network'
-    ? ['Kuldeep Rahpoot', 'Zubair Ahmed Shaik', 'Bodaoati Koteshwarrao']
+  const ccnaTiles = template === 'network'
+    ? MEMBERS.filter(m => m.stage === 3)
     : []
 
   const particles = Array.from({ length: 20 }, (_, i) => i)
@@ -907,9 +907,27 @@ function CelebrateLearning({ template }: { template: Template }) {
                 : 'Network and Observability Community of Practice'}
             </span>
           </div>
-          {extraNames.length > 0 && (
-            <div className="celebrate-additional">
-              Celebrating: {extraNames.join(', ')}
+          {ccnaTiles.length > 0 && (
+            <div className="celebrate-tiles-wrap">
+              <p className="celebrate-tiles-heading">
+                <span aria-hidden="true">🏆</span> CCNA Certified Members
+              </p>
+              <div className="celebrate-tiles-scroll">
+                {ccnaTiles.map((member, idx) => (
+                  <div key={member.name} className="celebrate-tile">
+                    <div
+                      className="celebrate-tile-avatar"
+                      style={{ background: AVATAR_COLORS[idx % AVATAR_COLORS.length] }}
+                    >
+                      {member.initials}
+                    </div>
+                    <div className="celebrate-tile-name">{member.name}</div>
+                    <div className="celebrate-tile-badge">
+                      <span aria-hidden="true">🏅</span> CCNA Certified
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
         </div>
