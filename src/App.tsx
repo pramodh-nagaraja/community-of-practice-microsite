@@ -910,23 +910,29 @@ function CelebrateLearning({ template }: { template: Template }) {
           {ccnaTiles.length > 0 && (
             <div className="celebrate-tiles-wrap">
               <p className="celebrate-tiles-heading">
-                <span aria-hidden="true">🏆</span> CCNA Certified Members
+                <span aria-hidden="true">🏆</span> All CCNA Certified Members
               </p>
-              <div className="celebrate-tiles-scroll">
-                {ccnaTiles.map((member, idx) => (
-                  <div key={member.name} className="celebrate-tile">
-                    <div
-                      className="celebrate-tile-avatar"
-                      style={{ background: AVATAR_COLORS[idx % AVATAR_COLORS.length] }}
-                    >
-                      {member.initials}
+              <div className="celebrate-tiles-track">
+                <div className="celebrate-tiles-scroll">
+                  {ccnaTiles.map((member, idx) => (
+                    <div key={member.name} className="celebrate-tile">
+                      <div className="celebrate-tile-ring">
+                        <div className="celebrate-tile-ring-inner">
+                          <div
+                            className="celebrate-tile-avatar"
+                            style={{ background: AVATAR_COLORS[idx % AVATAR_COLORS.length] }}
+                          >
+                            {member.initials}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="celebrate-tile-name">{member.name}</div>
+                      <div className="celebrate-tile-badge">
+                        <span aria-hidden="true">🏅</span> CCNA Certified
+                      </div>
                     </div>
-                    <div className="celebrate-tile-name">{member.name}</div>
-                    <div className="celebrate-tile-badge">
-                      <span aria-hidden="true">🏅</span> CCNA Certified
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           )}
