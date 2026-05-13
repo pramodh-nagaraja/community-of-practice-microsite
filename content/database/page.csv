@@ -1,0 +1,15 @@
+key,value
+name,Database
+tagline,"Optimising database design, performance, migration, and reliability at QBE."
+description,"Optimising database design, performance, migration, and reliability across Oracle, MSSQL, and PostgreSQL."
+accentColor,#4338ca
+icon,Database.png
+memberCount,15
+certCount,2
+sessionsHeld,0
+launchYear,2026
+mission,"To build deep database expertise across QBE Account covering Oracle, MSSQL, and PostgreSQL — from design and performance tuning to cloud migration and reliability."
+vision,"To make QBE Account's data layer robust, observable, and cloud-ready through proactive database management and a culture of engineering excellence."
+values,"Data reliability, performance by design, and a disciplined approach to database engineering that ensures QBE's systems remain resilient under load."
+joinEmail,madhvan.gopalan@accenture.com
+joinInterests,General|Oracle|MSSQL|PostgreSQL|Database Migration|Performance Tuning|Certifications

@@ -1,60 +1,182 @@
+// ═══════════════════════════════════════════════════════════════
+//  Data & AI CoP — data file
+//  Auto-generated from content/data-ai/*.csv via `npm run sync`.
+//  To update: edit the CSV files and re-run `npm run sync`.
+// ═══════════════════════════════════════════════════════════════
 import type { CoPPageData } from '../types'
 
 const BASE = import.meta.env.BASE_URL
 
-const MEMBERS = [
-  { name: 'Name 1',  initials: 'N1', levelLabel: 'Trained',      levelColor: '#16a34a', levelBg: '#dcfce7', levelText: '#14532d' },
-  { name: 'Name 2',  initials: 'N2', levelLabel: 'Trained',      levelColor: '#16a34a', levelBg: '#dcfce7', levelText: '#14532d' },
-  { name: 'Name 3',  initials: 'N3', levelLabel: 'Trained',      levelColor: '#16a34a', levelBg: '#dcfce7', levelText: '#14532d' },
-  { name: 'Name 4',  initials: 'N4', levelLabel: 'Trained',      levelColor: '#16a34a', levelBg: '#dcfce7', levelText: '#14532d' },
-  { name: 'Name 5',  initials: 'N5', levelLabel: 'Trained',      levelColor: '#16a34a', levelBg: '#dcfce7', levelText: '#14532d' },
-  { name: 'Name 6',  initials: 'N6', levelLabel: 'Trained',      levelColor: '#16a34a', levelBg: '#dcfce7', levelText: '#14532d' },
-  { name: 'Name 7',  initials: 'N7', levelLabel: 'Trained',      levelColor: '#16a34a', levelBg: '#dcfce7', levelText: '#14532d' },
-  { name: 'Name 8',  initials: 'N8', levelLabel: 'Trained',      levelColor: '#16a34a', levelBg: '#dcfce7', levelText: '#14532d' },
-  { name: 'Name 9',  initials: 'N9', levelLabel: 'Intermediate', levelColor: '#2563eb', levelBg: '#dbeafe', levelText: '#1e3a8a' },
-  { name: 'Name 10', initials: 'NA', levelLabel: 'Intermediate', levelColor: '#2563eb', levelBg: '#dbeafe', levelText: '#1e3a8a' },
-  { name: 'Name 11', initials: 'NB', levelLabel: 'Intermediate', levelColor: '#2563eb', levelBg: '#dbeafe', levelText: '#1e3a8a' },
-  { name: 'Name 12', initials: 'NC', levelLabel: 'Intermediate', levelColor: '#2563eb', levelBg: '#dbeafe', levelText: '#1e3a8a' },
-  { name: 'Name 13', initials: 'ND', levelLabel: 'Intermediate', levelColor: '#2563eb', levelBg: '#dbeafe', levelText: '#1e3a8a' },
-  { name: 'Name 14', initials: 'NE', levelLabel: 'Certified',    levelColor: '#A100FF', levelBg: '#F5E6FF', levelText: '#5700AB' },
-  { name: 'Name 15', initials: 'NF', levelLabel: 'Certified',    levelColor: '#A100FF', levelBg: '#F5E6FF', levelText: '#5700AB' },
-]
-
 export const DataAi_DATA: CoPPageData = {
   id: 'data-ai',
   name: 'Data & AI',
-  tagline: 'Harnessing data engineering, analytics, and AI to power QBE\'s decisions and innovation.',
+  tagline: 'Harnessing data engineering, analytics, and AI to power QBE\'s decisions.',
   description: 'Harnessing data engineering, analytics, and artificial intelligence to power QBE\'s decisions.',
   accentColor: '#7c3aed',
   icon: `${BASE}Data_and_AI.png`,
-
   memberCount: 15,
   certCount: 2,
   sessionsHeld: 0,
   launchYear: 2026,
-
-  mission: 'To harness data engineering, advanced analytics, and artificial intelligence to power QBE\'s decision-making, product innovation, and operational efficiency.',
-  vision: 'To build a data-driven QBE Account where AI and analytics are embedded in every major business and technology decision, enabling smarter and faster outcomes.',
-  values: 'Data quality, responsible AI, scalable engineering, and a culture of experimentation and evidence-based decision-making across QBE Account.',
-
-  certStages: [
-    { num: 1, title: 'Trained',      subtitle: 'Data & AI foundation training completed',    count: 8, totalCohort: 15, color: '#16a34a', bg: '#dcfce7', border: '#86efac', desc: 'Members who have completed foundational training in data concepts, analytics, and AI fundamentals.' },
-    { num: 2, title: 'Intermediate', subtitle: 'Intermediate data / ML certification in progress', count: 5, totalCohort: 15, color: '#2563eb', bg: '#dbeafe', border: '#93c5fd', desc: 'Members deepening expertise in data pipelines, ML model development, and cloud analytics platforms.' },
-    { num: 3, title: 'Certified',    subtitle: 'Full data / AI certification achieved',      count: 2, totalCohort: 15, color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe', desc: 'Members holding formal data or AI certifications — our analytics and machine learning champions.' },
+  mission: 'To build data engineering and AI capability across QBE Account enabling data-driven decisions, advanced analytics, and responsible AI adoption.',
+  vision: 'To make QBE Account a data-fluent organisation where insights are trusted, AI is responsibly embedded, and every decision is underpinned by quality data.',
+  values: 'Data integrity, responsible AI, and a curiosity-driven approach to turning data into meaningful insights for QBE\'s business.',
+  leadership: [
+    {
+      name: 'Madhvan Gopalan',
+      initials: 'MG',
+      photo: `${BASE}madhvan.jpg`,
+      badge: 'Executive Sponsor',
+      role: 'Executive Sponsor and Global CAL for QBE',
+      badgeStyle: 'sponsor' as 'sponsor' | 'global' | 'cop',
+      email: 'madhvan.gopalan@accenture.com',
+    },
+    {
+      name: 'Name 1',
+      initials: 'N1',
+      badge: 'Global Lead',
+      role: 'Global Lead — To Be Confirmed',
+      badgeStyle: 'global' as 'sponsor' | 'global' | 'cop',
+      email: 'tbd@accenture.com',
+    },
+    {
+      name: 'Name 2',
+      initials: 'N2',
+      badge: 'CoP Lead',
+      role: 'CoP Lead — To Be Confirmed',
+      badgeStyle: 'cop' as 'sponsor' | 'global' | 'cop',
+      email: 'tbd@accenture.com',
+    },
   ],
-
-  spotlight: {
-    title: 'Top SME',
-    desc: 'Recognising our most active Data & AI Subject Matter Experts driving intelligence and analytics at QBE.',
-    names: ['Name 1', 'Name 2', 'Name 3'],
-  },
-
+  joinEmail: 'madhvan.gopalan@accenture.com',
+  members: [
+    {
+      name: 'Name 1',
+      initials: 'N1',
+      levelLabel: 'Trained',
+      levelColor: '#16a34a',
+      levelBg: '#dcfce7',
+      levelText: '#14532d',
+    },
+    {
+      name: 'Name 2',
+      initials: 'N2',
+      levelLabel: 'Trained',
+      levelColor: '#16a34a',
+      levelBg: '#dcfce7',
+      levelText: '#14532d',
+    },
+    {
+      name: 'Name 3',
+      initials: 'N3',
+      levelLabel: 'Trained',
+      levelColor: '#16a34a',
+      levelBg: '#dcfce7',
+      levelText: '#14532d',
+    },
+    {
+      name: 'Name 4',
+      initials: 'N4',
+      levelLabel: 'Trained',
+      levelColor: '#16a34a',
+      levelBg: '#dcfce7',
+      levelText: '#14532d',
+    },
+    {
+      name: 'Name 5',
+      initials: 'N5',
+      levelLabel: 'Trained',
+      levelColor: '#16a34a',
+      levelBg: '#dcfce7',
+      levelText: '#14532d',
+    },
+    {
+      name: 'Name 6',
+      initials: 'N6',
+      levelLabel: 'Trained',
+      levelColor: '#16a34a',
+      levelBg: '#dcfce7',
+      levelText: '#14532d',
+    },
+    {
+      name: 'Name 7',
+      initials: 'N7',
+      levelLabel: 'Trained',
+      levelColor: '#16a34a',
+      levelBg: '#dcfce7',
+      levelText: '#14532d',
+    },
+    {
+      name: 'Name 8',
+      initials: 'N8',
+      levelLabel: 'Trained',
+      levelColor: '#16a34a',
+      levelBg: '#dcfce7',
+      levelText: '#14532d',
+    },
+    {
+      name: 'Name 9',
+      initials: 'N9',
+      levelLabel: 'Intermediate',
+      levelColor: '#2563eb',
+      levelBg: '#dbeafe',
+      levelText: '#1e3a8a',
+    },
+    {
+      name: 'Name 10',
+      initials: 'NA',
+      levelLabel: 'Intermediate',
+      levelColor: '#2563eb',
+      levelBg: '#dbeafe',
+      levelText: '#1e3a8a',
+    },
+    {
+      name: 'Name 11',
+      initials: 'NB',
+      levelLabel: 'Intermediate',
+      levelColor: '#2563eb',
+      levelBg: '#dbeafe',
+      levelText: '#1e3a8a',
+    },
+    {
+      name: 'Name 12',
+      initials: 'NC',
+      levelLabel: 'Intermediate',
+      levelColor: '#2563eb',
+      levelBg: '#dbeafe',
+      levelText: '#1e3a8a',
+    },
+    {
+      name: 'Name 13',
+      initials: 'ND',
+      levelLabel: 'Intermediate',
+      levelColor: '#2563eb',
+      levelBg: '#dbeafe',
+      levelText: '#1e3a8a',
+    },
+    {
+      name: 'Name 14',
+      initials: 'NE',
+      levelLabel: 'Certified',
+      levelColor: '#A100FF',
+      levelBg: '#F5E6FF',
+      levelText: '#5700AB',
+    },
+    {
+      name: 'Name 15',
+      initials: 'NF',
+      levelLabel: 'Certified',
+      levelColor: '#A100FF',
+      levelBg: '#F5E6FF',
+      levelText: '#5700AB',
+    },
+  ],
   events: [
     {
       day: 'TBC',
       month: 'Jun 2026',
-      title: 'AI / ML Use Case Showcase',
-      desc: 'Members present real AI and machine learning use cases from QBE projects — showcasing outcomes, lessons learned, and responsible AI practices.',
+      title: 'Data Engineering at QBE',
+      desc: 'Overview of the data platform architecture and pipelines powering QBE\'s analytics capabilities.',
       type: 'Knowledge Share',
       time: 'TBC',
       accentColor: '#7c3aed',
@@ -62,28 +184,27 @@ export const DataAi_DATA: CoPPageData = {
     {
       day: 'TBC',
       month: 'Jul 2026',
-      title: 'Data Platform & Pipeline Architecture',
-      desc: 'Workshop on QBE\'s data platform architecture, pipeline design patterns, data quality frameworks, and modern lakehouse approaches.',
+      title: 'Generative AI & Responsible Use',
+      desc: 'Workshop on practical generative AI use cases and Accenture\'s responsible AI framework applied to QBE.',
       type: 'Workshop',
       time: 'TBC',
       accentColor: '#7c3aed',
     },
   ],
-
-  members: MEMBERS,
-
-  celebrateLearning: {
-    title: 'Data & AI Learning Achievers',
-    desc: 'recognising outstanding commitment to data engineering, analytics, and AI certification excellence.',
+  joinInterests: ['General', 'Data Engineering', 'Machine Learning', 'Analytics', 'Generative AI', 'Azure AI', 'Certifications'],
+  certStages: [
+    { num: 1, title: 'Trained',      subtitle: 'Foundation training completed',           count: 8,      totalCohort: 15, color: '#16a34a', bg: '#dcfce7', border: '#86efac', desc: 'Members who have completed foundational Data & AI training.' },
+    { num: 2, title: 'Intermediate', subtitle: 'Intermediate certification in progress',  count: 5, totalCohort: 15, color: '#2563eb', bg: '#dbeafe', border: '#93c5fd', desc: 'Members pursuing intermediate Data & AI certification.' },
+    { num: 3, title: 'Certified',    subtitle: 'Full certification achieved',              count: 2,    totalCohort: 15, color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe', desc: 'Members holding full Data & AI certification — domain champions.' },
+  ],
+  spotlight: {
+    title: 'Top SME',
+    desc: 'Recognising our most active Data & AI Subject Matter Experts.',
     names: ['Name 1', 'Name 2', 'Name 3'],
   },
-
-  leadership: [
-    { name: 'Madhvan Gopalan', initials: 'MG', photo: `${BASE}madhvan.jpg`, badge: 'Executive Sponsor', role: 'Executive Sponsor and Global CAL for QBE', email: 'madhvan.gopalan@accenture.com', badgeStyle: 'sponsor' },
-    { name: 'Name 1', initials: 'N1', badge: 'Global Lead', role: 'Global Lead — To Be Confirmed', email: 'tbd@accenture.com', badgeStyle: 'global' },
-    { name: 'Name 2', initials: 'N2', badge: 'CoP Lead',    role: 'CoP Lead — To Be Confirmed',    email: 'tbd@accenture.com', badgeStyle: 'cop'    },
-  ],
-
-  joinEmail: 'madhvan.gopalan@accenture.com',
-  joinInterests: ['General', 'Data Engineering', 'Analytics', 'Machine Learning', 'GenAI', 'Certifications'],
+  celebrateLearning: {
+    title: 'Data & AI Learning Achievers',
+    desc: 'recognising outstanding commitment to Data & AI professional development and certification excellence.',
+    names: ['Name 1', 'Name 2', 'Name 3'],
+  },
 }

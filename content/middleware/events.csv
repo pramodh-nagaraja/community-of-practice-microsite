@@ -1,0 +1,3 @@
+day,month,title,desc,type,time,accentColor
+TBC,Jun 2026,Kafka Architecture at QBE,Deep dive into Apache Kafka usage patterns and configuration best practices in the QBE environment.,Knowledge Share,TBC,#b45309
+TBC,Jul 2026,Caching Strategies & Redis,Workshop on Redis caching patterns, eviction policies, and performance optimisation for QBE services.,Workshop,TBC,#b45309

@@ -193,9 +193,9 @@ ${lntLines.join('\n')}
 
 // ── Level name → colour mapping (used by generic CoP member sync) ─
 const LEVEL_MAP = {
-  foundation: { label: 'Foundation Certified', color: '#16a34a', bg: '#dcfce7', text: '#14532d' },
-  associate:  { label: 'Associate Certified',  color: '#2563eb', bg: '#dbeafe', text: '#1e3a8a' },
-  expert:     { label: 'Expert Certified',      color: '#A100FF', bg: '#F5E6FF', text: '#5700AB' },
+  foundation: { label: 'Trained',      color: '#16a34a', bg: '#dcfce7', text: '#14532d' },
+  associate:  { label: 'Intermediate', color: '#2563eb', bg: '#dbeafe', text: '#1e3a8a' },
+  expert:     { label: 'Certified',    color: '#A100FF', bg: '#F5E6FF', text: '#5700AB' },
 }
 
 function resolveLevel(m) {
@@ -267,7 +267,7 @@ function syncGenericCoP(id, dir) {
       `      name: ${s(l.name)},`,
       `      initials: ${s(l.initials)},`,
     ]
-    if (l.photo) lines.push(`      photo: ${s(l.photo)},`)
+    if (l.photo) lines.push(`      photo: \`\${BASE}${(l.photo || '').replace(/^\//, '')}\`,`)
     lines.push(
       `      badge: ${s(l.badge)},`,
       `      role: ${s(l.role)},`,
@@ -294,6 +294,29 @@ function syncGenericCoP(id, dir) {
   if (events.length)  sections.push(`  events: [\n${eventLines.join('\n')}\n  ],`)
   if (interests)      sections.push(`  joinInterests: [${interests}],`)
 
+  // Certification pathway — derived from member levels
+  const stageCounts = { Trained: 0, Intermediate: 0, Certified: 0 }
+  members.forEach(m => {
+    const lv = resolveLevel(m)
+    if (lv.label in stageCounts) stageCounts[lv.label]++
+    else stageCounts.Trained++
+  })
+  const totalCohort = members.length || 15
+  const copName = page.name || id
+  const certStageLines = [
+    `    { num: 1, title: 'Trained',      subtitle: 'Foundation training completed',           count: ${stageCounts.Trained},      totalCohort: ${totalCohort}, color: '#16a34a', bg: '#dcfce7', border: '#86efac', desc: ${s('Members who have completed foundational ' + copName + ' training.')} },`,
+    `    { num: 2, title: 'Intermediate', subtitle: 'Intermediate certification in progress',  count: ${stageCounts.Intermediate}, totalCohort: ${totalCohort}, color: '#2563eb', bg: '#dbeafe', border: '#93c5fd', desc: ${s('Members pursuing intermediate ' + copName + ' certification.')} },`,
+    `    { num: 3, title: 'Certified',    subtitle: 'Full certification achieved',              count: ${stageCounts.Certified},    totalCohort: ${totalCohort}, color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe', desc: ${s('Members holding full ' + copName + ' certification — domain champions.')} },`,
+  ]
+  sections.push(`  certStages: [\n${certStageLines.join('\n')}\n  ],`)
+
+  // Spotlight and Celebrate Learning — use first 3 members or placeholders
+  const spotlightNames = members.length >= 3
+    ? members.slice(0, 3).map(m => s(m.name)).join(', ')
+    : "'Name 1', 'Name 2', 'Name 3'"
+  sections.push(`  spotlight: {\n    title: 'Top SME',\n    desc: ${s('Recognising our most active ' + copName + ' Subject Matter Experts.')},\n    names: [${spotlightNames}],\n  },`)
+  sections.push(`  celebrateLearning: {\n    title: ${s(copName + ' Learning Achievers')},\n    desc: ${s('recognising outstanding commitment to ' + copName + ' professional development and certification excellence.')},\n    names: [${spotlightNames}],\n  },`)
+
   const out = `\
 // ═══════════════════════════════════════════════════════════════
 //  ${page.name || id} CoP — data file
@@ -302,13 +325,15 @@ function syncGenericCoP(id, dir) {
 // ═══════════════════════════════════════════════════════════════
 import type { CoPPageData } from '../types'
 
+const BASE = import.meta.env.BASE_URL
+
 export const ${exportName}: CoPPageData = {
   id: ${s(id)},
   name: ${s(page.name || '')},
   tagline: ${s(page.tagline || '')},
   description: ${s(page.description || '')},
   accentColor: ${s(accent)},
-  icon: ${s(page.icon || '/icon.png')},
+  icon: \`\${BASE}${(page.icon || 'icon.png').replace(/^\//, '')}\`,
   memberCount: ${n(page.memberCount)},
 ${stats.join('\n')}
   mission: ${s(page.mission || '')},

@@ -103,8 +103,6 @@ export const NETSEC_EVENTS: {
 ]
 
 // ── Leadership team ─────────────────────────────────────────────
-const BASE = import.meta.env.BASE_URL
-
 export const NETSEC_LEADERS: {
   name: string; initials: string; photo: string
   badge: string; role: string; badgeStyle: string; email: string
@@ -112,7 +110,7 @@ export const NETSEC_LEADERS: {
   {
     name: 'Madhvan Gopalan',
     initials: 'MG',
-    photo: `${BASE}madhvan.jpg`,
+    photo: '/madhvan.jpg',
     badge: 'Executive Sponsor',
     role: 'Executive Sponsor and Global CAL for QBE',
     badgeStyle: 'badge-sponsor',
@@ -121,7 +119,7 @@ export const NETSEC_LEADERS: {
   {
     name: 'Priti Ranjit Das',
     initials: 'PR',
-    photo: `${BASE}Priti.jpg`,
+    photo: '/Priti.jpg',
     badge: 'Global Lead',
     role: 'Global Infrastructure Lead',
     badgeStyle: 'badge-global',
@@ -130,7 +128,7 @@ export const NETSEC_LEADERS: {
   {
     name: 'Pramodh Nagaraja',
     initials: 'PN',
-    photo: `${BASE}Pramodh.jpg`,
+    photo: '/Pramodh.jpg',
     badge: 'CoP Lead',
     role: 'Infra Delivery Lead and CoP Network',
     badgeStyle: 'badge-cop',

@@ -1,0 +1,15 @@
+key,value
+name,Integration
+tagline,"Connecting systems through API-led architecture and integration patterns at QBE."
+description,"Connecting systems and services through API-led architecture, ESB, and integration patterns."
+accentColor,#0d9488
+icon,Integration.png
+memberCount,15
+certCount,2
+sessionsHeld,0
+launchYear,2026
+mission,"To build deep integration expertise across QBE Account through API design, messaging patterns, and enterprise service bus knowledge sharing."
+vision,"To establish QBE Account as a model of integration excellence where all systems are connected, observable, and resilient."
+values,"API-first thinking, reusability, and a commitment to building integrations that are secure, scalable, and maintainable."
+joinEmail,madhvan.gopalan@accenture.com
+joinInterests,General|API Design|ESB / Messaging|MuleSoft|Azure Integration|Certifications

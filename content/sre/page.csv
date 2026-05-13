@@ -1,0 +1,15 @@
+key,value
+name,SRE / Automation
+tagline,"Embedding SRE principles, DevOps culture, and intelligent automation at QBE."
+description,"Embedding site reliability engineering, DevOps, and intelligent automation into QBE's delivery lifecycle."
+accentColor,#0e7490
+icon,SRE_Automation.png
+memberCount,15
+certCount,2
+sessionsHeld,0
+launchYear,2026
+mission,"To embed site reliability engineering principles, DevOps culture, and intelligent automation across QBE Account's delivery lifecycle for safer, faster, and more reliable releases."
+vision,"To build a QBE Account delivery engine that is self-healing, highly observable, and continuously improving through SRE practices and a blameless culture."
+values,"Reliability by design, automate everything, learn from incidents, and measure outcomes — not activity. Every failure is a learning opportunity."
+joinEmail,madhvan.gopalan@accenture.com
+joinInterests,General|SRE Practices|DevOps / CI-CD|Infrastructure as Code|Observability|Certifications

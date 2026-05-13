@@ -1,0 +1,15 @@
+key,value
+name,Middleware
+tagline,"Driving expertise in messaging, caching, and middleware platforms at QBE."
+description,"Driving expertise in messaging, caching, and middleware platforms that power QBE's service backbone."
+accentColor,#b45309
+icon,Middleware.png
+memberCount,15
+certCount,2
+sessionsHeld,0
+launchYear,2026
+mission,"To build middleware and messaging expertise across QBE Account covering Kafka, RabbitMQ, Redis, and other backbone technologies."
+vision,"To make QBE Account's service backbone highly reliable, observable, and optimised through deep middleware engineering expertise."
+values,"Reliability by design, event-driven thinking, and a deep understanding of the messaging and caching layers that make QBE's services work at scale."
+joinEmail,madhvan.gopalan@accenture.com
+joinInterests,General|Apache Kafka|RabbitMQ|Redis|Message Queuing|Caching|Certifications
