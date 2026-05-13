@@ -66,10 +66,11 @@ export default function CoPPage({ data }: { data: CoPPageData }) {
 
   const navItems = [
     { label: 'About',         id: 'about' },
-    ...(data.certStages?.length ? [{ label: 'Certification', id: 'pathway' }] : []),
-    ...(data.events?.length    ? [{ label: 'Events',        id: 'events'  }] : []),
-    ...(data.resources?.length ? [{ label: 'Resources',     id: 'resources'}] : []),
-    ...(data.members?.length   ? [{ label: 'Members',       id: 'members' }] : []),
+    ...(data.certStages?.length    ? [{ label: 'Certification', id: 'pathway'   }] : []),
+    ...(data.events?.length        ? [{ label: 'Events',        id: 'events'    }] : []),
+    ...(data.resources?.length     ? [{ label: 'Resources',     id: 'resources' }] : []),
+    ...(data.members?.length       ? [{ label: 'Members',       id: 'members'   }] : []),
+    ...(data.celebrateLearning     ? [{ label: '🏅 Celebrate',  id: 'celebrate' }] : []),
     { label: 'Leadership', id: 'team' },
   ]
 
@@ -81,7 +82,8 @@ export default function CoPPage({ data }: { data: CoPPageData }) {
       {!!data.certStages?.length && <CPPathway stages={data.certStages} spotlight={data.spotlight} />}
       {!!data.events?.length     && <CPEvents events={data.events} />}
       {!!data.resources?.length  && <CPResources streams={data.resources} />}
-      {!!data.members?.length    && <CPMembers members={data.members} copName={data.name} />}
+      {!!data.members?.length       && <CPMembers members={data.members} copName={data.name} />}
+      {!!data.celebrateLearning     && <CPCelebrateLearning celebrate={data.celebrateLearning} copName={data.name} />}
       <CPLeadership leaders={data.leadership} />
       <CPJoin data={data} />
       <CPFooter data={data} />
@@ -434,51 +436,122 @@ function CPResources({ streams }: { streams: CoPResourceStream[] }) {
 /* ── Members ─────────────────────────────────────────────────── */
 function CPMembers({ members, copName }: { members: CoPMember[]; copName: string }) {
   const [search, setSearch] = useState('')
+  const [open, setOpen]     = useState(true)
   const filtered = members.filter(m => m.name.toLowerCase().includes(search.toLowerCase()))
 
   return (
     <section id="members" className="cp-section cp-members">
       <div className="cp-container cp-reveal">
-        <div className="cp-section-label">{copName}</div>
-        <h2 className="cp-section-title">CoP Members Directory</h2>
-
-        <div className="cp-search-wrap">
-          <svg className="cp-search-icon" viewBox="0 0 20 20" fill="none">
-            <circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" strokeWidth="1.5"/>
-            <path d="M13 13L17 17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-          </svg>
-          <input
-            type="text" placeholder="Search members…" value={search}
-            onChange={e => setSearch(e.target.value)} className="cp-search-input"
-          />
-          {search && <button className="cp-search-clear" onClick={() => setSearch('')}>✕</button>}
+        <div className="cp-section-top-row">
+          <div>
+            <div className="cp-section-label">{copName}</div>
+            <h2 className="cp-section-title" style={{ marginBottom: 0 }}>CoP Members Directory</h2>
+          </div>
+          <button className="cp-collapse-btn cp-collapse-btn-dark" onClick={() => setOpen(o => !o)}>
+            <span>{open ? '−' : '+'}</span>
+            <span>{open ? 'Minimise' : 'Expand'}</span>
+          </button>
         </div>
 
-        {filtered.length > 0 ? (
-          <div className="cp-members-grid">
-            {filtered.map(m => (
-              <div key={m.name} className="cp-member-card">
-                <div className="cp-member-av" style={{ background: m.levelColor }}>{m.initials}</div>
-                <div className="cp-member-info">
-                  <h4>{m.name}</h4>
-                  <span className="cp-member-badge" style={{ color: m.levelText, background: m.levelBg }}>
-                    <span className="cp-member-dot" style={{ background: m.levelColor }} />
-                    {m.levelLabel}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="cp-members-empty">
-            <div className="cp-empty-icon">🔍</div>
-            <p>No members match <strong>"{search}"</strong></p>
-            <button onClick={() => setSearch('')} className="cp-clear-btn">Reset</button>
-          </div>
-        )}
+        {open && (
+          <>
+            <div className="cp-search-wrap">
+              <svg className="cp-search-icon" viewBox="0 0 20 20" fill="none">
+                <circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" strokeWidth="1.5"/>
+                <path d="M13 13L17 17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+              </svg>
+              <input
+                type="text" placeholder="Search members…" value={search}
+                onChange={e => setSearch(e.target.value)} className="cp-search-input"
+              />
+              {search && <button className="cp-search-clear" onClick={() => setSearch('')}>✕</button>}
+            </div>
 
-        <div className="cp-members-total">
-          {members.length} members total · {filtered.length} shown
+            {filtered.length > 0 ? (
+              <div className="cp-members-grid">
+                {filtered.map(m => (
+                  <div key={m.name} className="cp-member-card">
+                    <div className="cp-member-av" style={{ background: m.levelColor }}>{m.initials}</div>
+                    <div className="cp-member-info">
+                      <h4>{m.name}</h4>
+                      <span className="cp-member-badge" style={{ color: m.levelText, background: m.levelBg }}>
+                        <span className="cp-member-dot" style={{ background: m.levelColor }} />
+                        {m.levelLabel}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="cp-members-empty">
+                <div className="cp-empty-icon">🔍</div>
+                <p>No members match <strong>"{search}"</strong></p>
+                <button onClick={() => setSearch('')} className="cp-clear-btn">Reset</button>
+              </div>
+            )}
+
+            <div className="cp-members-total">
+              {members.length} members total · {filtered.length} shown
+            </div>
+          </>
+        )}
+      </div>
+    </section>
+  )
+}
+
+/* ── Celebrate Learning ──────────────────────────────────────── */
+function CPCelebrateLearning({
+  celebrate, copName,
+}: {
+  celebrate: NonNullable<CoPPageData['celebrateLearning']>
+  copName: string
+}) {
+  const [selectedIdx, setSelectedIdx] = useState(0)
+  const selected  = celebrate.names[selectedIdx]
+  const initials  = selected.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase()
+
+  return (
+    <section id="celebrate" className="cp-section cp-celebrate">
+      <div className="cp-container cp-reveal">
+        <div className="cp-celebrate-eyebrow">
+          <span className="cp-celebrate-stars">✦ ✦ ✦</span>
+          <span className="cp-celebrate-label">Celebrate Learning</span>
+          <span className="cp-celebrate-stars">✦ ✦ ✦</span>
+        </div>
+
+        <div key={selectedIdx} className="cp-celebrate-spotlight">
+          <div className="cp-celebrate-av">{initials}</div>
+          <p className="cp-celebrate-congrats">Congratulations!</p>
+          <h2 className="cp-celebrate-name">{selected}</h2>
+          <p className="cp-celebrate-desc">
+            A proud member of the <strong>{copName}</strong> CoP —{' '}
+            {celebrate.desc}
+          </p>
+          <div className="cp-celebrate-achievement-badge">
+            <span>🏅</span>
+            <span>{celebrate.title}</span>
+          </div>
+        </div>
+
+        <div className="cp-celebrate-tiles">
+          {celebrate.names.map((name, idx) => {
+            const ti = name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase()
+            return (
+              <div
+                key={idx}
+                className={`cp-cel-tile${idx === selectedIdx ? ' active' : ''}`}
+                onClick={() => setSelectedIdx(idx)}
+                role="button" tabIndex={0}
+                onKeyDown={e => e.key === 'Enter' && setSelectedIdx(idx)}
+                aria-pressed={idx === selectedIdx}
+              >
+                <div className="cp-cel-av">{ti}</div>
+                <div className="cp-cel-name">{name}</div>
+                <div className="cp-cel-chip">🏅 Achiever</div>
+              </div>
+            )
+          })}
         </div>
       </div>
     </section>

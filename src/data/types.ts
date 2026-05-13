@@ -88,6 +88,9 @@ export interface CoPPageData {
   resources?: CoPResourceStream[]
   members?: CoPMember[]
 
+  // Celebrate Learning section
+  celebrateLearning?: { title: string; desc: string; names: string[] }
+
   // Always rendered
   leadership: CoPLeader[]
   joinEmail: string
