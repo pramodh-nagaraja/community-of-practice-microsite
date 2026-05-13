@@ -12,7 +12,7 @@ export const Guidewire_DATA: CoPPageData = {
   name: 'Guidewire',
   tagline: 'Enabling Guidewire PolicyCenter, BillingCenter, and ClaimCenter expertise at QBE.',
   description: 'Enabling Guidewire PolicyCenter, BillingCenter, and ClaimCenter expertise across the QBE delivery team.',
-  accentColor: '#dc2626',
+  accentColor: '#B91C1C',
   icon: `${BASE}Guidewire.png`,
   memberCount: 15,
   certCount: 2,

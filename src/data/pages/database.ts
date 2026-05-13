@@ -12,7 +12,7 @@ export const Database_DATA: CoPPageData = {
   name: 'Database',
   tagline: 'Optimising database design, performance, migration, and reliability at QBE.',
   description: 'Optimising database design, performance, migration, and reliability across Oracle, MSSQL, and PostgreSQL.',
-  accentColor: '#4338ca',
+  accentColor: '#3730A3',
   icon: `${BASE}Database.png`,
   memberCount: 15,
   certCount: 2,

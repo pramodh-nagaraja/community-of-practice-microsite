@@ -12,7 +12,7 @@ export const Insurance_DATA: CoPPageData = {
   name: 'Insurance',
   tagline: 'Building domain knowledge in insurance products, regulations, and industry trends at QBE.',
   description: 'Building domain knowledge in insurance products, regulations, and industry technology trends.',
-  accentColor: '#0369a1',
+  accentColor: '#075985',
   icon: `${BASE}Insurance.png`,
   memberCount: 15,
   certCount: 2,

@@ -12,7 +12,7 @@ export const Cloud_DATA: CoPPageData = {
   name: 'Cloud',
   tagline: 'Accelerating cloud adoption, governance, FinOps, and multi-cloud strategy at QBE.',
   description: 'Accelerating cloud adoption, governance, FinOps, and multi-cloud strategy execution across QBE.',
-  accentColor: '#0284c7',
+  accentColor: '#0369A1',
   icon: `${BASE}Cloud.png`,
   memberCount: 15,
   certCount: 2,

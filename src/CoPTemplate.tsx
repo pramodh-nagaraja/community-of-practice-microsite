@@ -7,11 +7,27 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import type { CoPPageData } from './data/types'
 
+// ── Colour helpers ───────────────────────────────────────────────
+function tintHex(hex: string, ratio: number): string {
+  const r = parseInt(hex.slice(1,3), 16)
+  const g = parseInt(hex.slice(3,5), 16)
+  const b = parseInt(hex.slice(5,7), 16)
+  const t = (c: number) => Math.round(c + (255 - c) * ratio).toString(16).padStart(2, '0')
+  return `#${t(r)}${t(g)}${t(b)}`
+}
+function darkenHex(hex: string, ratio: number): string {
+  const r = parseInt(hex.slice(1,3), 16)
+  const g = parseInt(hex.slice(3,5), 16)
+  const b = parseInt(hex.slice(5,7), 16)
+  const d = (c: number) => Math.round(c * (1 - ratio)).toString(16).padStart(2, '0')
+  return `#${d(r)}${d(g)}${d(b)}`
+}
+
 // ── Avatar colour palette ────────────────────────────────────────
 const AV_COLORS = [
-  '#A100FF', '#7500C0', '#5700AB', '#C940FF', '#8B00E0',
-  '#6200CC', '#9000E8', '#B822FF', '#6A00B8', '#D060FF',
-  '#BE00FF', '#5900C8', '#9500DE', '#D050FF', '#7000C0',
+  '#7C3AED', '#6D28D9', '#5B21B6', '#8B5CF6', '#7E22CE',
+  '#6D28D9', '#9333EA', '#A855F7', '#5B21B6', '#C084FC',
+  '#7C3AED', '#5B21B6', '#8B5CF6', '#9333EA', '#6D28D9',
 ]
 
 // ── Topology background (same as App.tsx) ────────────────────────
@@ -51,11 +67,13 @@ export default function CoPTemplate({ data }: { data: CoPPageData }) {
     return () => io.disconnect()
   }, [])
 
-  // Override Accenture purple tokens with this community's accent colour
+  // Derive a full token set from this community's accent colour
   const cssVars = {
     '--acc-purple':        data.accentColor,
-    '--acc-purple-dark':   data.accentColor,
-    '--acc-purple-deeper': data.accentColor,
+    '--acc-purple-dark':   darkenHex(data.accentColor, 0.18),
+    '--acc-purple-deeper': darkenHex(data.accentColor, 0.36),
+    '--acc-purple-light':  tintHex(data.accentColor, 0.72),
+    '--acc-purple-bg':     tintHex(data.accentColor, 0.90),
   } as React.CSSProperties
 
   return (

@@ -12,7 +12,7 @@ export const Middleware_DATA: CoPPageData = {
   name: 'Middleware',
   tagline: 'Driving expertise in messaging, caching, and middleware platforms at QBE.',
   description: 'Driving expertise in messaging, caching, and middleware platforms that power QBE\'s service backbone.',
-  accentColor: '#b45309',
+  accentColor: '#92400E',
   icon: `${BASE}Middleware.png`,
   memberCount: 15,
   certCount: 2,

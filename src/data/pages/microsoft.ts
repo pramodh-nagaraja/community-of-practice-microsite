@@ -12,7 +12,7 @@ export const Microsoft_DATA: CoPPageData = {
   name: 'Microsoft',
   tagline: 'Championing Azure, M365, Power Platform, and .NET technologies at QBE.',
   description: 'Championing Azure, M365, Power Platform, and .NET technologies within the QBE ecosystem.',
-  accentColor: '#2563eb',
+  accentColor: '#1D4ED8',
   icon: `${BASE}Microsoft.png`,
   memberCount: 15,
   certCount: 2,

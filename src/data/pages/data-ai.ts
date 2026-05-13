@@ -12,7 +12,7 @@ export const DataAi_DATA: CoPPageData = {
   name: 'Data & AI',
   tagline: 'Harnessing data engineering, analytics, and AI to power QBE\'s decisions.',
   description: 'Harnessing data engineering, analytics, and artificial intelligence to power QBE\'s decisions.',
-  accentColor: '#7c3aed',
+  accentColor: '#5B21B6',
   icon: `${BASE}Data_and_AI.png`,
   memberCount: 15,
   certCount: 2,

@@ -12,7 +12,7 @@ export const Integration_DATA: CoPPageData = {
   name: 'Integration',
   tagline: 'Connecting systems through API-led architecture and integration patterns at QBE.',
   description: 'Connecting systems and services through API-led architecture, ESB, and integration patterns.',
-  accentColor: '#0d9488',
+  accentColor: '#0F766E',
   icon: `${BASE}Integration.png`,
   memberCount: 15,
   certCount: 2,

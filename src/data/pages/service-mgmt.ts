@@ -12,7 +12,7 @@ export const ServiceMgmt_DATA: CoPPageData = {
   name: 'Service Management',
   tagline: 'Strengthening ITSM practices, ServiceNow capabilities, and ITIL adoption at QBE.',
   description: 'Strengthening ITSM practices, ServiceNow capabilities, and ITIL adoption across QBE operations.',
-  accentColor: '#475569',
+  accentColor: '#334155',
   icon: `${BASE}Service_Management.png`,
   memberCount: 15,
   certCount: 2,

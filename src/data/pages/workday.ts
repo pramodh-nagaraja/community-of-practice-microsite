@@ -12,7 +12,7 @@ export const Workday_DATA: CoPPageData = {
   name: 'Workday',
   tagline: 'Driving Workday excellence across HCM, Finance, and integrations at QBE.',
   description: 'Driving Workday HCM and Finance implementations, integrations, and best practices at QBE.',
-  accentColor: '#ea580c',
+  accentColor: '#C2410C',
   icon: `${BASE}Workday.png`,
   memberCount: 15,
   certCount: 2,

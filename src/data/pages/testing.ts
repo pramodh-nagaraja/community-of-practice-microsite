@@ -12,7 +12,7 @@ export const Testing_DATA: CoPPageData = {
   name: 'Testing',
   tagline: 'Elevating quality engineering, test automation, and QA strategies at QBE.',
   description: 'Elevating quality engineering, test automation frameworks, and QA strategies at QBE.',
-  accentColor: '#16a34a',
+  accentColor: '#15803D',
   icon: `${BASE}Testing.png`,
   memberCount: 15,
   certCount: 2,

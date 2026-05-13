@@ -12,7 +12,7 @@ export const Sre_DATA: CoPPageData = {
   name: 'SRE / Automation',
   tagline: 'Embedding SRE principles, DevOps culture, and intelligent automation at QBE.',
   description: 'Embedding site reliability engineering, DevOps, and intelligent automation into QBE\'s delivery lifecycle.',
-  accentColor: '#0e7490',
+  accentColor: '#155E75',
   icon: `${BASE}SRE_Automation.png`,
   memberCount: 15,
   certCount: 2,
