@@ -4,7 +4,15 @@
       "PowerShell(cmd /c dir \"c:\\\\Users\\\\pramodh.nagaraja\\\\OneDrive - Accenture\\\\Microsite\\\\public\" /b /a)",
       "PowerShell(cmd /c dir \"c:\\\\Users\\\\pramodh.nagaraja\\\\OneDrive - Accenture\\\\Microsite\\\\dist\" /b /a /s)",
       "PowerShell(cmd /c dir \"c:\\\\Users\\\\pramodh.nagaraja\\\\OneDrive - Accenture\\\\Microsite\\\\dist\" /a)",
-      "PowerShell(cd \"C:\\\\Users\\\\pramodh.nagaraja\\\\OneDrive - Accenture\\\\Microsite\"; Start-Process powershell -ArgumentList '-NoExit', '-Command', 'cd \"C:\\\\Users\\\\pramodh.nagaraja\\\\OneDrive - Accenture\\\\Microsite\"; npm run dev')"
+      "PowerShell(cd \"C:\\\\Users\\\\pramodh.nagaraja\\\\OneDrive - Accenture\\\\Microsite\"; Start-Process powershell -ArgumentList '-NoExit', '-Command', 'cd \"C:\\\\Users\\\\pramodh.nagaraja\\\\OneDrive - Accenture\\\\Microsite\"; npm run dev')",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(npm run *)",
+      "Bash(Get-Item docs/index.html)",
+      "Bash(Select-Object Length,LastWriteTime)",
+      "Bash(node scripts/sync.js)",
+      "Bash(node -e ' *)"
     ]
   }
 }
