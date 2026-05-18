@@ -50,6 +50,41 @@ export const Insurance_DATA: CoPPageData = {
   ],
   joinEmail: 'madhvan.gopalan@accenture.com',
   members: [],
+  resources: [
+    {
+      title: 'Newsletter',
+      color: '#075985',
+      bg: '#f0f9ff',
+      border: '#bae6fd',
+      tagColor: '#075985',
+      tagBg: '#e0f2fe',
+      items: [
+        { name: 'Coming soon — link to be provided', type: 'Newsletter' },
+      ],
+    },
+    {
+      title: 'Previous Sessions',
+      color: '#0369a1',
+      bg: '#f0f9ff',
+      border: '#7dd3fc',
+      tagColor: '#0369a1',
+      tagBg: '#e0f2fe',
+      items: [
+        { name: 'Coming soon — link to be provided', type: 'Recording' },
+      ],
+    },
+    {
+      title: 'Others',
+      color: '#0284c7',
+      bg: '#f0f9ff',
+      border: '#93c5fd',
+      tagColor: '#0284c7',
+      tagBg: '#dbeafe',
+      items: [
+        { name: 'Coming soon — link to be provided', type: 'Resource' },
+      ],
+    },
+  ],
   events: [
     {
       day: 'TBC',
