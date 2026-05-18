@@ -1,7 +1,6 @@
 // ═══════════════════════════════════════════════════════════════
 //  Insurance CoP — data file
-//  Auto-generated from content/insurance/*.csv via `npm run sync`.
-//  To update: edit the CSV files and re-run `npm run sync`.
+//  Last updated: 2026-05-18
 // ═══════════════════════════════════════════════════════════════
 import type { CoPPageData } from '../types'
 
