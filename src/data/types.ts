@@ -60,6 +60,7 @@ export interface CertStage {
   border: string
   desc: string
   progressRate?: string   // e.g. '50% progression'
+  detail?: string         // e.g. 'AINS 101, AINS 102, AINS 103'
 }
 
 export interface CoPPageData {

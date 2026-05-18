@@ -347,6 +347,11 @@ function TCertification({ data }: { data: CoPPageData }) {
                       {Math.round((stage.count / stage.totalCohort) * 100)}% of total cohort
                     </div>
                     <p className="pathway-desc">{stage.desc}</p>
+                    {stage.detail && (
+                      <p className="pathway-detail" style={{ color: stage.color, borderColor: stage.border }}>
+                        {stage.detail}
+                      </p>
+                    )}
                     {stage.progressRate && (
                       <div className="pathway-rate" style={{ color: stage.color, borderColor: stage.border }}>
                         ↑ {stage.progressRate}

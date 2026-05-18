@@ -1970,6 +1970,17 @@ body {
   flex: 1;
 }
 
+.pathway-detail {
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 6px;
+  margin-bottom: 8px;
+  padding: 5px 10px;
+  border-left: 3px solid;
+  border-radius: 3px;
+  background: rgba(0,0,0,0.03);
+}
+
 .pathway-rate {
   display: inline-block;
   font-size: 0.75rem;
