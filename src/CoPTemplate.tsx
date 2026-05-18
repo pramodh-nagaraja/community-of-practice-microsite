@@ -874,29 +874,40 @@ function TJoin({ data }: { data: CoPPageData }) {
 function TKnowledgeHub({ data }: { data: CoPPageData }) {
   const streams = data.resources ?? []
   return (
-    <section id="knowledge" className="cp-section cp-resources">
-      <div className="cp-container cp-reveal">
-        <div className="cp-section-label">Knowledge Hub</div>
-        <h2 className="cp-section-title">Resources &amp; Artifacts</h2>
-        <p className="cp-section-desc">
-          Curated resources to support your Insurance domain learning journey.
+    <section id="knowledge" className="section resources-section">
+      <div className="container reveal">
+        <div className="section-label">Knowledge Hub</div>
+        <h2 className="section-title">Resources &amp; Artifacts</h2>
+        <p className="section-desc">
+          Curated resources to support your {data.name} domain learning journey.
         </p>
-        <div className="cp-res-grid">
+        <div className="res-streams-grid">
           {streams.map(s => (
-            <div key={s.title} className="cp-res-card" style={{ borderColor: s.border, background: s.bg }}>
-              <h3 className="cp-res-stream-title" style={{ color: s.color }}>{s.title}</h3>
-              <ul className="cp-res-list">
+            <div key={s.title} className="res-stream-card" style={{ borderColor: s.border, background: s.bg }}>
+              <div className="res-stream-top">
+                {s.icon && (
+                  <div className="res-icon-wrap" style={{ background: s.bg, border: `1.5px solid ${s.border}` }}>
+                    <span>{s.icon}</span>
+                  </div>
+                )}
+                <h3 className="res-stream-title" style={{ color: s.color }}>{s.title}</h3>
+              </div>
+              <ul className="res-stream-list">
                 {s.items.map((item, i) => (
-                  <li key={i} className="cp-res-item">
-                    <span className="cp-res-dot" style={{ background: s.color }} />
+                  <li key={i} className="res-stream-item">
+                    <span className="res-item-dot" style={{ background: s.color }} />
                     {item.url
-                      ? <a href={item.url} target="_blank" rel="noopener noreferrer" className="cp-res-name cp-res-link">{item.name}</a>
-                      : <span className="cp-res-name">{item.name}</span>
+                      ? <a href={item.url} target="_blank" rel="noopener noreferrer" className="res-item-name" style={{ color: s.color, textDecoration: 'underline' }}>{item.name}</a>
+                      : <span className="res-item-name">{item.name}</span>
                     }
-                    <span className="cp-res-tag" style={{ color: s.tagColor, background: s.tagBg }}>{item.type}</span>
+                    <span className="res-item-tag" style={{ color: s.tagColor, background: s.tagBg }}>{item.type}</span>
                   </li>
                 ))}
               </ul>
+              {s.viewAllUrl
+                ? <a href={s.viewAllUrl} target="_blank" rel="noopener noreferrer" className="res-stream-btn" style={{ background: s.color, textDecoration: 'none', display: 'inline-block', textAlign: 'center' }}>View All →</a>
+                : <button className="res-stream-btn" style={{ background: s.color, opacity: 0.5, cursor: 'default' }} disabled>Coming Soon</button>
+              }
             </div>
           ))}
         </div>

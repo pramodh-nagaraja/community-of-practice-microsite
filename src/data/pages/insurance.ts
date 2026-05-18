@@ -53,6 +53,7 @@ export const Insurance_DATA: CoPPageData = {
   resources: [
     {
       title: 'Newsletter',
+      icon: '📰',
       color: '#075985',
       bg: '#f0f9ff',
       border: '#bae6fd',
@@ -64,6 +65,7 @@ export const Insurance_DATA: CoPPageData = {
     },
     {
       title: 'Previous Sessions',
+      icon: '🎬',
       color: '#0369a1',
       bg: '#f0f9ff',
       border: '#7dd3fc',
@@ -75,6 +77,7 @@ export const Insurance_DATA: CoPPageData = {
     },
     {
       title: 'Others',
+      icon: '🗂️',
       color: '#0284c7',
       bg: '#f0f9ff',
       border: '#93c5fd',

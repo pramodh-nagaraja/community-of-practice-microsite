@@ -41,12 +41,14 @@ export interface CoPResourceItem {
 
 export interface CoPResourceStream {
   title: string
+  icon?: string
   color: string
   bg: string
   border: string
   tagColor: string
   tagBg: string
   items: CoPResourceItem[]
+  viewAllUrl?: string
 }
 
 export interface CertStage {
