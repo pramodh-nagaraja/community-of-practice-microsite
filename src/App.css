@@ -1970,6 +1970,39 @@ body {
   flex: 1;
 }
 
+.pathway-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+  margin-bottom: 4px;
+}
+
+.pathway-link-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 6px;
+  border: 1.5px solid;
+  background: rgba(255,255,255,0.7);
+  text-decoration: none;
+  transition: background 0.15s, opacity 0.15s;
+}
+
+.pathway-link-btn::before {
+  content: '↗';
+  font-size: 0.9em;
+  opacity: 0.75;
+}
+
+.pathway-link-btn:hover {
+  background: rgba(255,255,255,1);
+  opacity: 0.85;
+}
+
 .pathway-detail {
   font-size: 0.8rem;
   font-weight: 600;

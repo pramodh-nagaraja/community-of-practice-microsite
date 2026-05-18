@@ -334,23 +334,43 @@ function TCertification({ data }: { data: CoPPageData }) {
                     <div className="pathway-count" style={{ color: stage.color }}>
                       {stage.count}<span>members</span>
                     </div>
-                    <div className="pathway-bar-wrap">
-                      <div
-                        className="pathway-bar-fill"
-                        style={{
-                          width: `${Math.round((stage.count / stage.totalCohort) * 100)}%`,
-                          background: stage.color,
-                        }}
-                      />
-                    </div>
-                    <div className="pathway-bar-label" style={{ color: stage.color }}>
-                      {Math.round((stage.count / stage.totalCohort) * 100)}% of total cohort
-                    </div>
+                    {!stage.hideProgress && (
+                      <>
+                        <div className="pathway-bar-wrap">
+                          <div
+                            className="pathway-bar-fill"
+                            style={{
+                              width: `${Math.round((stage.count / stage.totalCohort) * 100)}%`,
+                              background: stage.color,
+                            }}
+                          />
+                        </div>
+                        <div className="pathway-bar-label" style={{ color: stage.color }}>
+                          {Math.round((stage.count / stage.totalCohort) * 100)}% of total cohort
+                        </div>
+                      </>
+                    )}
                     <p className="pathway-desc">{stage.desc}</p>
                     {stage.detail && (
                       <p className="pathway-detail" style={{ color: stage.color, borderColor: stage.border }}>
                         {stage.detail}
                       </p>
+                    )}
+                    {stage.links && stage.links.length > 0 && (
+                      <div className="pathway-links">
+                        {stage.links.map((lnk, li) => (
+                          <a
+                            key={li}
+                            href={lnk.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="pathway-link-btn"
+                            style={{ color: stage.color, borderColor: stage.border }}
+                          >
+                            {lnk.label}
+                          </a>
+                        ))}
+                      </div>
                     )}
                     {stage.progressRate && (
                       <div className="pathway-rate" style={{ color: stage.color, borderColor: stage.border }}>

@@ -59,8 +59,10 @@ export interface CertStage {
   bg: string
   border: string
   desc: string
-  progressRate?: string   // e.g. '50% progression'
-  detail?: string         // e.g. 'AINS 101, AINS 102, AINS 103'
+  progressRate?: string
+  detail?: string
+  hideProgress?: boolean
+  links?: { label: string; url: string }[]
 }
 
 export interface CoPPageData {
