@@ -200,7 +200,7 @@ export const Sre_DATA: CoPPageData = {
   spotlight: {
     title: 'Top SME',
     desc: 'Recognising our most active SRE / Automation Subject Matter Experts.',
-    names: ['Name 1', 'Name 2', 'Name 3'],
+    names: ['Ramya Nagamalla', 'Varun Dopathi', 'Naveen Mallela'],
   },
   celebrateLearning: {
     title: 'SRE / Automation Learning Achievers',
