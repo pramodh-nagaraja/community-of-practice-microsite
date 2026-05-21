@@ -12,7 +12,8 @@
       "Bash(Get-Item docs/index.html)",
       "Bash(Select-Object Length,LastWriteTime)",
       "Bash(node scripts/sync.js)",
-      "Bash(node -e ' *)"
+      "Bash(node -e ' *)",
+      "Bash(git commit -m 'Update Insurance CoP leadership: Priti Ranjit Das \\(Global Lead\\), Ramya Nagamalla \\(CoP Lead\\), update joinEmail *)"
     ]
   }
 }
