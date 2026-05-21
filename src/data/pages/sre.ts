@@ -40,7 +40,7 @@ export const Sre_DATA: CoPPageData = {
       email: 'priti.ranjit.das@accenture.com',
     },
     {
-      name: 'Ramya Negamalla',
+      name: 'Ramya Nagamalla',
       initials: 'RN',
       badge: 'CoP Lead',
       role: 'CoP Lead',

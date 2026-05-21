@@ -232,7 +232,7 @@ export const COMMUNITIES: CoPCommunity[] = [
     icon: `${BASE}SRE_Automation.png`,
     accentColor: '#155E75',
     category: 'Engineering',
-    lead: 'Ramya Negamalla',
+    lead: 'Ramya Nagamalla',
     leadEmail: 'ramya.nagamalla@accenture.com',
     memberCount: 15,
     status: 'active',
