@@ -205,6 +205,6 @@ export const Sre_DATA: CoPPageData = {
   celebrateLearning: {
     title: 'SRE / Automation Learning Achievers',
     desc: 'recognising outstanding commitment to SRE / Automation professional development and certification excellence.',
-    names: ['Name 1', 'Name 2', 'Name 3'],
+    names: ['Varun Dopathi - AI102 Certified', 'Name 1', 'Name 2'],
   },
 }
