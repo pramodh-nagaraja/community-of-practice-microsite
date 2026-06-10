@@ -503,7 +503,10 @@ function TMembers({ data }: { data: CoPPageData }) {
   const [search,      setSearch]        = useState('')
   const [activeFilter,setActiveFilter]  = useState<LevelFilter>('all')
 
-  const members = data.members ?? []
+  // Load members from data + localStorage
+  const storageKey = `cop_members_${data.id}`
+  const localMembers = JSON.parse(localStorage.getItem(storageKey) || '[]')
+  const members = [...(data.members ?? []), ...localMembers]
 
   const filtered = members.filter(m => {
     const matchLevel  = activeFilter === 'all' || m.levelLabel === activeFilter
@@ -808,14 +811,52 @@ function TJoin({ data }: { data: CoPPageData }) {
   const [formRole,     setFormRole]     = useState('')
   const [formInterest, setFormInterest] = useState('')
   const [formNote,     setFormNote]     = useState('')
+  const [message,      setMessage]      = useState<{ type: 'success' | 'error'; text: string } | null>(null)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    setMessage(null)
+
+    // Add member to localStorage
+    const storageKey = `cop_members_${data.id}`
+    const existingMembers = JSON.parse(localStorage.getItem(storageKey) || '[]')
+
+    const initials = formName.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase()
+    const newMember = {
+      name: formName,
+      initials,
+      levelLabel: 'Trained',
+      levelColor: '#16a34a',
+      levelBg: '#dcfce7',
+      levelText: '#065f46',
+    }
+
+    // Check if member already exists
+    if (existingMembers.some((m: any) => m.name === formName)) {
+      setMessage({ type: 'error', text: 'You have already joined this community!' })
+      setTimeout(() => setMessage(null), 4000)
+      return
+    }
+
+    existingMembers.push(newMember)
+    localStorage.setItem(storageKey, JSON.stringify(existingMembers))
+
+    // Send email to CoP Lead
     const subject = encodeURIComponent(`${data.name} CoP Membership Request — ${formName}`)
     const body    = encodeURIComponent(
-      `New ${data.name} CoP Membership Request\n\nName: ${formName}\nEmail: ${formEmail}\nRole / Title: ${formRole}\nArea of Interest: ${formInterest}${formNote ? `\n\nMessage:\n${formNote}` : ''}`,
+      `Hi CoP Lead,\n\n${formName} has requested to join the ${data.name} Community of Practice.\n\nDetails:\n- Email: ${formEmail}\n- Role: ${formRole}\n- Interest: ${formInterest}${formNote ? `\n- Message: ${formNote}` : ''}\n\nPlease reach out to onboard them.\n\nThank you.`,
     )
+
     window.open(`mailto:${data.joinEmail}?subject=${subject}&body=${body}`)
+
+    // Show success and reset
+    setMessage({ type: 'success', text: '✓ Added to community! Email to CoP Lead is opening...' })
+    setFormName('')
+    setFormEmail('')
+    setFormRole('')
+    setFormInterest('')
+    setFormNote('')
+    setTimeout(() => setMessage(null), 4000)
   }
 
   return (
@@ -842,10 +883,23 @@ function TJoin({ data }: { data: CoPPageData }) {
           </div>
           <div className="join-form">
             <h3>Request to Join</h3>
+            {message && (
+              <div className={`form-message form-message-${message.type}`} style={{
+                padding: '12px 16px',
+                marginBottom: '16px',
+                borderRadius: '8px',
+                fontSize: '14px',
+                backgroundColor: message.type === 'success' ? '#ecfdf5' : '#fef2f2',
+                color: message.type === 'success' ? '#065f46' : '#7f1d1d',
+                border: `1px solid ${message.type === 'success' ? '#86efac' : '#fca5a5'}`,
+              }}>
+                {message.text}
+              </div>
+            )}
             <form onSubmit={handleSubmit}>
-              <input type="text"  placeholder="Full Name"        required value={formName}     onChange={e => setFormName(e.target.value)}     />
-              <input type="email" placeholder="Work Email"        required value={formEmail}    onChange={e => setFormEmail(e.target.value)}    />
-              <input type="text"  placeholder="Role / Job Title" required value={formRole}     onChange={e => setFormRole(e.target.value)}     />
+              <input type="text"  placeholder="Full Name"        required value={formName}     onChange={e => setFormName(e.target.value)} />
+              <input type="email" placeholder="Work Email"        required value={formEmail}    onChange={e => setFormEmail(e.target.value)} />
+              <input type="text"  placeholder="Role / Job Title" required value={formRole}     onChange={e => setFormRole(e.target.value)} />
               <select required value={formInterest} onChange={e => setFormInterest(e.target.value)}>
                 <option value="" disabled>Area of Interest</option>
                 {(data.joinInterests ?? ['General', 'Certifications', 'Knowledge Sharing', 'Events']).map(opt => (
@@ -858,9 +912,9 @@ function TJoin({ data }: { data: CoPPageData }) {
                 value={formNote}
                 onChange={e => setFormNote(e.target.value)}
               />
-              <button type="submit" className="btn-submit">Submit Request ↗</button>
+              <button type="submit" className="btn-submit">Join Community ↗</button>
               <p className="join-form-hint">
-                Clicking Submit will open your email client pre-filled and addressed to the CoP Lead.
+                You'll be added to the members list and an email will open for you to send to the CoP Lead.
               </p>
             </form>
           </div>
