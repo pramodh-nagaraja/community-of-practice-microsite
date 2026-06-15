@@ -2,15 +2,16 @@
   "routes": [
     {
       "route": "/.auth/login/aad/callback",
-      "allowedRoles": ["anonymous"]
-    },
-    {
-      "route": "/*",
-      "allowedRoles": ["authenticated"]
+      "allowedRoles": [
+        "anonymous"
+      ]
     }
   ],
   "navigationFallback": {
     "rewrite": "/index.html",
-    "exclude": ["/img/*", "*.{css,scss,gif,ico,jpg,png,js,svg,woff,woff2}"]
+    "exclude": [
+      "/img/*",
+      "*.{css,scss,gif,ico,jpg,png,js,svg,woff,woff2}"
+    ]
   }
 }
