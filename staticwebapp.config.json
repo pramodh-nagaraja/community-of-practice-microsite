@@ -1,15 +1,5 @@
 {
-  "routes": [
-    {
-      "route": "/*",
-      "allowedRoles": ["anonymous"]
-    }
-  ],
   "navigationFallback": {
-    "rewrite": "/index.html",
-    "exclude": [
-      "/img/*",
-      "*.{css,scss,gif,ico,jpg,png,js,svg,woff,woff2}"
-    ]
+    "rewrite": "/index.html"
   }
 }
