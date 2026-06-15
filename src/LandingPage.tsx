@@ -3,7 +3,6 @@ import { COMMUNITIES, type CoPCommunity } from './data/communities'
 import './LandingPage.css'
 
 type FilterTab = 'all' | 'active' | 'coming-soon'
-type EthosTab  = 'values' | 'pillars'
 
 /* ── Hooks ──────────────────────────────────────────────── */
 
@@ -303,71 +302,7 @@ function VisionMission() {
   )
 }
 
-/* ── Program Ethos (tabbed) ───────────────────────────────── */
 
-const VALUES = [
-  { letter: 'C', color: '#A100FF', bg: '#f5e6ff', name: 'Collaboration first',      desc: 'The best outcomes emerge when expertise is shared openly — across infra, app, and automation disciplines alike.' },
-  { letter: 'E', color: '#2563eb', bg: '#dbeafe', name: 'Engineering excellence',   desc: 'We hold a high bar — clean design, robust infrastructure, and disciplined delivery. Automation extends that standard; it doesn\'t replace it.' },
-  { letter: 'H', color: '#0d9488', bg: '#ccfbf1', name: 'Human-led, tech-enabled', desc: 'AI and automation are tools in skilled hands. Our people remain at the centre of every decision, design, and outcome.' },
-  { letter: 'L', color: '#d97706', bg: '#fef3c7', name: 'Continuous learning',      desc: 'We invest in one another\'s growth — through mentoring, upskilling, and staying ahead of an evolving technology landscape.' },
-  { letter: 'T', color: '#dc2626', bg: '#fee2e2', name: 'Trust & transparency',     desc: 'We communicate openly, share lessons from failures, and build a community where honest dialogue — about tools, tech, and process — is always welcome.' },
-  { letter: 'R', color: '#16a34a', bg: '#dcfce7', name: 'Resilience & reliability', desc: 'We design systems — and teams — that hold under pressure. For our community, and for the client who depends on us every day.' },
-]
-
-const PILLARS = [
-  { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M17 8h2a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2v4l-4-4H9a2 2 0 0 1-2-2v-1"/><path d="M15 3H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2v4l4-4h4a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"/></svg>,   title: 'Peer-led knowledge sharing',    desc: 'Regular forums, retrospectives, and guilds where every voice contributes — whether you\'re deep in infra, shipping code, or building automations.' },
-  { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>,                                                                                                                                                                                                                                                              title: 'Client-centric thinking',       desc: 'Every technical and automation decision is measured by the impact it has on our insurance client\'s operations, compliance, and experience.' },
-  { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4z"/><path d="M4 20a8 8 0 0 1 8-8"/><path d="M16 14l2 2 4-4"/></svg>,                                                                                                                                                                                                                   title: 'Automation with intent',        desc: 'We automate to eliminate toil and reduce risk — not to automate for its own sake. Every pipeline and AI integration must earn its place.' },
-  { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>,                                                                                                                                                                                                                                                            title: 'Secure & compliant by design',  desc: 'Infrastructure, applications, and automated workflows all built with regulatory rigour and zero-compromise on security.' },
-  { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="5" cy="12" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="19" cy="19" r="2"/><line x1="7" y1="11.5" x2="17" y2="6.5"/><line x1="7" y1="12.5" x2="17" y2="17.5"/></svg>,                                                                                                                                                                      title: 'Breaking silos',               desc: 'Infra, app, and automation engineers working as one unified community — sharing patterns, tooling, and accountability across the stack.' },
-  { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>,                                                                                                                                                                                                                                                                  title: 'Raising the baseline',          desc: 'We lift the floor for everyone — sharing reusable frameworks, automation accelerators, and best practices that benefit the whole team.' },
-]
-
-function ProgramEthos() {
-  const [tab, setTab] = useState<EthosTab>('values')
-  const { ref, on }   = useReveal(0.08)
-
-  return (
-    <section ref={ref} className={`lp-ethos${on ? ' lp-revealed' : ''}`}>
-      <div className="lp-ethos-inner">
-        <div className="lp-ethos-tabs">
-          <button className={`lp-ethos-tab${tab === 'values'  ? ' lp-ethos-on' : ''}`} onClick={() => setTab('values')}>Our Values</button>
-          <button className={`lp-ethos-tab${tab === 'pillars' ? ' lp-ethos-on' : ''}`} onClick={() => setTab('pillars')}>What We Stand For</button>
-        </div>
-
-        {tab === 'values' && (
-          <div className="lp-ethos-grid lp-ethos-anim">
-            {VALUES.map((v, i) => (
-              <div key={v.letter} className="lp-ev"
-                style={{ '--vc': v.color, '--vbg': v.bg, '--d': `${i * 0.05}s` } as React.CSSProperties}>
-                <div className="lp-ev-letter">{v.letter}</div>
-                <div className="lp-ev-text">
-                  <h3 className="lp-ev-name">{v.name}</h3>
-                  <p className="lp-ev-desc">{v.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {tab === 'pillars' && (
-          <div className="lp-ethos-grid lp-ethos-anim">
-            {PILLARS.map((p, i) => (
-              <div key={p.title} className="lp-ep"
-                style={{ '--d': `${i * 0.05}s` } as React.CSSProperties}>
-                <div className="lp-ep-icon">{p.icon}</div>
-                <div className="lp-ep-text">
-                  <h3 className="lp-ep-name">{p.title}</h3>
-                  <p className="lp-ep-desc">{p.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-    </section>
-  )
-}
 
 /* ── Sparkle particles ───────────────────────────────────── */
 
