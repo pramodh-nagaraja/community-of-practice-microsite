@@ -1,10 +1,8 @@
 {
   "routes": [
     {
-      "route": "/.auth/login/aad/callback",
-      "allowedRoles": [
-        "anonymous"
-      ]
+      "route": "/*",
+      "allowedRoles": ["anonymous"]
     }
   ],
   "navigationFallback": {
