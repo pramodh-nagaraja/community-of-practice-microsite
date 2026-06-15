@@ -101,7 +101,6 @@ export default function LandingPage() {
       <LPHeader />
       <LPHero activeCount={activeCount} totalMembers={totalMembers} />
       <VisionMission />
-      <ProgramEthos />
 
       <section className="lp-communities">
         <div className="lp-comm-glow" aria-hidden="true" />
