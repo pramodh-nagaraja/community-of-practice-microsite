@@ -657,16 +657,19 @@ function Members({ template }: { template: Template }) {
   const [activeFilter, setActiveFilter] = useState<StageFilter>('all')
 
   const isNetwork = template === 'network'
-  const displayCount = isNetwork ? MEMBERS.length : SW_NOMINEES.length
+  const storageKey = `cop_members_${template}`
+  const localMembers = JSON.parse(localStorage.getItem(storageKey) || '[]')
+  const allMembers = [...MEMBERS, ...localMembers]
+  const displayCount = isNetwork ? allMembers.length : SW_NOMINEES.length
 
   const filters: { key: StageFilter; label: string; count: number }[] = [
-    { key: 'all', label: 'All',              count: MEMBERS.length },
-    { key: 3,     label: '🏆 CCNA Eligible', count: MEMBERS.filter(m => m.stage === 3).length },
-    { key: 2,     label: '💻 Boot Camp',     count: MEMBERS.filter(m => m.stage === 2).length },
-    { key: 1,     label: '🎓 Foundation',    count: MEMBERS.filter(m => m.stage === 1).length },
+    { key: 'all', label: 'All',              count: allMembers.length },
+    { key: 3,     label: '🏆 CCNA Eligible', count: allMembers.filter(m => m.stage === 3).length },
+    { key: 2,     label: '💻 Boot Camp',     count: allMembers.filter(m => m.stage === 2).length },
+    { key: 1,     label: '🎓 Foundation',    count: allMembers.filter(m => m.stage === 1).length },
   ]
 
-  const filteredNetwork = MEMBERS.filter(m => {
+  const filteredNetwork = allMembers.filter(m => {
     const matchStage  = activeFilter === 'all' || m.stage === activeFilter
     const matchSearch = m.name.toLowerCase().includes(search.toLowerCase())
     return matchStage && matchSearch
@@ -764,8 +767,8 @@ function Members({ template }: { template: Template }) {
                     <div className="members-grid">
                       {isNetwork ? (
                         filteredNetwork.map(member => {
-                          const idx  = MEMBERS.findIndex(m => m.name === member.name)
-                          const meta = STAGE_META[member.stage]
+                          const idx  = allMembers.findIndex(m => m.name === member.name)
+                          const meta = STAGE_META[member.stage as 1 | 2 | 3]
                           return (
                             <div key={member.name} className="member-card">
                               <div className="member-avatar" style={{ background: AVATAR_COLORS[idx % AVATAR_COLORS.length] }}>
@@ -1065,6 +1068,7 @@ function Join({ template }: { template: Template }) {
   const [formRole,     setFormRole]     = useState('')
   const [formInterest, setFormInterest] = useState('')
   const [formNote,     setFormNote]     = useState('')
+  const [message,      setMessage]      = useState(null as { type: 'success' | 'error'; text: string } | null)
 
   const benefits = template === 'network' ? [
     'Access exclusive knowledge resources and playbooks',
@@ -1082,11 +1086,40 @@ function Join({ template }: { template: Template }) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    const subject = encodeURIComponent(`CoP Membership Request — ${formName}`)
+    setMessage(null)
+
+    const storageKey = `cop_members_${template}`
+    const existingMembers = JSON.parse(localStorage.getItem(storageKey) || '[]')
+
+    const initials = formName.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase()
+    const newMember = {
+      name: formName,
+      initials,
+      stage: 1,
+    }
+
+    if (existingMembers.some((m: any) => m.name === formName)) {
+      setMessage({ type: 'error', text: 'You have already joined this community!' })
+      setTimeout(() => setMessage(null), 4000)
+      return
+    }
+
+    existingMembers.push(newMember)
+    localStorage.setItem(storageKey, JSON.stringify(existingMembers))
+
+    const subject = encodeURIComponent(`CoP Membership Request -- ${formName}`)
     const body = encodeURIComponent(
       `New CoP Membership Request\n\nName: ${formName}\nEmail: ${formEmail}\nRole / Title: ${formRole}\nArea of Interest: ${formInterest}${formNote ? `\n\nMessage:\n${formNote}` : ''}`
     )
     window.open(`mailto:pramodh.nagaraja@accenture.com?subject=${subject}&body=${body}`)
+
+    setMessage({ type: 'success', text: 'Added to community! Email to CoP Lead is opening...' })
+    setFormName('')
+    setFormEmail('')
+    setFormRole('')
+    setFormInterest('')
+    setFormNote('')
+    setTimeout(() => setMessage(null), 4000)
   }
 
   return (
@@ -1107,6 +1140,19 @@ function Join({ template }: { template: Template }) {
           </div>
           <div className="join-form">
             <h3>Request to Join</h3>
+            {message && (
+              <div className={`form-message form-message-${message.type}`} style={{
+                padding: '12px 16px',
+                marginBottom: '16px',
+                borderRadius: '8px',
+                fontSize: '14px',
+                backgroundColor: message.type === 'success' ? '#ecfdf5' : '#fef2f2',
+                color: message.type === 'success' ? '#065f46' : '#7f1d1d',
+                border: `1px solid ${message.type === 'success' ? '#86efac' : '#fca5a5'}`,
+              }}>
+                {message.text}
+              </div>
+            )}
             <form onSubmit={handleSubmit}>
               <input type="text" placeholder="Full Name" required value={formName} onChange={e => setFormName(e.target.value)} />
               <input type="email" placeholder="Work Email (@accenture.com)" required value={formEmail} onChange={e => setFormEmail(e.target.value)} />
@@ -1120,7 +1166,7 @@ function Join({ template }: { template: Template }) {
               </select>
               <textarea placeholder="Brief introduction (optional)" rows={3} value={formNote} onChange={e => setFormNote(e.target.value)} />
               <button type="submit" className="btn-submit">Submit Request ↗</button>
-              <p className="join-form-hint">Clicking Submit will open your email client pre-filled and addressed to the CoP Lead.</p>
+              <p className="join-form-hint">You will be added to the members list and an email will open for you to send to the CoP Lead.</p>
             </form>
           </div>
         </div>
