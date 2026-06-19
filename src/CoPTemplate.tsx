@@ -502,10 +502,21 @@ function TMembers({ data }: { data: CoPPageData }) {
   const [streamOpen,  setStreamOpen]    = useState(true)
   const [search,      setSearch]        = useState('')
   const [activeFilter,setActiveFilter]  = useState<LevelFilter>('all')
+  const [localMembers, setLocalMembers] = useState(() => {
+    const storageKey = `cop_members_${data.id}`
+    return JSON.parse(localStorage.getItem(storageKey) || '[]')
+  })
 
-  // Load members from data + localStorage
-  const storageKey = `cop_members_${data.id}`
-  const localMembers = JSON.parse(localStorage.getItem(storageKey) || '[]')
+  useEffect(() => {
+    const storageKey = `cop_members_${data.id}`
+    const handleMemberAdded = () => {
+      const data_val = JSON.parse(localStorage.getItem(storageKey) || '[]')
+      setLocalMembers(data_val)
+    }
+    window.addEventListener('memberAdded', handleMemberAdded)
+    return () => window.removeEventListener('memberAdded', handleMemberAdded)
+  }, [data.id])
+
   const members = [...(data.members ?? []), ...localMembers]
 
   const filtered = members.filter(m => {
@@ -840,6 +851,8 @@ function TJoin({ data }: { data: CoPPageData }) {
 
     existingMembers.push(newMember)
     localStorage.setItem(storageKey, JSON.stringify(existingMembers))
+
+    window.dispatchEvent(new Event('memberAdded'))
 
     // Send email to CoP Lead
     const subject = encodeURIComponent(`${data.name} CoP Membership Request — ${formName}`)
