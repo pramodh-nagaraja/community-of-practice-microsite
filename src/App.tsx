@@ -655,10 +655,22 @@ function Members({ template }: { template: Template }) {
   const [streamOpen, setStreamOpen]     = useState(true)
   const [search, setSearch]             = useState('')
   const [activeFilter, setActiveFilter] = useState<StageFilter>('all')
+  const [localMembers, setLocalMembers] = useState(() => {
+    const storageKey = `cop_members_${template}`
+    return JSON.parse(localStorage.getItem(storageKey) || '[]')
+  })
+
+  useEffect(() => {
+    const storageKey = `cop_members_${template}`
+    const handleMemberAdded = () => {
+      const data = JSON.parse(localStorage.getItem(storageKey) || '[]')
+      setLocalMembers(data)
+    }
+    window.addEventListener('memberAdded', handleMemberAdded)
+    return () => window.removeEventListener('memberAdded', handleMemberAdded)
+  }, [template])
 
   const isNetwork = template === 'network'
-  const storageKey = `cop_members_${template}`
-  const localMembers = JSON.parse(localStorage.getItem(storageKey) || '[]')
   const allMembers = [...MEMBERS, ...localMembers]
   const displayCount = isNetwork ? allMembers.length : SW_NOMINEES.length
 
@@ -1106,6 +1118,8 @@ function Join({ template }: { template: Template }) {
 
     existingMembers.push(newMember)
     localStorage.setItem(storageKey, JSON.stringify(existingMembers))
+
+    window.dispatchEvent(new Event('memberAdded'))
 
     const subject = encodeURIComponent(`CoP Membership Request -- ${formName}`)
     const body = encodeURIComponent(
