@@ -48,7 +48,7 @@ export const Sre_DATA: CoPPageData = {
       email: 'ramya.nagamalla@accenture.com',
     },
   ],
-  joinEmail: 'madhvan.gopalan@accenture.com',
+  joinEmail: 'ramya.nagamalla@accenture.com',
   members: [
     {
       name: 'Sandhya Gadila',

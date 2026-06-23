@@ -282,6 +282,13 @@ function syncGenericCoP(id, dir) {
     ? page.joinInterests.split('|').map(i => s(i.trim())).join(', ')
     : null
 
+  // Find CoP Lead email (badge contains both 'cop' and 'lead')
+  const copLead = leaders.find(l => {
+    const badge = (l.badge || '').toLowerCase()
+    return badge.includes('cop') && badge.includes('lead')
+  })
+  const joinEmail = copLead?.email || page.joinEmail || ''
+
   // Optional stat fields — only emit when present in CSV
   const stats = []
   if (page.certCount)    stats.push(`  certCount: ${n(page.certCount)},`)
@@ -342,7 +349,7 @@ ${stats.join('\n')}
   leadership: [
 ${leaderLines.join('\n')}
   ],
-  joinEmail: ${s(page.joinEmail || '')},
+  joinEmail: ${s(joinEmail)},
 ${sections.join('\n')}
 }
 `
