@@ -232,11 +232,12 @@ function syncGenericCoP(id, dir) {
   const leaders = readCSV(path.join(dir, 'leadership.csv'))
   const links   = readCSV(path.join(dir, 'links.csv'))
 
-  // Deduplicate members by name (keep first occurrence)
+  // Deduplicate members by name (case-insensitive, keep first occurrence)
   const seenNames = new Set()
   const uniqueMembers = members.filter(m => {
-    if (seenNames.has(m.name)) return false
-    seenNames.add(m.name)
+    const nameLower = (m.name || '').toLowerCase().trim()
+    if (seenNames.has(nameLower)) return false
+    seenNames.add(nameLower)
     return true
   })
 
