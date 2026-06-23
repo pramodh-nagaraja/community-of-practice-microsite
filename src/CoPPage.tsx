@@ -668,6 +668,10 @@ function CPJoin({ data }: { data: CoPPageData }) {
 
 /* ── Footer ─────────────────────────────────────────────────── */
 function CPFooter({ data }: { data: CoPPageData }) {
+  // Extract CoP Lead and Global Lead emails from leadership
+  const copLead = data.leadership.find(l => (l.badge || '').toLowerCase().includes('cop'))
+  const globalLead = data.leadership.find(l => (l.badge || '').toLowerCase().includes('global'))
+
   return (
     <footer className="cp-footer">
       <div className="cp-container">
@@ -682,7 +686,8 @@ function CPFooter({ data }: { data: CoPPageData }) {
           </div>
           <div className="cp-footer-contact">
             <h4>Contact</h4>
-            <p>📧 {data.joinEmail}</p>
+            {copLead && <p>📧 {copLead.email}</p>}
+            {globalLead && <p>📧 {globalLead.email}</p>}
           </div>
         </div>
         <div className="cp-footer-bottom">
