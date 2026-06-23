@@ -231,10 +231,18 @@ function syncGenericCoP(id, dir) {
   const events  = readCSV(path.join(dir, 'events.csv'))
   const leaders = readCSV(path.join(dir, 'leadership.csv'))
 
+  // Deduplicate members by name (keep first occurrence)
+  const seenNames = new Set()
+  const uniqueMembers = members.filter(m => {
+    if (seenNames.has(m.name)) return false
+    seenNames.add(m.name)
+    return true
+  })
+
   const exportName = toExportName(id)
   const accent     = page.accentColor || '#A100FF'
 
-  const memberLines = members.map(m => {
+  const memberLines = uniqueMembers.map(m => {
     const lv = resolveLevel(m)
     return [
       `    {`,
@@ -297,18 +305,18 @@ function syncGenericCoP(id, dir) {
 
   // Optional array sections — only emit when CSV rows exist
   const sections = []
-  if (members.length) sections.push(`  members: [\n${memberLines.join('\n')}\n  ],`)
+  if (uniqueMembers.length) sections.push(`  members: [\n${memberLines.join('\n')}\n  ],`)
   if (events.length)  sections.push(`  events: [\n${eventLines.join('\n')}\n  ],`)
   if (interests)      sections.push(`  joinInterests: [${interests}],`)
 
   // Certification pathway — derived from member levels
   const stageCounts = { Trained: 0, Intermediate: 0, Certified: 0 }
-  members.forEach(m => {
+  uniqueMembers.forEach(m => {
     const lv = resolveLevel(m)
     if (lv.label in stageCounts) stageCounts[lv.label]++
     else stageCounts.Trained++
   })
-  const totalCohort = members.length || 15
+  const totalCohort = uniqueMembers.length || 15
   const copName = page.name || id
   const certStageLines = [
     `    { num: 1, title: 'Trained',      subtitle: 'Foundation training completed',           count: ${stageCounts.Trained},      totalCohort: ${totalCohort}, color: '#16a34a', bg: '#dcfce7', border: '#86efac', desc: ${s('Members who have completed foundational ' + copName + ' training.')} },`,
@@ -318,8 +326,8 @@ function syncGenericCoP(id, dir) {
   sections.push(`  certStages: [\n${certStageLines.join('\n')}\n  ],`)
 
   // Spotlight and Celebrate Learning — use first 3 members or placeholders
-  const spotlightNames = members.length >= 3
-    ? members.slice(0, 3).map(m => s(m.name)).join(', ')
+  const spotlightNames = uniqueMembers.length >= 3
+    ? uniqueMembers.slice(0, 3).map(m => s(m.name)).join(', ')
     : "'Name 1', 'Name 2', 'Name 3'"
   sections.push(`  spotlight: {\n    title: 'Top SME',\n    desc: ${s('Recognising our most active ' + copName + ' Subject Matter Experts.')},\n    names: [${spotlightNames}],\n  },`)
   sections.push(`  celebrateLearning: {\n    title: ${s(copName + ' Learning Achievers')},\n    desc: ${s('recognising outstanding commitment to ' + copName + ' professional development and certification excellence.')},\n    names: [${spotlightNames}],\n  },`)
@@ -355,7 +363,9 @@ ${sections.join('\n')}
 `
 
   fs.writeFileSync(path.join(PAGES, `${id}.ts`), out, 'utf8')
-  console.log(`  ✓ ${id}.ts  (${members.length} members, ${events.length} events, ${leaders.length} leaders)`)
+  const dedupCount = members.length - uniqueMembers.length
+  const dedupMsg = dedupCount > 0 ? ` [${dedupCount} duplicate${dedupCount !== 1 ? 's' : ''} removed]` : ''
+  console.log(`  ✓ ${id}.ts  (${uniqueMembers.length} members, ${events.length} events, ${leaders.length} leaders)${dedupMsg}`)
   return true
 }
 
