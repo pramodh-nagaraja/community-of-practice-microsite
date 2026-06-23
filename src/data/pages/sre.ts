@@ -153,7 +153,13 @@ export const Sre_DATA: CoPPageData = {
   ],
   joinInterests: ['General', 'SRE Practices', 'DevOps / CI-CD', 'Infrastructure as Code', 'Observability', 'Certifications'],
   certStages: [
-    { num: 1, title: 'Trained',      subtitle: 'Foundation training completed',           count: 2,      totalCohort: 10, color: '#16a34a', bg: '#dcfce7', border: '#86efac', desc: 'Members who have completed foundational SRE / Automation training.' },
+    { num: 1, title: 'Trained',      subtitle: 'Foundation training completed',           count: 2,      totalCohort: 10, color: '#16a34a', bg: '#dcfce7', border: '#86efac', desc: 'Members who have completed foundational SRE / Automation training.', links: [
+      { label: 'Linux fundamentals', url: 'https://wd103.myworkday.com/accenture/learning/course/95d0bfdb5b8d100168b359cc98850000?type=9882927d138b100019b928e75843018d&metadataEntryPoint=%2Faccenture%2Flearning%2Fdiscover' },
+      { label: 'Git', url: 'https://wd103.myworkday.com/accenture/learning/course/8fdaf669dfdb1024288aeb705ee50004?type=9882927d138b100019b928e75843018d&metadataEntryPoint=%2Faccenture%2Flearning%2Fdiscover' },
+      { label: 'Bash scripting', url: 'https://wd103.myworkday.com/accenture/learning/course/4fb6d7f3b9931018da9e21d0b4ae0005?type=9882927d138b100019b928e75843018d&metadataEntryPoint=%2Faccenture%2Flearning%2Fdiscover' },
+      { label: 'Docker basics', url: 'https://wd103.myworkday.com/accenture/learning/course/8fdaf669dfdb1024288059cf61570001?type=9882927d138b100019b928e75843018d&record=f1519077179410018a54c130531b0000&metadataEntryPoint=%2Faccenture%2Flearning%2Fdiscover' },
+      { label: 'Ansible', url: 'https://wd103.myworkday.com/accenture/learning/course/af33c4d8163710144ed9f03330550000?type=9882927d138b100019b928e75843018d&metadataEntryPoint=%2Faccenture%2Flearning%2Fdiscover' },
+    ] },
     { num: 2, title: 'Intermediate', subtitle: 'Intermediate certification in progress',  count: 3, totalCohort: 10, color: '#2563eb', bg: '#dbeafe', border: '#93c5fd', desc: 'Members pursuing intermediate SRE / Automation certification.' },
     { num: 3, title: 'Certified',    subtitle: 'Full certification achieved',              count: 5,    totalCohort: 10, color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe', desc: 'Members holding full SRE / Automation certification — domain champions.' },
   ],
