@@ -48,7 +48,7 @@ export const Testing_DATA: CoPPageData = {
       email: 'tbd@accenture.com',
     },
   ],
-  joinEmail: 'madhvan.gopalan@accenture.com',
+  joinEmail: 'tbd@accenture.com',
   members: [
     {
       name: 'Name 1',
@@ -193,9 +193,9 @@ export const Testing_DATA: CoPPageData = {
   ],
   joinInterests: ['General', 'Test Automation', 'API Testing', 'Performance Testing', 'Selenium / Playwright', 'ISTQB Certifications'],
   certStages: [
-    { num: 1, title: 'Trained',      subtitle: 'Foundation training completed',           count: 8,      totalCohort: 15, color: '#16a34a', bg: '#dcfce7', border: '#86efac', desc: 'Members who have completed foundational Testing training.' },
-    { num: 2, title: 'Intermediate', subtitle: 'Intermediate certification in progress',  count: 5, totalCohort: 15, color: '#2563eb', bg: '#dbeafe', border: '#93c5fd', desc: 'Members pursuing intermediate Testing certification.' },
-    { num: 3, title: 'Certified',    subtitle: 'Full certification achieved',              count: 2,    totalCohort: 15, color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe', desc: 'Members holding full Testing certification — domain champions.' },
+    { num: 1, title: 'Trained', subtitle: 'Foundation training completed', count: 8, totalCohort: 15, color: '#16a34a', bg: '#dcfce7', border: '#86efac', desc: 'Members who have completed foundational Testing training.' },
+    { num: 2, title: 'Intermediate', subtitle: 'Intermediate certification in progress', count: 5, totalCohort: 15, color: '#2563eb', bg: '#dbeafe', border: '#93c5fd', desc: 'Members pursuing intermediate Testing certification.' },
+    { num: 3, title: 'Certified', subtitle: 'Full certification achieved', count: 2, totalCohort: 15, color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe', desc: 'Members holding full Testing certification — domain champions.' },
   ],
   spotlight: {
     title: 'Top SME',
