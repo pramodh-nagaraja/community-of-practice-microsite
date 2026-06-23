@@ -230,6 +230,7 @@ function syncGenericCoP(id, dir) {
   const members = readCSV(path.join(dir, 'members.csv'))
   const events  = readCSV(path.join(dir, 'events.csv'))
   const leaders = readCSV(path.join(dir, 'leadership.csv'))
+  const links   = readCSV(path.join(dir, 'links.csv'))
 
   // Deduplicate members by name (keep first occurrence)
   const seenNames = new Set()
@@ -318,10 +319,31 @@ function syncGenericCoP(id, dir) {
   })
   const totalCohort = uniqueMembers.length || 15
   const copName = page.name || id
+
+  // Build links map by stage
+  const linksByStage = {}
+  links.forEach(l => {
+    const stageNum = l.stage
+    if (!linksByStage[stageNum]) linksByStage[stageNum] = []
+    linksByStage[stageNum].push({ label: l.label, url: l.url })
+  })
+
+  // Build certification stage lines with optional links
+  const buildCertStage = (num, title, subtitle, count, color, bg, border, desc) => {
+    const stageLinks = linksByStage[String(num)]
+    let line = `    { num: ${num}, title: ${s(title)}, subtitle: ${s(subtitle)}, count: ${count}, totalCohort: ${totalCohort}, color: ${s(color)}, bg: ${s(bg)}, border: ${s(border)}, desc: ${s(desc)}`
+    if (stageLinks && stageLinks.length > 0) {
+      const linksStr = stageLinks.map(l => `{ label: ${s(l.label)}, url: ${s(l.url)} }`).join(', ')
+      line += `, links: [${linksStr}]`
+    }
+    line += ` },`
+    return line
+  }
+
   const certStageLines = [
-    `    { num: 1, title: 'Trained',      subtitle: 'Foundation training completed',           count: ${stageCounts.Trained},      totalCohort: ${totalCohort}, color: '#16a34a', bg: '#dcfce7', border: '#86efac', desc: ${s('Members who have completed foundational ' + copName + ' training.')} },`,
-    `    { num: 2, title: 'Intermediate', subtitle: 'Intermediate certification in progress',  count: ${stageCounts.Intermediate}, totalCohort: ${totalCohort}, color: '#2563eb', bg: '#dbeafe', border: '#93c5fd', desc: ${s('Members pursuing intermediate ' + copName + ' certification.')} },`,
-    `    { num: 3, title: 'Certified',    subtitle: 'Full certification achieved',              count: ${stageCounts.Certified},    totalCohort: ${totalCohort}, color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe', desc: ${s('Members holding full ' + copName + ' certification — domain champions.')} },`,
+    buildCertStage(1, 'Trained', 'Foundation training completed', stageCounts.Trained, '#16a34a', '#dcfce7', '#86efac', 'Members who have completed foundational ' + copName + ' training.'),
+    buildCertStage(2, 'Intermediate', 'Intermediate certification in progress', stageCounts.Intermediate, '#2563eb', '#dbeafe', '#93c5fd', 'Members pursuing intermediate ' + copName + ' certification.'),
+    buildCertStage(3, 'Certified', 'Full certification achieved', stageCounts.Certified, '#A100FF', '#F5E6FF', '#d8b4fe', 'Members holding full ' + copName + ' certification — domain champions.'),
   ]
   sections.push(`  certStages: [\n${certStageLines.join('\n')}\n  ],`)
 
