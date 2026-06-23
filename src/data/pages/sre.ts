@@ -160,8 +160,17 @@ export const Sre_DATA: CoPPageData = {
       { label: 'Docker basics', url: 'https://wd103.myworkday.com/accenture/learning/course/8fdaf669dfdb1024288059cf61570001?type=9882927d138b100019b928e75843018d&record=f1519077179410018a54c130531b0000&metadataEntryPoint=%2Faccenture%2Flearning%2Fdiscover' },
       { label: 'Ansible', url: 'https://wd103.myworkday.com/accenture/learning/course/af33c4d8163710144ed9f03330550000?type=9882927d138b100019b928e75843018d&metadataEntryPoint=%2Faccenture%2Flearning%2Fdiscover' },
     ] },
-    { num: 2, title: 'Intermediate', subtitle: 'Intermediate certification in progress',  count: 3, totalCohort: 10, color: '#2563eb', bg: '#dbeafe', border: '#93c5fd', desc: 'Members pursuing intermediate SRE / Automation certification.' },
-    { num: 3, title: 'Certified',    subtitle: 'Full certification achieved',              count: 5,    totalCohort: 10, color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe', desc: 'Members holding full SRE / Automation certification — domain champions.' },
+    { num: 2, title: 'Intermediate', subtitle: 'Intermediate certification in progress',  count: 3, totalCohort: 10, color: '#2563eb', bg: '#dbeafe', border: '#93c5fd', desc: 'Members pursuing intermediate SRE / Automation certification.', links: [
+      { label: 'Kubernetes', url: 'https://wd103.myworkday.com/accenture/learning/course/b0505bd9124d100066dc0776a5340000?type=9882927d138b100019b928e75843018d&metadataEntryPoint=%2Faccenture%2Flearning%2Fdiscover' },
+      { label: 'Terraform', url: 'https://wd103.myworkday.com/accenture/learning/course/7bf8931a347d1002128a89a2aef40001?type=9882927d138b100019b928e75843018d&metadataEntryPoint=%2Faccenture%2Flearning%2Fdiscover' },
+      { label: 'Jenkins', url: 'https://wd103.myworkday.com/accenture/learning/course/95d0bfdb5b8d100168b298b58f170000?type=9882927d138b100019b928e75843018d&metadataEntryPoint=%2Faccenture%2Flearning%2Fdiscover' },
+      { label: 'GitHub Actions', url: 'https://wd103.myworkday.com/accenture/learning/course/8fdaf669dfdb1024288665377f7e0002?type=9882927d138b100019b928e75843018d&metadataEntryPoint=%2Faccenture%2Flearning%2Fdiscover' },
+    ] },
+    { num: 3, title: 'Certified',    subtitle: 'Full certification achieved',              count: 5,    totalCohort: 10, color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe', desc: 'Members holding full SRE / Automation certification — domain champions.', links: [
+      { label: 'Platform Engineering', url: 'https://wd103.myworkday.com/accenture/learning/course/8fdaf669dfdb10242889592f409c0005?type=9882927d138b100019b928e75843018d&metadataEntryPoint=%2Faccenture%2Flearning%2Fdiscover' },
+      { label: 'GitOps', url: 'https://wd103.myworkday.com/accenture/learning/course/8fdaf669dfdb1024288947bec0b70001?type=9882927d138b100019b928e75843018d&metadataEntryPoint=%2Faccenture%2Flearning%2Fdiscover' },
+      { label: 'Azure Cloud / AWS Cloud', url: 'https://wd103.myworkday.com/accenture/learning/course/f89dfe0bd95c10014f823bb540340000?type=9882927d138b100019b928e75843018d&metadataEntryPoint=%2Faccenture%2Flearning%2Fdiscover' },
+    ] },
   ],
   spotlight: {
     title: 'Top SME',
