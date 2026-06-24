@@ -509,15 +509,37 @@ function TMembers({ data }: { data: CoPPageData }) {
 
   useEffect(() => {
     const storageKey = `cop_members_${data.id}`
+
+    // Clean up localStorage: remove entries that match official members (case-insensitive)
+    const officialNames = new Set((data.members ?? []).map(m => (m.name || '').toLowerCase().trim()))
+    const storedData = JSON.parse(localStorage.getItem(storageKey) || '[]')
+    const cleanedData = storedData.filter((m: any) => !officialNames.has((m.name || '').toLowerCase().trim()))
+    if (cleanedData.length !== storedData.length) {
+      if (cleanedData.length === 0) {
+        localStorage.removeItem(storageKey)
+      } else {
+        localStorage.setItem(storageKey, JSON.stringify(cleanedData))
+      }
+    }
+    setLocalMembers(cleanedData)
+
     const handleMemberAdded = () => {
       const data_val = JSON.parse(localStorage.getItem(storageKey) || '[]')
       setLocalMembers(data_val)
     }
     window.addEventListener('memberAdded', handleMemberAdded)
     return () => window.removeEventListener('memberAdded', handleMemberAdded)
-  }, [data.id])
+  }, [data.id, data.members])
 
-  const members = [...(data.members ?? []), ...localMembers]
+  // Combine data members with localStorage members, deduplicating by name (case-insensitive)
+  const combinedMembers = [...(data.members ?? []), ...localMembers]
+  const seenNames = new Set<string>()
+  const members = combinedMembers.filter(m => {
+    const nameLower = (m.name || '').toLowerCase().trim()
+    if (seenNames.has(nameLower)) return false
+    seenNames.add(nameLower)
+    return true
+  })
 
   const filtered = members.filter(m => {
     const matchLevel  = activeFilter === 'all' || m.levelLabel === activeFilter
@@ -842,8 +864,9 @@ function TJoin({ data }: { data: CoPPageData }) {
       levelText: '#065f46',
     }
 
-    // Check if member already exists
-    if (existingMembers.some((m: any) => m.name === formName)) {
+    // Check if member already exists (case-insensitive)
+    const formNameLower = formName.toLowerCase().trim()
+    if (existingMembers.some((m: any) => (m.name || '').toLowerCase().trim() === formNameLower)) {
       setMessage({ type: 'error', text: 'You have already joined this community!' })
       setTimeout(() => setMessage(null), 4000)
       return
