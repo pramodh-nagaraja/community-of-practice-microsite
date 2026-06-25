@@ -14,7 +14,7 @@ import { Testing_DATA } from './testing'
 import { DataAi_DATA } from './data-ai'
 import { Database_DATA } from './database'
 import { Microsoft_DATA } from './microsoft'
-// import { Mainframe_DATA } from './mainframe'
+import { Mainframe_DATA } from './mainframe'
 import { Workday_DATA } from './workday'
 import { Integration_DATA } from './integration'
 import { Guidewire_DATA } from './guidewire'
@@ -32,7 +32,7 @@ export const COP_DATA: Record<string, CoPPageData> = {
   'data-ai': DataAi_DATA,
   'database': Database_DATA,
   'microsoft': Microsoft_DATA,
-  //   'mainframe': Mainframe_DATA,
+  'mainframe': Mainframe_DATA,
   'workday': Workday_DATA,
   'integration': Integration_DATA,
   'guidewire': Guidewire_DATA,
