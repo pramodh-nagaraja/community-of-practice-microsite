@@ -23,6 +23,15 @@ export const Cloud_DATA: CoPPageData = {
   values: 'Cloud-first by default, cost transparency, security at every layer, and continuous improvement in cloud operations across all platforms.',
   leadership: [
     {
+      name: 'Madhvan Gopalan',
+      initials: 'MG',
+      photo: `${BASE}madhvan.jpg`,
+      badge: 'Executive Sponsor',
+      role: 'Executive Sponsor and Global CAL for QBE',
+      badgeStyle: 'sponsor' as 'sponsor' | 'global' | 'cop',
+      email: 'madhvan.gopalan@accenture.com',
+    },
+    {
       name: 'Priti Ranjit Das',
       initials: 'PRD',
       badge: 'Global Lead',
