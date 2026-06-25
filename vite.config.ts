@@ -4,7 +4,7 @@ import { viteSingleFile } from 'vite-plugin-singlefile'
 
 export default defineConfig({
   plugins: [react(), viteSingleFile()],
-  base: '/community-of-practice-microsite/',
+  base: '/',
   build: {
     outDir: 'docs',
     assetsInlineLimit: 10_000_000,
