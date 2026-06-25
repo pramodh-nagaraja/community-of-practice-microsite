@@ -542,11 +542,11 @@
 /* ── Icon wrap — rotating ring on hover ──────────────── */
 .lp-cop-icon-wrap {
   position: relative;
-  width: 52px; height: 52px; flex-shrink: 0;
+  width: 64px; height: 64px; flex-shrink: 0;
 }
 .lp-cop-icon-wrap::before {
   content: '';
-  position: absolute; inset: -3px; border-radius: 17px;
+  position: absolute; inset: -4px; border-radius: 20px;
   background: conic-gradient(from 0deg, var(--accent, #7C3AED) 0%, transparent 55%, var(--accent, #7C3AED) 100%);
   opacity: 0;
   transition: opacity 0.25s ease;
@@ -559,15 +559,16 @@
 /* ── Icon itself ─────────────────────────────────────── */
 .lp-cop-icon {
   position: relative; z-index: 1;
-  width: 52px; height: 52px; border-radius: 14px; flex-shrink: 0;
-  background: color-mix(in srgb, var(--accent, #7C3AED) 12%, #F0F4FF 88%);
+  width: 64px; height: 64px; border-radius: 16px; flex-shrink: 0;
+  background: color-mix(in srgb, var(--accent, #7C3AED) 18%, #F0F4FF 82%);
   border: 1.5px solid color-mix(in srgb, var(--accent, #7C3AED) 32%, transparent);
-  display: flex; align-items: center; justify-content: center; padding: 9px;
-  transition: box-shadow 0.22s, transform 0.22s;
+  display: flex; align-items: center; justify-content: center; padding: 12px;
+  transition: box-shadow 0.22s, transform 0.22s, background 0.22s;
 }
 .lp-cop-active:hover .lp-cop-icon {
-  box-shadow: 0 4px 20px color-mix(in srgb, var(--accent, #7C3AED) 50%, transparent);
-  transform: scale(1.07);
+  background: color-mix(in srgb, var(--accent, #7C3AED) 25%, #F0F4FF 75%);
+  box-shadow: 0 6px 24px color-mix(in srgb, var(--accent, #7C3AED) 35%, transparent);
+  transform: scale(1.1);
 }
 .lp-cop-soon .lp-cop-icon { filter: saturate(0.35) brightness(0.7); }
 .lp-cop-icon img { width: 100%; height: 100%; object-fit: contain; }
@@ -596,9 +597,23 @@
 /* Name + description */
 .lp-cop-name {
   font-size: 1rem; font-weight: 700; color: #0F172A;
-  margin: 0 0 7px; letter-spacing: -0.01em; line-height: 1.3;
+  margin: 0; letter-spacing: -0.01em; line-height: 1.3;
 }
 .lp-cop-soon .lp-cop-name { color: #94A3B8; }
+
+/* Category badge */
+.lp-cop-category {
+  font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 2px 7px; border-radius: 4px;
+  background: color-mix(in srgb, var(--accent, #7C3AED) 12%, #F0F4FF 88%);
+  color: color-mix(in srgb, var(--accent, #7C3AED) 70%, #1e293b 30%);
+  white-space: nowrap; flex-shrink: 0;
+}
+.lp-cop-soon .lp-cop-category {
+  background: #E2E8F0;
+  color: #64748B;
+}
+
 .lp-cop-desc {
   font-size: 12px; color: #475569; line-height: 1.65;
   margin: 0 0 12px; flex: 1;

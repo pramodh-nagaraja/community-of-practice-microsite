@@ -371,7 +371,10 @@ function CoPCard({ cop, index, onGo }: { cop: CoPCommunity; index: number; onGo:
           }
         </div>
 
-        <h3 className="lp-cop-name">{cop.name}</h3>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+          <h3 className="lp-cop-name" style={{ margin: 0 }}>{cop.name}</h3>
+          <span className="lp-cop-category">{cop.category}</span>
+        </div>
         <p className="lp-cop-desc">{cop.description}</p>
 
         {isActive && cop.highlights.length > 0 && (

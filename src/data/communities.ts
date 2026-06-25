@@ -64,7 +64,11 @@ export const COMMUNITIES: CoPCommunity[] = [
     memberCount: 15,
     status: 'active',
     route: '#/cloud',
-    highlights: [],
+    highlights: [
+      '15 members across AWS, Azure, GCP platforms',
+      'Multi-cloud governance and FinOps optimization',
+      'Strategic cloud adoption roadmaps',
+    ],
     lastUpdated: '2026-04-30',
   },
   {
@@ -79,7 +83,11 @@ export const COMMUNITIES: CoPCommunity[] = [
     memberCount: 15,
     status: 'active',
     route: '#/data-ai',
-    highlights: [],
+    highlights: [
+      '15 members in data engineering and AI',
+      'Advanced analytics and ML model expertise',
+      'Data pipelines and intelligent automation',
+    ],
     lastUpdated: '2026-04-30',
   },
   {
@@ -94,7 +102,11 @@ export const COMMUNITIES: CoPCommunity[] = [
     memberCount: 15,
     status: 'active',
     route: '#/database',
-    highlights: [],
+    highlights: [
+      '15 members across Oracle, MSSQL, PostgreSQL',
+      'Performance tuning and migration expertise',
+      'Database design and reliability standards',
+    ],
     lastUpdated: '2026-04-30',
   },
   {
@@ -109,7 +121,11 @@ export const COMMUNITIES: CoPCommunity[] = [
     memberCount: 15,
     status: 'active',
     route: '#/guidewire',
-    highlights: [],
+    highlights: [
+      '15 members across 3 Guidewire modules',
+      'PolicyCenter, BillingCenter, ClaimCenter mastery',
+      'Insurance business process expertise',
+    ],
     lastUpdated: '2026-04-30',
   },
   {
@@ -124,7 +140,11 @@ export const COMMUNITIES: CoPCommunity[] = [
     memberCount: 15,
     status: 'active',
     route: '#/insurance',
-    highlights: [],
+    highlights: [
+      '15 insurance domain experts at QBE',
+      'Product knowledge and regulatory compliance',
+      'Industry technology trends and innovations',
+    ],
     lastUpdated: '2026-04-30',
   },
   {
@@ -139,7 +159,11 @@ export const COMMUNITIES: CoPCommunity[] = [
     memberCount: 15,
     status: 'active',
     route: '#/integration',
-    highlights: [],
+    highlights: [
+      '15 API architecture and ESB specialists',
+      'API-led connectivity and microservices',
+      'System integration pattern expertise',
+    ],
     lastUpdated: '2026-04-30',
   },
   {
@@ -154,7 +178,11 @@ export const COMMUNITIES: CoPCommunity[] = [
     memberCount: 15,
     status: 'active',
     route: '#/microsoft',
-    highlights: [],
+    highlights: [
+      '15 Azure, M365, and Power Platform experts',
+      '.NET and modern application development',
+      'Cloud-native solutions and ecosystem',
+    ],
     lastUpdated: '2026-04-30',
   },
   {
@@ -188,7 +216,11 @@ export const COMMUNITIES: CoPCommunity[] = [
     memberCount: 15,
     status: 'active',
     route: '#/middleware',
-    highlights: [],
+    highlights: [
+      '15 middleware and messaging specialists',
+      'Kafka, RabbitMQ, and caching platforms',
+      'Service backbone architecture expertise',
+    ],
     lastUpdated: '2026-04-30',
   },
   {
@@ -241,7 +273,11 @@ export const COMMUNITIES: CoPCommunity[] = [
     memberCount: 15,
     status: 'active',
     route: '#/service-mgmt',
-    highlights: [],
+    highlights: [
+      '15 ITSM and ServiceNow practitioners',
+      'ITIL best practices and process optimization',
+      'Service delivery and incident management',
+    ],
     lastUpdated: '2026-04-30',
   },
   {
@@ -256,7 +292,11 @@ export const COMMUNITIES: CoPCommunity[] = [
     memberCount: 15,
     status: 'active',
     route: '#/sre',
-    highlights: [],
+    highlights: [
+      '15 SRE and DevOps engineers',
+      'CI/CD, automation, and infrastructure-as-code',
+      'Reliability engineering and observability',
+    ],
     lastUpdated: '2026-05-21',
   },
   {
@@ -271,7 +311,11 @@ export const COMMUNITIES: CoPCommunity[] = [
     memberCount: 15,
     status: 'active',
     route: '#/testing',
-    highlights: [],
+    highlights: [
+      '15 QA and test automation experts',
+      'Test frameworks, automation, and strategies',
+      'Quality engineering and continuous testing',
+    ],
     lastUpdated: '2026-04-30',
   },
   {
@@ -286,7 +330,11 @@ export const COMMUNITIES: CoPCommunity[] = [
     memberCount: 15,
     status: 'active',
     route: '#/workday',
-    highlights: [],
+    highlights: [
+      '15 Workday HCM and Finance specialists',
+      'Implementation and integration expertise',
+      'Best practices and employee experience',
+    ],
     lastUpdated: '2026-04-30',
   },
 ]
