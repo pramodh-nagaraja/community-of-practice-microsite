@@ -72,8 +72,8 @@ export const COMMUNITIES: CoPCommunity[] = [
     lastUpdated: '2026-04-30',
   },
   {
-    id: 'data-ai',
-    name: 'Data & AI',
+    id: 'data-databricks',
+    name: 'Data and Databricks',
     description: 'Harnessing data engineering, analytics, and artificial intelligence to power QBE\'s decisions.',
     icon: `${BASE}Data_and_AI.png`,
     accentColor: '#5B21B6',
@@ -82,9 +82,9 @@ export const COMMUNITIES: CoPCommunity[] = [
     leadEmail: '',
     memberCount: 15,
     status: 'active',
-    route: '#/data-ai',
+    route: '#/data-databricks',
     highlights: [
-      '15 members in data engineering and AI',
+      '15 members in data engineering and Databricks',
       'Advanced analytics and ML model expertise',
       'Data pipelines and intelligent automation',
     ],

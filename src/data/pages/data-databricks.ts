@@ -1,26 +1,26 @@
 // ═══════════════════════════════════════════════════════════════
-//  Data & AI CoP — data file
-//  Auto-generated from content/data-ai/*.csv via `npm run sync`.
+//  Data and Databricks CoP — data file
+//  Auto-generated from content/data-databricks/*.csv via `npm run sync`.
 //  To update: edit the CSV files and re-run `npm run sync`.
 // ═══════════════════════════════════════════════════════════════
 import type { CoPPageData } from '../types'
 
 const BASE = import.meta.env.BASE_URL
 
-export const DataAi_DATA: CoPPageData = {
-  id: 'data-ai',
-  name: 'Data & AI',
-  tagline: 'Harnessing data engineering, analytics, and AI to power QBE\'s decisions.',
-  description: 'Harnessing data engineering, analytics, and artificial intelligence to power QBE\'s decisions.',
+export const DataDatabricks_DATA: CoPPageData = {
+  id: 'data-databricks',
+  name: 'Data and Databricks',
+  tagline: 'Harnessing data engineering, analytics, and Databricks to power QBE\'s decisions.',
+  description: 'Harnessing data engineering, analytics, and Databricks expertise to power QBE\'s decisions.',
   accentColor: '#5B21B6',
   icon: `${BASE}Data_and_AI.png`,
   memberCount: 15,
   certCount: 2,
   sessionsHeld: 0,
   launchYear: 2026,
-  mission: 'To build data engineering and AI capability across QBE Account enabling data-driven decisions, advanced analytics, and responsible AI adoption.',
-  vision: 'To make QBE Account a data-fluent organisation where insights are trusted, AI is responsibly embedded, and every decision is underpinned by quality data.',
-  values: 'Data integrity, responsible AI, and a curiosity-driven approach to turning data into meaningful insights for QBE\'s business.',
+  mission: 'To build data engineering and Databricks capability across QBE Account enabling data-driven decisions, advanced analytics, and responsible AI adoption.',
+  vision: 'To make QBE Account a data-fluent organisation where insights are trusted, Databricks expertise is embedded, and every decision is underpinned by quality data.',
+  values: 'Data integrity, Databricks expertise, and a curiosity-driven approach to turning data into meaningful insights for QBE\'s business.',
   leadership: [
     {
       name: 'Madhvan Gopalan',
@@ -193,18 +193,18 @@ export const DataAi_DATA: CoPPageData = {
   ],
   joinInterests: ['General', 'Data Engineering', 'Machine Learning', 'Analytics', 'Generative AI', 'Azure AI', 'Certifications'],
   certStages: [
-    { num: 1, title: 'Trained', subtitle: 'Foundation training completed', count: 8, totalCohort: 15, color: '#16a34a', bg: '#dcfce7', border: '#86efac', desc: 'Members who have completed foundational Data & AI training.' },
-    { num: 2, title: 'Intermediate', subtitle: 'Intermediate certification in progress', count: 5, totalCohort: 15, color: '#2563eb', bg: '#dbeafe', border: '#93c5fd', desc: 'Members pursuing intermediate Data & AI certification.' },
-    { num: 3, title: 'Certified', subtitle: 'Full certification achieved', count: 2, totalCohort: 15, color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe', desc: 'Members holding full Data & AI certification — domain champions.' },
+    { num: 1, title: 'Trained', subtitle: 'Foundation training completed', count: 8, totalCohort: 15, color: '#16a34a', bg: '#dcfce7', border: '#86efac', desc: 'Members who have completed foundational Data and Databricks training.' },
+    { num: 2, title: 'Intermediate', subtitle: 'Intermediate certification in progress', count: 5, totalCohort: 15, color: '#2563eb', bg: '#dbeafe', border: '#93c5fd', desc: 'Members pursuing intermediate Data and Databricks certification.' },
+    { num: 3, title: 'Certified', subtitle: 'Full certification achieved', count: 2, totalCohort: 15, color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe', desc: 'Members holding full Data and Databricks certification — domain champions.' },
   ],
   spotlight: {
     title: 'Top SME',
-    desc: 'Recognising our most active Data & AI Subject Matter Experts.',
+    desc: 'Recognising our most active Data and Databricks Subject Matter Experts.',
     names: ['Name 1', 'Name 2', 'Name 3'],
   },
   celebrateLearning: {
-    title: 'Data & AI Learning Achievers',
-    desc: 'recognising outstanding commitment to Data & AI professional development and certification excellence.',
+    title: 'Data and Databricks Learning Achievers',
+    desc: 'recognising outstanding commitment to Data and Databricks professional development and certification excellence.',
     names: ['Name 1', 'Name 2', 'Name 3'],
   },
 }

@@ -11,7 +11,7 @@ import type { CoPPageData } from '../types'
 // ── CoP imports (auto-managed by sync.js) ────────────────────────
 import { Cloud_DATA } from './cloud'
 import { Testing_DATA } from './testing'
-import { DataAi_DATA } from './data-ai'
+// import { DataAi_DATA } from './data-ai'
 import { Database_DATA } from './database'
 import { Microsoft_DATA } from './microsoft'
 import { Mainframe_DATA } from './mainframe'
@@ -29,7 +29,7 @@ import { ServiceMgmt_DATA } from './service-mgmt'
 export const COP_DATA: Record<string, CoPPageData> = {
   'cloud': Cloud_DATA,
   'testing': Testing_DATA,
-  'data-ai': DataAi_DATA,
+  //   'data-ai': DataAi_DATA,
   'database': Database_DATA,
   'microsoft': Microsoft_DATA,
   'mainframe': Mainframe_DATA,
