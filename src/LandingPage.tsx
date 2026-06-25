@@ -220,7 +220,7 @@ function LPHero({ activeCount, totalMembers }: { activeCount: number; totalMembe
         </p>
 
         <div className="lp-hero-stats">
-          <StatCount value={15}          suffix=""  label="Communities" />
+          <StatCount value={16}          suffix=""  label="Communities" />
           <div className="lp-stat-sep" />
           <StatCount value={activeCount} suffix=""  label="Active" />
           <div className="lp-stat-sep" />
