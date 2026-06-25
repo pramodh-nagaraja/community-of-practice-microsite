@@ -92,7 +92,7 @@ export default function LandingPage() {
     : COMMUNITIES.filter(c => c.status === filter)
 
   const go = (route: string) => {
-    window.location.hash = route.startsWith('#/') ? route : route.replace('#/', '')
+    window.location.hash = route.startsWith('#/') ? route : `#/${route}`
   }
 
   return (
