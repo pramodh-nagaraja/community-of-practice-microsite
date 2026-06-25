@@ -401,10 +401,6 @@ function CoPCard({ cop, index, onGo }: { cop: CoPCommunity; index: number; onGo:
           <span className="lp-cop-indev">In Development</span>
         )}
       </div>
-
-      {isActive && cop.memberCount !== null && (
-        <div className="lp-cop-chip">{cop.memberCount} members</div>
-      )}
     </article>
   )
 }
