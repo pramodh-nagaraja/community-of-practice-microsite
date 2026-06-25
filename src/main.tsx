@@ -23,6 +23,7 @@ import { COP_DATA }    from './data/pages/index'
 //    4. Set status: 'active' in src/data/communities.ts
 //
 //  Active CoPs: 16 (including Mainframe)
+//  Latest: Enhanced card visuals and community highlights
 // ═══════════════════════════════════════════════════════════════
 
 function Root() {
