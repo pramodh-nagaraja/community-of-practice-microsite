@@ -21,6 +21,8 @@ import { COP_DATA }    from './data/pages/index'
 //    2. Run:  npm run sync
 //    3. Uncomment in src/data/pages/index.ts
 //    4. Set status: 'active' in src/data/communities.ts
+//
+//  Active CoPs: 16 (including Mainframe)
 // ═══════════════════════════════════════════════════════════════
 
 function Root() {
