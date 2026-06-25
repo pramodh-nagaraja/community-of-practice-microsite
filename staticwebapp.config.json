@@ -7,5 +7,6 @@
   ],
   "navigationFallback": {
     "rewrite": "/index.html"
-  }
+  },
+  "trailingSlash": "auto"
 }
