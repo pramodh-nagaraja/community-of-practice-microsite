@@ -42,6 +42,7 @@ export const Guidewire_DATA: CoPPageData = {
     {
       name: 'Jeethu Nair',
       initials: 'JN',
+      photo: `${BASE}Jeethu.jpg`,
       badge: 'CoP Lead',
       role: 'CoP Lead',
       badgeStyle: 'cop' as 'sponsor' | 'global' | 'cop',
