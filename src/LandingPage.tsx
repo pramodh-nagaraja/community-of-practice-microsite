@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { COMMUNITIES, type CoPCommunity } from './data/communities'
 import './LandingPage.css'
+import CoPJourneyAnimation from './CoPJourneyAnimation'
 
 type FilterTab = 'all' | 'active' | 'coming-soon'
 
@@ -203,6 +204,7 @@ function LPHero({ activeCount, totalMembers }: { activeCount: number; totalMembe
     <section className="lp-hero">
       <div className="lp-hero-glow" aria-hidden="true" />
       <HeroTopology />
+      <CoPJourneyAnimation />
 
       <div className="lp-hero-inner">
         <div className="lp-hero-badge">

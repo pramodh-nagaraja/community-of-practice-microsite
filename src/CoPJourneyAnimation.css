@@ -1,0 +1,124 @@
+.cop-journey-container {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.journey-side {
+  width: 200px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.journey-left {
+  margin-left: -20px;
+}
+
+.journey-right {
+  margin-right: -20px;
+}
+
+.character-container,
+.transformation-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stage,
+.transform-stage {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.character {
+  width: 100px;
+  height: 140px;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+}
+
+.transform-stage {
+  flex-direction: column;
+}
+
+.stage-label {
+  margin-top: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.7);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.celebration {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.confetti {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(45deg, #FFD700, #FFA500, #FF6B6B);
+  border-radius: 50%;
+  box-shadow:
+    -40px -20px 0 -3px #FFD700,
+    40px -20px 0 -3px #FF6B6B,
+    -20px -40px 0 -3px #FFA500,
+    20px -40px 0 -3px #4287f5,
+    -30px 0 0 -2px #FFD700,
+    30px 0 0 -2px #FF6B6B;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1400px) {
+  .journey-side {
+    width: 150px;
+    height: 250px;
+  }
+
+  .character {
+    width: 80px;
+    height: 120px;
+  }
+
+  .stage-label {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .cop-journey-container {
+    display: none;
+  }
+}
+
+/* Gradient background for the animation area */
+.cop-journey-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(88, 28, 135, 0.1) 0%, rgba(88, 28, 135, 0) 70%);
+  pointer-events: none;
+  z-index: -1;
+}
