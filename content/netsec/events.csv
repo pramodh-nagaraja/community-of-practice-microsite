@@ -1,3 +1,4 @@
-day,month,title,desc,type,time,vendor
-29,Apr 2026,Case Study: Ford Finance on Dynatrace,"Guest presentation by Ford Finance on measuring Customer KPIs using Dynatrace — real-world insights into observability-driven business outcomes.",Case Study,TBC,dynatrace
-11,"May 11–12 2026",SolarWinds Boot Camp,"Intensive two-day boot camp for SolarWinds Certification Program nominees — hands-on labs covering NPM, IPAM, and observability tooling.",Boot Camp,All Day · 2 Days,solarwinds
+day,month,title,desc,type,time,vendor,status
+29,Apr 2026,"Case Study: Ford Finance on Dynatrace (Completed)","Guest presentation by Ford Finance on measuring Customer KPIs using Dynatrace — real-world insights into observability-driven business outcomes.",Case Study,TBC,dynatrace,Completed
+10,Sep 2026,SolarWinds Boot Camp,"Intensive two-day boot camp for SolarWinds Certification Program nominees — hands-on labs covering NPM, IPAM, and observability tooling.",Boot Camp,All Day · 2 Days,solarwinds,Pending
+26,Jun 2026,"Network Troubleshooting and Wireshark Demo (Completed)","Interactive session on network troubleshooting techniques and hands-on Wireshark demonstration. Session 1: 12:00 IST | Session 2: 19:00 IST",Workshop,"12:00 IST / 19:00 IST",,Completed

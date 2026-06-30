@@ -85,20 +85,29 @@ export const NETSEC_EVENTS: {
   {
     day: '29',
     month: 'Apr 2026',
-    title: 'Case Study: Ford Finance on Dynatrace',
+    title: 'Case Study: Ford Finance on Dynatrace (Completed)',
     desc: 'Guest presentation by Ford Finance on measuring Customer KPIs using Dynatrace — real-world insights into observability-driven business outcomes.',
     type: 'Case Study',
     time: 'TBC',
     vendor: 'dynatrace',
   },
   {
-    day: '11',
-    month: 'May 11–12 2026',
+    day: '10',
+    month: 'Sep 2026',
     title: 'SolarWinds Boot Camp',
     desc: 'Intensive two-day boot camp for SolarWinds Certification Program nominees — hands-on labs covering NPM, IPAM, and observability tooling.',
     type: 'Boot Camp',
     time: 'All Day · 2 Days',
     vendor: 'solarwinds',
+  },
+  {
+    day: '26',
+    month: 'Jun 2026',
+    title: 'Network Troubleshooting and Wireshark Demo (Completed)',
+    desc: 'Interactive session on network troubleshooting techniques and hands-on Wireshark demonstration. Session 1: 12:00 IST | Session 2: 19:00 IST',
+    type: 'Workshop',
+    time: '12:00 IST / 19:00 IST',
+    vendor: null,
   },
 ]
 
