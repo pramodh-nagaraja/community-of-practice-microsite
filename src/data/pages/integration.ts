@@ -40,12 +40,12 @@ export const Integration_DATA: CoPPageData = {
       email: 'tbd@accenture.com',
     },
     {
-      name: 'Aishan Mulla',
+      name: 'Aisha Mulla',
       initials: 'AM',
       badge: 'CoP Lead',
       role: 'CoP Lead',
       badgeStyle: 'cop' as 'sponsor' | 'global' | 'cop',
-      email: 's.a.kumar.johari@accenture.com',
+      email: 'aisha.m.mulla@accenture.com',
     },
     {
       name: 'Ajeet Pratap Singh',
@@ -56,7 +56,7 @@ export const Integration_DATA: CoPPageData = {
       email: 'ajeet.pratap.singh@accenture.com',
     },
   ],
-  joinEmail: 's.a.kumar.johari@accenture.com',
+  joinEmail: 'aisha.m.mulla@accenture.com',
   members: [
     {
       name: 'Name 1',
