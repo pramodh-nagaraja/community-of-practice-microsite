@@ -40,15 +40,15 @@ export const ServiceMgmt_DATA: CoPPageData = {
       email: 'tbd@accenture.com',
     },
     {
-      name: 'Name 2',
-      initials: 'N2',
+      name: 'Dharshan Surendran',
+      initials: 'DS',
       badge: 'CoP Lead',
-      role: 'CoP Lead — To Be Confirmed',
+      role: 'CoP Lead',
       badgeStyle: 'cop' as 'sponsor' | 'global' | 'cop',
-      email: 'tbd@accenture.com',
+      email: 'dharshan.surendran@accenture.com',
     },
   ],
-  joinEmail: 'tbd@accenture.com',
+  joinEmail: 'dharshan.surendran@accenture.com',
   members: [
     {
       name: 'Name 1',
