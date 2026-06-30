@@ -40,15 +40,15 @@ export const Microsoft_DATA: CoPPageData = {
       email: 'tbd@accenture.com',
     },
     {
-      name: 'Name 2',
-      initials: 'N2',
+      name: 'Shashank Johari',
+      initials: 'SJ',
       badge: 'CoP Lead',
-      role: 'CoP Lead — To Be Confirmed',
+      role: 'CoP Lead',
       badgeStyle: 'cop' as 'sponsor' | 'global' | 'cop',
-      email: 'tbd@accenture.com',
+      email: 's.a.kumar.johari@accenture.com',
     },
   ],
-  joinEmail: 'tbd@accenture.com',
+  joinEmail: 's.a.kumar.johari@accenture.com',
   members: [
     {
       name: 'Name 1',
