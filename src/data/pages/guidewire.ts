@@ -314,9 +314,9 @@ export const Guidewire_DATA: CoPPageData = {
   ],
   joinInterests: ['General', 'PolicyCenter', 'BillingCenter', 'ClaimCenter', 'Gosu Development', 'Certifications'],
   certStages: [
-    { num: 1, title: 'Trained', subtitle: 'Foundation training completed', count: 16, totalCohort: 30, color: '#16a34a', bg: '#dcfce7', border: '#86efac', desc: 'Members who have completed foundational Guidewire training.' },
-    { num: 2, title: 'Intermediate', subtitle: 'Intermediate certification in progress', count: 5, totalCohort: 30, color: '#2563eb', bg: '#dbeafe', border: '#93c5fd', desc: 'Members pursuing intermediate Guidewire certification.' },
-    { num: 3, title: 'Certified', subtitle: 'Full certification achieved', count: 9, totalCohort: 30, color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe', desc: 'Members holding full Guidewire certification — domain champions.' },
+    { num: 1, title: 'Trained', subtitle: 'Foundation training completed', count: 16, totalCohort: 30, color: '#16a34a', bg: '#dcfce7', border: '#86efac', desc: 'Members who have completed foundational Guidewire training.', links: [{ label: 'Integration', url: 'https://mediaexchange.accenture.com/media/t/1_afmwcxjd' }, { label: 'Introduction to Messaging', url: 'https://mediaexchange.accenture.com/media/t/1_1736g10d' }, { label: 'Demo on Messaging', url: 'https://mediaexchange.accenture.com/media/t/1_211ojcr0' }] },
+    { num: 2, title: 'Intermediate', subtitle: 'Intermediate certification in progress', count: 5, totalCohort: 30, color: '#2563eb', bg: '#dbeafe', border: '#93c5fd', desc: 'Members pursuing intermediate Guidewire certification.', links: [{ label: 'PolicyCenter Advanced', url: 'https://wd103.myworkday.com' }, { label: 'BillingCenter Deep Dive', url: 'https://wd103.myworkday.com' }] },
+    { num: 3, title: 'Certified', subtitle: 'Full certification achieved', count: 9, totalCohort: 30, color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe', desc: 'Members holding full Guidewire certification — domain champions.', links: [{ label: 'Guidewire Architecture', url: 'https://wd103.myworkday.com' }, { label: 'Performance Optimization', url: 'https://wd103.myworkday.com' }] },
   ],
   spotlight: {
     title: 'Top SME',
