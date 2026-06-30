@@ -122,9 +122,9 @@ export const COMMUNITIES: CoPCommunity[] = [
     status: 'active',
     route: '#/guidewire',
     highlights: [
-      '30 certified members across PolicyCenter, BillingCenter, ClaimCenter',
-      'Top SMEs: Pooja Prakash, Master Nishant, Prashun Kishor',
-      'Comprehensive certification pathway with training resources',
+      '30 members — 15 Certified, 7 Intermediate, 8 Trained',
+      '3 Top Subject Matter Experts recognized',
+      'Ongoing Guidewire Developer Training from June 2026',
     ],
     lastUpdated: '2026-06-30',
   },
