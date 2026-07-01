@@ -80,7 +80,7 @@ export default function CoPPage({ data }: { data: CoPPageData }) {
       <CPNav name={data.name} navItems={navItems} />
       <CPHero data={data} />
       <CPAbout data={data} />
-      {!!data.certStages?.length && <CPPathway stages={data.certStages} spotlight={data.spotlight} />}
+      {!!data.certStages?.length && <CPPathway stages={data.certStages} spotlight={data.spotlight} flavors={data.skillFlavors} />}
       {!!data.skillFlavors?.length && <CPSkillFlavors flavors={data.skillFlavors} copName={data.name} />}
       {!!data.events?.length     && <CPEvents events={data.events} />}
       {!!data.resources?.length  && <CPResources streams={data.resources} />}
@@ -287,7 +287,7 @@ function CPAbout({ data }: { data: CoPPageData }) {
 }
 
 /* ── Certification Pathway ───────────────────────────────────── */
-function CPPathway({ stages, spotlight }: { stages: CertStage[]; spotlight?: CoPPageData['spotlight'] }) {
+function CPPathway({ stages, spotlight, flavors }: { stages: CertStage[]; spotlight?: CoPPageData['spotlight']; flavors?: SkillFlavor[] }) {
   const [open, setOpen] = useState(true)
 
   return (
@@ -309,6 +309,18 @@ function CPPathway({ stages, spotlight }: { stages: CertStage[]; spotlight?: CoP
             <p className="cp-section-desc">
               A structured certification journey showcasing the team's commitment to continuous learning.
             </p>
+            {flavors && flavors.length > 0 && (
+              <div className="cp-pathway-flavors">
+                <div className="cp-pathway-flavors-label">Supported Platforms</div>
+                <div className="cp-pathway-flavors-grid">
+                  {flavors.map(f => (
+                    <button key={f.name} className="cp-pathway-flavor-btn">
+                      {f.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
             <div className="cp-pathway-pipeline">
               {stages.map((s, i) => (
                 <div key={i} className="cp-pipeline-row">
