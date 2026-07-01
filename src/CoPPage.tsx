@@ -334,6 +334,15 @@ function CPPathway({ stages, spotlight }: { stages: CertStage[]; spotlight?: CoP
                         ↑ {s.progressRate}
                       </div>
                     )}
+                    {s.links && s.links.length > 0 && (
+                      <div className="cp-pathway-links">
+                        {s.links.map((link, idx) => (
+                          <a key={idx} href={link.url} target="_blank" rel="noopener noreferrer" className="cp-pathway-link-btn" style={{ color: s.color, borderColor: s.color }}>
+                            {link.label}
+                          </a>
+                        ))}
+                      </div>
+                    )}
                   </div>
                   {i < stages.length - 1 && (
                     <div className="cp-connector">
