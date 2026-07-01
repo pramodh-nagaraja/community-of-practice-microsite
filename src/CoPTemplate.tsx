@@ -321,6 +321,19 @@ function TCertification({ data }: { data: CoPPageData }) {
               and technical excellence.
             </p>
 
+            {data.skillFlavors && data.skillFlavors.length > 0 && (
+              <div className="pathway-flavors">
+                <div className="pathway-flavors-label">Supported Platforms</div>
+                <div className="pathway-flavors-grid">
+                  {data.skillFlavors.map(f => (
+                    <button key={f.name} className="pathway-flavor-btn">
+                      {f.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
             <div className="pathway-pipeline">
               {stages.map((stage, i) => (
                 <div key={i} className="pipeline-row">
