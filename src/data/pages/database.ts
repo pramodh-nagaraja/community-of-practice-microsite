@@ -47,6 +47,14 @@ export const Database_DATA: CoPPageData = {
       badgeStyle: 'cop' as 'sponsor' | 'global' | 'cop',
       email: 'kaseeswar.reddy@accenture.com',
     },
+    {
+      name: 'Anna Mae Pantanilla',
+      initials: 'AMP',
+      badge: 'CoP Lead',
+      role: 'CoP Lead',
+      badgeStyle: 'cop' as 'sponsor' | 'global' | 'cop',
+      email: 'asanna.mae.pantanilla@accenture.com',
+    },
   ],
   joinEmail: 'kaseeswar.reddy@accenture.com',
   members: [
