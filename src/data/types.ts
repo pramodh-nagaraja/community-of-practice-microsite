@@ -21,6 +21,7 @@ export interface CoPMember {
   levelColor: string      // hex accent for avatar bg
   levelBg: string         // hex for badge background
   levelText: string       // hex for badge text
+  tags?: string[]         // e.g. ['Oracle', 'SQL', 'DB2 LUW']
 }
 
 export interface CoPEvent {
@@ -67,6 +68,12 @@ export interface CertStage {
   links?: { label: string; url: string }[]
 }
 
+export interface SkillFlavor {
+  name: string
+  color?: string
+  bg?: string
+}
+
 export interface CoPPageData {
   id: string
   name: string
@@ -88,6 +95,7 @@ export interface CoPPageData {
 
   // Optional sections — rendered only when data is present
   certStages?: CertStage[]
+  skillFlavors?: SkillFlavor[]
   spotlight?: { title: string; desc: string; names: string[] }
   events?: CoPEvent[]
   resources?: CoPResourceStream[]

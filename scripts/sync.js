@@ -231,6 +231,7 @@ function syncGenericCoP(id, dir) {
   const events  = readCSV(path.join(dir, 'events.csv'))
   const leaders = readCSV(path.join(dir, 'leadership.csv'))
   const links   = readCSV(path.join(dir, 'links.csv'))
+  const flavors = readCSV(path.join(dir, 'flavors.csv'))
 
   // Deduplicate members by name (case-insensitive, keep first occurrence)
   const seenNames = new Set()
@@ -246,7 +247,7 @@ function syncGenericCoP(id, dir) {
 
   const memberLines = uniqueMembers.map(m => {
     const lv = resolveLevel(m)
-    return [
+    const lines = [
       `    {`,
       `      name: ${s(m.name)},`,
       `      initials: ${s(m.initials)},`,
@@ -254,8 +255,15 @@ function syncGenericCoP(id, dir) {
       `      levelColor: ${s(lv.color)},`,
       `      levelBg: ${s(lv.bg)},`,
       `      levelText: ${s(lv.text)},`,
-      `    },`,
-    ].join('\n')
+    ]
+    if (m.skills) {
+      const tags = m.skills.split('|').map(tag => tag.trim()).filter(tag => tag)
+      if (tags.length > 0) {
+        lines.push(`      tags: [${tags.map(t => s(t)).join(', ')}],`)
+      }
+    }
+    lines.push(`    },`)
+    return lines.join('\n')
   })
 
   const eventLines = events.map(e => [
@@ -347,6 +355,18 @@ function syncGenericCoP(id, dir) {
     buildCertStage(3, 'Certified', 'Full certification achieved', stageCounts.Certified, '#A100FF', '#F5E6FF', '#d8b4fe', 'Members holding full ' + copName + ' certification — domain champions.'),
   ]
   sections.push(`  certStages: [\n${certStageLines.join('\n')}\n  ],`)
+
+  // Skill flavors — optional section for specialized topics/tools
+  if (flavors.length > 0) {
+    const flavorLines = flavors.map(f => [
+      `    {`,
+      `      name: ${s(f.name)},`,
+      ...(f.color ? [`      color: ${s(f.color)},`] : []),
+      ...(f.bg ? [`      bg: ${s(f.bg)},`] : []),
+      `    },`,
+    ].join('\n'))
+    sections.push(`  skillFlavors: [\n${flavorLines.join('\n')}\n  ],`)
+  }
 
   // Spotlight and Celebrate Learning — use first 3 members or placeholders
   const spotlightNames = uniqueMembers.length >= 3

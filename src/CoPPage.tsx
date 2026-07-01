@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import type { CoPPageData, CoPLeader, CoPMember, CoPEvent, CoPResourceStream, CertStage } from './data/types'
+import type { CoPPageData, CoPLeader, CoPMember, CoPEvent, CoPResourceStream, CertStage, SkillFlavor } from './data/types'
 import './CoPPage.css'
 
 /* ── Topology background data ───────────────────────────────── */
@@ -67,6 +67,7 @@ export default function CoPPage({ data }: { data: CoPPageData }) {
   const navItems = [
     { label: 'About',         id: 'about' },
     ...(data.certStages?.length    ? [{ label: 'Certification', id: 'pathway'   }] : []),
+    ...(data.skillFlavors?.length  ? [{ label: 'Database Types', id: 'flavors'   }] : []),
     ...(data.events?.length        ? [{ label: 'Events',        id: 'events'    }] : []),
     ...(data.resources?.length     ? [{ label: 'Resources',     id: 'resources' }] : []),
     ...(data.members?.length       ? [{ label: 'Members',       id: 'members'   }] : []),
@@ -80,6 +81,7 @@ export default function CoPPage({ data }: { data: CoPPageData }) {
       <CPHero data={data} />
       <CPAbout data={data} />
       {!!data.certStages?.length && <CPPathway stages={data.certStages} spotlight={data.spotlight} />}
+      {!!data.skillFlavors?.length && <CPSkillFlavors flavors={data.skillFlavors} copName={data.name} />}
       {!!data.events?.length     && <CPEvents events={data.events} />}
       {!!data.resources?.length  && <CPResources streams={data.resources} />}
       {!!data.members?.length       && <CPMembers members={data.members} copName={data.name} />}
@@ -371,6 +373,30 @@ function CPPathway({ stages, spotlight }: { stages: CertStage[]; spotlight?: CoP
   )
 }
 
+/* ── Skill Flavors ──────────────────────────────────────────── */
+function CPSkillFlavors({ flavors, copName }: { flavors: SkillFlavor[]; copName: string }) {
+  return (
+    <section id="flavors" className="cp-section cp-flavors">
+      <div className="cp-container cp-reveal">
+        <div className="cp-section-label">{copName}</div>
+        <h2 className="cp-section-title">Database Types & Platforms</h2>
+        <p className="cp-section-desc">
+          Expertise across multiple database technologies used in the client network.
+        </p>
+        <div className="cp-flavors-grid">
+          {flavors.map(f => (
+            <div key={f.name} className="cp-flavor-card">
+              <div className="cp-flavor-badge" style={{ background: f.color || '#E8E8FF', color: f.bg || '#3730A3' }}>
+                {f.name}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 /* ── Events ─────────────────────────────────────────────────── */
 function CPEvents({ events }: { events: CoPEvent[] }) {
   return (
@@ -478,6 +504,13 @@ function CPMembers({ members, copName }: { members: CoPMember[]; copName: string
                         <span className="cp-member-dot" style={{ background: m.levelColor }} />
                         {m.levelLabel}
                       </span>
+                      {m.tags && m.tags.length > 0 && (
+                        <div className="cp-member-tags">
+                          {m.tags.map(tag => (
+                            <span key={tag} className="cp-member-tag">{tag}</span>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   </div>
                 ))}

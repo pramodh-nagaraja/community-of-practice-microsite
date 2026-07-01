@@ -1,16 +1,27 @@
-name,initials,level
-Name 1,N1,Foundation
-Name 2,N2,Foundation
-Name 3,N3,Foundation
-Name 4,N4,Foundation
-Name 5,N5,Foundation
-Name 6,N6,Foundation
-Name 7,N7,Foundation
-Name 8,N8,Foundation
-Name 9,N9,Associate
-Name 10,NA,Associate
-Name 11,NB,Associate
-Name 12,NC,Associate
-Name 13,ND,Associate
-Name 14,NE,Expert
-Name 15,NF,Expert
+name,initials,level,skills
+Ranjith Kumar T,RKT,Expert,MS SQL
+Kaseeswar Reddy,KR,Expert,MS SQL|Oracle
+Grover Chanpreet,GC,Associate,MS SQL
+Swetha Chennammaraja,SC,Expert,MS SQL
+Arunkumar Sj,AS,Associate,MS SQL
+Lakshmi Prasanna,LP,Associate,MS SQL
+Tejasri Dasireddi,TD,Expert,MS SQL|Oracle
+Shagun Dussa,SD,Associate,MS SQL
+Shiva Satish,SS,Expert,MS SQL
+Meghraj D Gimonkar,MDG,Expert,Oracle|MS SQL
+Vinayak Shanbhag,VS,Expert,Oracle
+Pavani Padala,PP,Foundation,MS SQL
+Rajeswari Mamidla,RM,Foundation,MS SQL
+Anna Mae Pantanilla,AMP,Expert,DB2 LUW|DB2 Mainframe|Oracle
+Kelvin Baelo,KB,Expert,MS SQL|Maria|Mongo|My SQL
+Vernice Lancion,VL,Expert,DB2 LUW|DB2 Mainframe|Oracle
+John Fernado,JF,Foundation,MS SQL|Mongo
+Rei Bacquiano,RB,Associate,Oracle|Maria|Mongo|My SQL
+Lalitha Kumari Beera,LKB,Expert,DB2|MS SQL
+Vishal Choubey,VC,Expert,MS SQL
+Maria Francisco Cupin,MFC,Associate,Oracle|DB2|Maria|Mongo
+Alyssa Manuntag,AM,Expert,DB2 LUW|Oracle
+Jessa Gulas,JG,Associate,DB2 LUW|DB2 Mainframe|Oracle
+Paul Tocol,PT,Associate,MS SQL
+Dennis Raymundo,DR,Associate,MS SQL
+Arvind Chaudary,AC,Expert,MS SQL|Oracle|Mongo|My SQL
