@@ -216,11 +216,11 @@ function LPHero({ activeCount, totalMembers }: { activeCount: number; totalMembe
 
         <p className="lp-hero-desc">
           Fostering expertise, building certifications, and driving innovation
-          across 15 technology disciplines at QBE Account — powered by Accenture.
+          across 14 technology disciplines at QBE Account — powered by Accenture.
         </p>
 
         <div className="lp-hero-stats">
-          <StatCount value={16}          suffix=""  label="Communities" />
+          <StatCount value={14}          suffix=""  label="Communities" />
           <div className="lp-stat-sep" />
           <StatCount value={activeCount} suffix=""  label="Active" />
           <div className="lp-stat-sep" />
