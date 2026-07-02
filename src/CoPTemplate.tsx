@@ -515,6 +515,7 @@ function TMembers({ data }: { data: CoPPageData }) {
   const [streamOpen,  setStreamOpen]    = useState(true)
   const [search,      setSearch]        = useState('')
   const [activeFilter,setActiveFilter]  = useState<LevelFilter>('all')
+  const [activePlatforms, setActivePlatforms] = useState<Set<string>>(new Set())
   const [localMembers, setLocalMembers] = useState(() => {
     const storageKey = `cop_members_${data.id}`
     return JSON.parse(localStorage.getItem(storageKey) || '[]')
@@ -554,10 +555,16 @@ function TMembers({ data }: { data: CoPPageData }) {
     return true
   })
 
+  // Extract all unique platforms from members
+  const allPlatforms = Array.from(
+    new Set(members.flatMap(m => m.tags || []))
+  ).sort()
+
   const filtered = members.filter(m => {
     const matchLevel  = activeFilter === 'all' || m.levelLabel === activeFilter
     const matchSearch = m.name.toLowerCase().includes(search.toLowerCase())
-    return matchLevel && matchSearch
+    const matchPlatform = activePlatforms.size === 0 || (m.tags && m.tags.some((t: string) => activePlatforms.has(t)))
+    return matchLevel && matchSearch && matchPlatform
   })
 
   const counts = {
@@ -648,6 +655,44 @@ function TMembers({ data }: { data: CoPPageData }) {
                     ))}
                   </div>
 
+                  {allPlatforms.length > 0 && (
+                    <div className="platform-filters" style={{ marginBottom: 16, paddingBottom: 16, borderBottom: '1px solid rgba(0,0,0,0.08)' }}>
+                      <div style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#64748b', marginBottom: 8 }}>
+                        Technology
+                      </div>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                        {allPlatforms.map(platform => (
+                          <button
+                            key={platform}
+                            className={`platform-filter-btn ${activePlatforms.has(platform) ? 'active' : ''}`}
+                            onClick={() => {
+                              const newPlatforms = new Set(activePlatforms)
+                              if (newPlatforms.has(platform)) {
+                                newPlatforms.delete(platform)
+                              } else {
+                                newPlatforms.add(platform)
+                              }
+                              setActivePlatforms(newPlatforms)
+                            }}
+                            style={{
+                              padding: '6px 12px',
+                              fontSize: '0.85rem',
+                              fontWeight: 500,
+                              borderRadius: '6px',
+                              border: `1.5px solid ${activePlatforms.has(platform) ? '#3730A3' : '#d1d5db'}`,
+                              background: activePlatforms.has(platform) ? '#f5e6ff' : 'white',
+                              color: activePlatforms.has(platform) ? '#3730A3' : '#374151',
+                              cursor: 'pointer',
+                              transition: 'all 0.2s',
+                            }}
+                          >
+                            {platform}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
                   {filtered.length > 0 ? (
                     <div className="members-grid">
                       {filtered.map((member, idx) => (
@@ -671,6 +716,28 @@ function TMembers({ data }: { data: CoPPageData }) {
                               <span className="cert-dot" style={{ background: member.levelColor }} />
                               {member.levelLabel}
                             </span>
+                            {member.tags && member.tags.length > 0 && (
+                              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', marginTop: '6px' }}>
+                                {member.tags.map((tag: string) => (
+                                  <span
+                                    key={tag}
+                                    style={{
+                                      display: 'inline-block',
+                                      fontSize: '0.7rem',
+                                      fontWeight: 600,
+                                      padding: '2px 6px',
+                                      borderRadius: '3px',
+                                      background: 'rgba(55, 48, 163, 0.1)',
+                                      color: '#3730A3',
+                                      border: '1px solid rgba(55, 48, 163, 0.2)',
+                                      whiteSpace: 'nowrap',
+                                    }}
+                                  >
+                                    {tag}
+                                  </span>
+                                ))}
+                              </div>
+                            )}
                           </div>
                         </div>
                       ))}
