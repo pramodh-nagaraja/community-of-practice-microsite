@@ -14,7 +14,7 @@ export const Database_DATA: CoPPageData = {
   description: 'Optimising database design, performance, migration, and reliability across multiple database platforms including Oracle, SQL Server, DB2, MongoDB, and PostgreSQL.',
   accentColor: '#3730A3',
   icon: `${BASE}Database.png`,
-  memberCount: 26,
+  memberCount: 27,
   certCount: 14,
   sessionsHeld: 0,
   launchYear: 2026,
@@ -292,6 +292,15 @@ export const Database_DATA: CoPPageData = {
       levelText: '#5700AB',
       tags: ['MS SQL', 'Oracle', 'Mongo', 'My SQL'],
     },
+    {
+      name: 'Gulbin Mannino',
+      initials: 'GM',
+      levelLabel: 'Intermediate',
+      levelColor: '#2563eb',
+      levelBg: '#dbeafe',
+      levelText: '#1e3a8a',
+      tags: ['Supra'],
+    },
   ],
   events: [
     {
@@ -315,9 +324,9 @@ export const Database_DATA: CoPPageData = {
   ],
   joinInterests: ['General', 'Oracle', 'MS SQL', 'DB2', 'MongoDB', 'PostgreSQL', 'Database Migration', 'Performance Tuning', 'Certifications'],
   certStages: [
-    { num: 1, title: 'Trained', subtitle: 'Foundation training completed', count: 3, totalCohort: 26, color: '#16a34a', bg: '#dcfce7', border: '#86efac', desc: 'Members who have completed foundational Database training.' },
-    { num: 2, title: 'Intermediate', subtitle: 'Intermediate certification in progress', count: 9, totalCohort: 26, color: '#2563eb', bg: '#dbeafe', border: '#93c5fd', desc: 'Members pursuing intermediate Database certification.' },
-    { num: 3, title: 'Certified', subtitle: 'Full certification achieved', count: 14, totalCohort: 26, color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe', desc: 'Members holding full Database certification — domain champions.' },
+    { num: 1, title: 'Trained', subtitle: 'Foundation training completed', count: 3, totalCohort: 27, color: '#16a34a', bg: '#dcfce7', border: '#86efac', desc: 'Members who have completed foundational Database training.' },
+    { num: 2, title: 'Intermediate', subtitle: 'Intermediate certification in progress', count: 10, totalCohort: 27, color: '#2563eb', bg: '#dbeafe', border: '#93c5fd', desc: 'Members pursuing intermediate Database certification.' },
+    { num: 3, title: 'Certified', subtitle: 'Full certification achieved', count: 14, totalCohort: 27, color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe', desc: 'Members holding full Database certification — domain champions.' },
   ],
   skillFlavors: [
     {
