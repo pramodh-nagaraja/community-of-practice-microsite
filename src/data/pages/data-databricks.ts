@@ -47,6 +47,22 @@ export const DataDatabricks_DATA: CoPPageData = {
       badgeStyle: 'cop' as 'sponsor' | 'global' | 'cop',
       email: 's.a.kumar.johari@accenture.com',
     },
+    {
+      name: 'Priya Kanu Singh',
+      initials: 'PKS',
+      badge: 'CoP Lead',
+      role: 'CoP Lead',
+      badgeStyle: 'cop' as 'sponsor' | 'global' | 'cop',
+      email: 'kanu.priya.singh@accenture.com',
+    },
+    {
+      name: 'Srikar Rao Deshpande',
+      initials: 'SRD',
+      badge: 'CoP Lead',
+      role: 'CoP Lead',
+      badgeStyle: 'cop' as 'sponsor' | 'global' | 'cop',
+      email: 'srikar.rao.deshpande@accenture.com',
+    },
   ],
   joinEmail: 's.a.kumar.johari@accenture.com',
   members: [
