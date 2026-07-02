@@ -73,7 +73,7 @@ export const COMMUNITIES: CoPCommunity[] = [
   },
   {
     id: 'data-databricks',
-    name: 'Data and Databricks',
+    name: 'Data and AI',
     description: 'Harnessing data engineering, analytics, and artificial intelligence to power QBE\'s decisions.',
     icon: `${BASE}Data_and_AI.png`,
     accentColor: '#5B21B6',
@@ -84,7 +84,7 @@ export const COMMUNITIES: CoPCommunity[] = [
     status: 'active',
     route: '#/data-databricks',
     highlights: [
-      '15 members in data engineering and Databricks',
+      '15 members in data engineering and AI',
       'Advanced analytics and ML model expertise',
       'Data pipelines and intelligent automation',
     ],
@@ -176,7 +176,7 @@ export const COMMUNITIES: CoPCommunity[] = [
     lead: 'Shashank Johari',
     leadEmail: 's.a.kumar.johari@accenture.com',
     memberCount: 15,
-    status: 'active',
+    status: 'coming-soon',
     route: '#/microsoft',
     highlights: [
       '15 M365 and Power Platform experts',
