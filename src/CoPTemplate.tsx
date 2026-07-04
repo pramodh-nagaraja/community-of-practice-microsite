@@ -290,10 +290,44 @@ function TAbout({ data }: { data: CoPPageData }) {
 function TCertification({ data }: { data: CoPPageData }) {
   const [open, setOpen] = useState(true)
   const [selectedPlatform, setSelectedPlatform] = useState<string | null>(null)
+  const [localMembers, setLocalMembers] = useState(() => {
+    const storageKey = `cop_members_${data.id}`
+    return JSON.parse(localStorage.getItem(storageKey) || '[]')
+  })
+
+  useEffect(() => {
+    const storageKey = `cop_members_${data.id}`
+    const handleMemberAdded = () => {
+      const updatedMembers = JSON.parse(localStorage.getItem(storageKey) || '[]')
+      setLocalMembers(updatedMembers)
+    }
+    window.addEventListener('memberAdded', handleMemberAdded)
+    return () => window.removeEventListener('memberAdded', handleMemberAdded)
+  }, [data.id])
+
   const stages   = data.certStages ?? []
   const spotlight = data.spotlight
   const trainings = data.trainings ?? []
   const stageIcons = ['🎓', '💻', '🏆']
+
+  // Combine official members with localStorage members
+  const allMembers = [...(data.members ?? []), ...localMembers]
+
+  // Deduplicate by name (case-insensitive)
+  const seenNames = new Set<string>()
+  const members = allMembers.filter(m => {
+    const nameLower = (m.name || '').toLowerCase().trim()
+    if (seenNames.has(nameLower)) return false
+    seenNames.add(nameLower)
+    return true
+  })
+
+  // Calculate actual member counts by level
+  const memberCountsByLevel = {
+    'Trained': members.filter(m => m.levelLabel === 'Trained').length,
+    'Intermediate': members.filter(m => m.levelLabel === 'Intermediate').length,
+    'Certified': members.filter(m => m.levelLabel === 'Certified').length,
+  }
 
   const getTrainingsForPlatform = (platform: string) => {
     return trainings.filter(t => t.platform === platform)
@@ -345,6 +379,8 @@ function TCertification({ data }: { data: CoPPageData }) {
                 const levelMap: Record<string, string> = { 'Trained': 'Foundational', 'Intermediate': 'Intermediate', 'Certified': 'Expert' }
                 const levelKey = levelMap[stage.title]
                 const trainingCount = levelKey ? getTrainingsForLevel(levelKey).length : 0
+                const actualMemberCount = memberCountsByLevel[stage.title as keyof typeof memberCountsByLevel] || 0
+                const totalCohort = members.length
 
                 return (
                 <div key={i} className="pipeline-row">
@@ -359,7 +395,7 @@ function TCertification({ data }: { data: CoPPageData }) {
                     <p className="pathway-subtitle">{stage.subtitle}</p>
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', margin: '16px 0' }}>
                       <div className="pathway-count" style={{ color: stage.color }}>
-                        {stage.count}<span>members</span>
+                        {actualMemberCount}<span>members</span>
                       </div>
                       <div className="pathway-count" style={{ color: stage.color }}>
                         {trainingCount}<span>trainings</span>
@@ -371,13 +407,13 @@ function TCertification({ data }: { data: CoPPageData }) {
                           <div
                             className="pathway-bar-fill"
                             style={{
-                              width: `${Math.round((stage.count / stage.totalCohort) * 100)}%`,
+                              width: `${totalCohort > 0 ? Math.round((actualMemberCount / totalCohort) * 100) : 0}%`,
                               background: stage.color,
                             }}
                           />
                         </div>
                         <div className="pathway-bar-label" style={{ color: stage.color }}>
-                          {Math.round((stage.count / stage.totalCohort) * 100)}% of total cohort
+                          {totalCohort > 0 ? Math.round((actualMemberCount / totalCohort) * 100) : 0}% of total cohort
                         </div>
                       </>
                     )}
