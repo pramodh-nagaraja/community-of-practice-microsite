@@ -299,6 +299,10 @@ function TCertification({ data }: { data: CoPPageData }) {
     return trainings.filter(t => t.platform === platform)
   }
 
+  const getTrainingsForLevel = (level: string) => {
+    return trainings.filter(t => t.level === level)
+  }
+
   const groupTrainingsByLevel = (platformTrainings: typeof trainings) => {
     const grouped: Record<string, typeof trainings> = {}
     platformTrainings.forEach(t => {
@@ -337,7 +341,12 @@ function TCertification({ data }: { data: CoPPageData }) {
             </p>
 
             <div className="pathway-pipeline">
-              {stages.map((stage, i) => (
+              {stages.map((stage, i) => {
+                const levelMap: Record<string, string> = { 'Trained': 'Foundational', 'Intermediate': 'Intermediate', 'Certified': 'Expert' }
+                const levelKey = levelMap[stage.title]
+                const trainingCount = levelKey ? getTrainingsForLevel(levelKey).length : 0
+
+                return (
                 <div key={i} className="pipeline-row">
                   <div className="pathway-card" style={{ borderColor: stage.border, background: stage.bg }}>
                     <div className="pathway-card-header">
@@ -348,8 +357,13 @@ function TCertification({ data }: { data: CoPPageData }) {
                     </div>
                     <h3 style={{ color: stage.color }}>{stage.title}</h3>
                     <p className="pathway-subtitle">{stage.subtitle}</p>
-                    <div className="pathway-count" style={{ color: stage.color }}>
-                      {stage.count}<span>members</span>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', margin: '16px 0' }}>
+                      <div className="pathway-count" style={{ color: stage.color }}>
+                        {stage.count}<span>members</span>
+                      </div>
+                      <div className="pathway-count" style={{ color: stage.color }}>
+                        {trainingCount}<span>trainings</span>
+                      </div>
                     </div>
                     {!stage.hideProgress && (
                       <>
@@ -402,7 +416,8 @@ function TCertification({ data }: { data: CoPPageData }) {
                     </div>
                   )}
                 </div>
-              ))}
+              )
+              })}
             </div>
 
             {data.skillFlavors && data.skillFlavors.length > 0 && trainings.length > 0 && (
@@ -470,62 +485,68 @@ function TCertification({ data }: { data: CoPPageData }) {
                               </h4>
                               <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>
                                 {levelTrainings.map((training, idx) => (
-                                  <li
-                                    key={idx}
-                                    style={{
-                                      padding: '12px 14px',
-                                      background: 'white',
-                                      border: '1px solid #e5e7eb',
-                                      borderRadius: '6px',
-                                      marginBottom: '8px',
-                                      fontSize: '14px',
-                                      color: '#1f2937',
-                                      display: 'flex',
-                                      alignItems: 'center',
-                                      justifyContent: 'space-between',
-                                      cursor: training.url ? 'pointer' : 'default',
-                                      transition: 'all 0.2s',
-                                    }}
-                                    onMouseEnter={(e) => {
-                                      if (training.url) {
-                                        const el = e.currentTarget as HTMLElement
-                                        el.style.background = '#f3f4f6'
-                                        el.style.borderColor = '#3730A3'
-                                      }
-                                    }}
-                                    onMouseLeave={(e) => {
-                                      if (training.url) {
-                                        const el = e.currentTarget as HTMLElement
-                                        el.style.background = 'white'
-                                        el.style.borderColor = '#e5e7eb'
-                                      }
-                                    }}
-                                    onClick={() => {
-                                      if (training.url) {
-                                        window.open(training.url, '_blank')
-                                      }
-                                    }}
-                                  >
-                                    <span>{training.title}</span>
-                                    {training.duration && (
-                                      <span style={{
-                                        fontSize: '12px',
-                                        color: '#9ca3af',
-                                        marginLeft: '16px',
-                                        whiteSpace: 'nowrap',
-                                      }}>
-                                        {training.duration}
-                                      </span>
-                                    )}
-                                    {training.url && (
-                                      <span style={{
-                                        fontSize: '14px',
-                                        color: '#3730A3',
-                                        marginLeft: '16px',
-                                        fontWeight: 600,
-                                      }}>
-                                        ↗
-                                      </span>
+                                  <li key={idx} style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                                    {training.url ? (
+                                      <a
+                                        href={training.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        style={{
+                                          display: 'flex',
+                                          alignItems: 'center',
+                                          justifyContent: 'space-between',
+                                          padding: '12px 14px',
+                                          background: 'white',
+                                          border: '1px solid #e5e7eb',
+                                          borderRadius: '6px',
+                                          marginBottom: '8px',
+                                          fontSize: '14px',
+                                          color: '#1f2937',
+                                          textDecoration: 'none',
+                                          transition: 'all 0.2s',
+                                          cursor: 'pointer',
+                                        }}
+                                        onMouseEnter={(e) => {
+                                          const el = e.currentTarget as HTMLElement
+                                          el.style.background = '#f3f4f6'
+                                          el.style.borderColor = '#3730A3'
+                                          el.style.color = '#3730A3'
+                                        }}
+                                        onMouseLeave={(e) => {
+                                          const el = e.currentTarget as HTMLElement
+                                          el.style.background = 'white'
+                                          el.style.borderColor = '#e5e7eb'
+                                          el.style.color = '#1f2937'
+                                        }}
+                                      >
+                                        <span>{training.title}</span>
+                                        <span style={{
+                                          fontSize: '14px',
+                                          color: '#3730A3',
+                                          marginLeft: '16px',
+                                          fontWeight: 600,
+                                          whiteSpace: 'nowrap',
+                                        }}>
+                                          ↗
+                                        </span>
+                                      </a>
+                                    ) : (
+                                      <div
+                                        style={{
+                                          display: 'flex',
+                                          alignItems: 'center',
+                                          justifyContent: 'space-between',
+                                          padding: '12px 14px',
+                                          background: 'white',
+                                          border: '1px solid #e5e7eb',
+                                          borderRadius: '6px',
+                                          marginBottom: '8px',
+                                          fontSize: '14px',
+                                          color: '#1f2937',
+                                        }}
+                                      >
+                                        <span>{training.title}</span>
+                                      </div>
                                     )}
                                   </li>
                                 ))}
