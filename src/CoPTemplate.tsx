@@ -289,9 +289,36 @@ function TAbout({ data }: { data: CoPPageData }) {
 // ── Certification Pathway ────────────────────────────────────────
 function TCertification({ data }: { data: CoPPageData }) {
   const [open, setOpen] = useState(true)
+  const [expandedLevels, setExpandedLevels] = useState<Set<string>>(new Set(['Trained']))
   const stages   = data.certStages ?? []
   const spotlight = data.spotlight
+  const trainings = data.trainings ?? []
   const stageIcons = ['🎓', '💻', '🏆']
+
+  const toggleLevel = (title: string) => {
+    const newSet = new Set(expandedLevels)
+    if (newSet.has(title)) {
+      newSet.delete(title)
+    } else {
+      newSet.add(title)
+    }
+    setExpandedLevels(newSet)
+  }
+
+  const getTrainingsForLevel = (title: string) => {
+    const levelMap: Record<string, string> = { 'Trained': 'Foundational', 'Intermediate': 'Intermediate', 'Certified': 'Expert' }
+    const levelKey = levelMap[title]
+    return trainings.filter(t => t.level === levelKey)
+  }
+
+  const groupTrainingsByPlatform = (levelTrainings: typeof trainings) => {
+    const grouped: Record<string, typeof trainings> = {}
+    levelTrainings.forEach(t => {
+      if (!grouped[t.platform]) grouped[t.platform] = []
+      grouped[t.platform].push(t)
+    })
+    return grouped
+  }
 
   return (
     <section id="pathway" className="section pathway-section">
@@ -334,74 +361,193 @@ function TCertification({ data }: { data: CoPPageData }) {
               </div>
             )}
 
-            <div className="pathway-pipeline">
-              {stages.map((stage, i) => (
-                <div key={i} className="pipeline-row">
-                  <div className="pathway-card" style={{ borderColor: stage.border, background: stage.bg }}>
-                    <div className="pathway-card-header">
-                      <div className="pathway-stage-num" style={{ background: stage.color }}>
-                        Stage {stage.num}
+            {trainings.length > 0 ? (
+              <div style={{ marginTop: '40px' }}>
+                <div className="section-label" style={{ marginBottom: '24px' }}>Training Curriculum</div>
+                <div style={{ display: 'grid', gap: '16px' }}>
+                  {stages.map((stage, i) => {
+                    const levelTrainings = getTrainingsForLevel(stage.title)
+                    const isExpanded = expandedLevels.has(stage.title)
+                    const groupedByPlatform = groupTrainingsByPlatform(levelTrainings)
+
+                    return (
+                      <div
+                        key={i}
+                        style={{
+                          border: `1.5px solid ${stage.border}`,
+                          borderRadius: '12px',
+                          background: stage.bg,
+                          overflow: 'hidden',
+                        }}
+                      >
+                        <button
+                          onClick={() => toggleLevel(stage.title)}
+                          style={{
+                            width: '100%',
+                            padding: '20px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            background: 'transparent',
+                            border: 'none',
+                            cursor: 'pointer',
+                            textAlign: 'left',
+                          }}
+                        >
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flex: 1 }}>
+                            <span style={{ fontSize: '24px' }}>{stageIcons[i] ?? '⭐'}</span>
+                            <div style={{ flex: 1 }}>
+                              <h3 style={{ color: stage.color, margin: '0 0 4px 0', fontSize: '18px', fontWeight: 600 }}>
+                                {stage.title}
+                              </h3>
+                              <p style={{ color: stage.color, margin: 0, fontSize: '14px', opacity: 0.8 }}>
+                                {stage.subtitle}
+                              </p>
+                            </div>
+                          </div>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                            <div
+                              style={{
+                                background: stage.color,
+                                color: 'white',
+                                padding: '6px 12px',
+                                borderRadius: '20px',
+                                fontSize: '13px',
+                                fontWeight: 600,
+                                whiteSpace: 'nowrap',
+                              }}
+                            >
+                              {levelTrainings.length} trainings
+                            </div>
+                            <span style={{ fontSize: '20px', color: stage.color, transition: 'transform 0.3s' }}>
+                              {isExpanded ? '−' : '+'}
+                            </span>
+                          </div>
+                        </button>
+
+                        {isExpanded && (
+                          <div style={{ padding: '0 20px 20px 20px', borderTop: `1px solid ${stage.border}` }}>
+                            <div style={{ display: 'grid', gap: '16px', marginTop: '16px' }}>
+                              {Object.entries(groupedByPlatform).map(([platform, platformTrainings]) => (
+                                <div key={platform}>
+                                  <h4
+                                    style={{
+                                      color: stage.color,
+                                      fontSize: '13px',
+                                      fontWeight: 700,
+                                      textTransform: 'uppercase',
+                                      letterSpacing: '0.08em',
+                                      margin: '0 0 12px 0',
+                                    }}
+                                  >
+                                    {platform}
+                                  </h4>
+                                  <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>
+                                    {platformTrainings.map((training, idx) => (
+                                      <li
+                                        key={idx}
+                                        style={{
+                                          padding: '10px 12px',
+                                          background: 'rgba(255, 255, 255, 0.5)',
+                                          borderRadius: '6px',
+                                          marginBottom: '8px',
+                                          fontSize: '14px',
+                                          color: '#1f2937',
+                                          display: 'flex',
+                                          alignItems: 'center',
+                                          gap: '10px',
+                                        }}
+                                      >
+                                        <span style={{ color: stage.color, fontWeight: 600 }}>▪</span>
+                                        {training.title}
+                                        {training.duration && (
+                                          <span style={{ fontSize: '12px', color: '#6b7280', marginLeft: 'auto', whiteSpace: 'nowrap' }}>
+                                            {training.duration}
+                                          </span>
+                                        )}
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
                       </div>
-                      <span className="pathway-icon">{stageIcons[i] ?? '⭐'}</span>
-                    </div>
-                    <h3 style={{ color: stage.color }}>{stage.title}</h3>
-                    <p className="pathway-subtitle">{stage.subtitle}</p>
-                    <div className="pathway-count" style={{ color: stage.color }}>
-                      {stage.count}<span>members</span>
-                    </div>
-                    {!stage.hideProgress && (
-                      <>
-                        <div className="pathway-bar-wrap">
-                          <div
-                            className="pathway-bar-fill"
-                            style={{
-                              width: `${Math.round((stage.count / stage.totalCohort) * 100)}%`,
-                              background: stage.color,
-                            }}
-                          />
+                    )
+                  })}
+                </div>
+              </div>
+            ) : (
+              <div className="pathway-pipeline">
+                {stages.map((stage, i) => (
+                  <div key={i} className="pipeline-row">
+                    <div className="pathway-card" style={{ borderColor: stage.border, background: stage.bg }}>
+                      <div className="pathway-card-header">
+                        <div className="pathway-stage-num" style={{ background: stage.color }}>
+                          Stage {stage.num}
                         </div>
-                        <div className="pathway-bar-label" style={{ color: stage.color }}>
-                          {Math.round((stage.count / stage.totalCohort) * 100)}% of total cohort
-                        </div>
-                      </>
-                    )}
-                    <p className="pathway-desc">{stage.desc}</p>
-                    {stage.detail && (
-                      <p className="pathway-detail" style={{ color: stage.color, borderColor: stage.border }}>
-                        {stage.detail}
-                      </p>
-                    )}
-                    {stage.links && stage.links.length > 0 && (
-                      <div className="pathway-links">
-                        {stage.links.map((lnk, li) => (
-                          <a
-                            key={li}
-                            href={lnk.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="pathway-link-btn"
-                            style={{ color: stage.color, borderColor: stage.border }}
-                          >
-                            {lnk.label}
-                          </a>
-                        ))}
+                        <span className="pathway-icon">{stageIcons[i] ?? '⭐'}</span>
                       </div>
-                    )}
-                    {stage.progressRate && (
-                      <div className="pathway-rate" style={{ color: stage.color, borderColor: stage.border }}>
-                        ↑ {stage.progressRate}
+                      <h3 style={{ color: stage.color }}>{stage.title}</h3>
+                      <p className="pathway-subtitle">{stage.subtitle}</p>
+                      <div className="pathway-count" style={{ color: stage.color }}>
+                        {stage.count}<span>members</span>
+                      </div>
+                      {!stage.hideProgress && (
+                        <>
+                          <div className="pathway-bar-wrap">
+                            <div
+                              className="pathway-bar-fill"
+                              style={{
+                                width: `${Math.round((stage.count / stage.totalCohort) * 100)}%`,
+                                background: stage.color,
+                              }}
+                            />
+                          </div>
+                          <div className="pathway-bar-label" style={{ color: stage.color }}>
+                            {Math.round((stage.count / stage.totalCohort) * 100)}% of total cohort
+                          </div>
+                        </>
+                      )}
+                      <p className="pathway-desc">{stage.desc}</p>
+                      {stage.detail && (
+                        <p className="pathway-detail" style={{ color: stage.color, borderColor: stage.border }}>
+                          {stage.detail}
+                        </p>
+                      )}
+                      {stage.links && stage.links.length > 0 && (
+                        <div className="pathway-links">
+                          {stage.links.map((lnk, li) => (
+                            <a
+                              key={li}
+                              href={lnk.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="pathway-link-btn"
+                              style={{ color: stage.color, borderColor: stage.border }}
+                            >
+                              {lnk.label}
+                            </a>
+                          ))}
+                        </div>
+                      )}
+                      {stage.progressRate && (
+                        <div className="pathway-rate" style={{ color: stage.color, borderColor: stage.border }}>
+                          ↑ {stage.progressRate}
+                        </div>
+                      )}
+                    </div>
+                    {i < stages.length - 1 && (
+                      <div className="pipeline-connector">
+                        <div className="connector-line" />
+                        <div className="connector-arrow">›</div>
                       </div>
                     )}
                   </div>
-                  {i < stages.length - 1 && (
-                    <div className="pipeline-connector">
-                      <div className="connector-line" />
-                      <div className="connector-arrow">›</div>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
 
             {spotlight && (
               <div className="ccna-spotlight">

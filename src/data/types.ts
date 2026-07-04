@@ -68,6 +68,14 @@ export interface CertStage {
   links?: { label: string; url: string }[]
 }
 
+export interface CoPTraining {
+  platform: string        // e.g. 'Oracle', 'MS SQL'
+  level: string           // e.g. 'Foundational', 'Intermediate', 'Expert'
+  title: string
+  duration?: string       // e.g. '45 mins'
+  url?: string
+}
+
 export interface SkillFlavor {
   name: string
   color?: string
@@ -96,6 +104,7 @@ export interface CoPPageData {
   // Optional sections — rendered only when data is present
   certStages?: CertStage[]
   skillFlavors?: SkillFlavor[]
+  trainings?: CoPTraining[]
   spotlight?: { title: string; desc: string; names: string[] }
   events?: CoPEvent[]
   resources?: CoPResourceStream[]
