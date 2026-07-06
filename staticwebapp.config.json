@@ -10,11 +10,6 @@
   },
   "trailingSlash": "auto",
   "responseOverrides": {
-    "default": {
-      "headers": {
-        "Cache-Control": "no-cache, no-store, must-revalidate, max-age=0"
-      }
-    },
     "404": {
       "rewrite": "/index.html",
       "statusCode": 200
