@@ -1,13 +1,15 @@
-name: Azure Static Web Apps CI/CD
+name: Azure Static Web Apps CI/CD (DISABLED - use icy-beach instead)
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    types: [opened, synchronize, reopened, closed]
-    branches:
-      - main
+  # DISABLED: Use icy-beach-0cd68d000.yml instead
+  # push:
+  #   branches:
+  #     - main
+  # pull_request:
+  #   types: [opened, synchronize, reopened, closed]
+  #   branches:
+  #     - main
+  workflow_dispatch: # Only manual trigger
 
 jobs:
   build_and_deploy_job:
