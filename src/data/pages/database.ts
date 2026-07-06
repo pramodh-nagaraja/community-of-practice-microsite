@@ -2,6 +2,7 @@
 //  Database CoP — data file
 //  Auto-generated from content/database/*.csv via `npm run sync`.
 //  To update: edit the CSV files and re-run `npm run sync`.
+//  Last updated: 2026-07-06 (cache bust)
 // ═══════════════════════════════════════════════════════════════
 import type { CoPPageData } from '../types'
 
