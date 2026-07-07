@@ -1,4 +1,4 @@
 day,month,title,desc,type,time,accentColor
-TBC,Jun 2026,Database Performance Tuning,Hands-on session on query optimisation, indexing strategies, and execution plan analysis for QBE databases.,Workshop,TBC,#4338ca
-TBC,Jul 2026,Cloud Database Migration Patterns,Overview of database migration approaches for Oracle and MSSQL to cloud-native platforms.,Knowledge Share,TBC,#4338ca
-24,Jul 2026,Performance Tuning and Index Issues,Advanced session on performance optimization techniques and index design strategies for database platforms.,Session,TBC,#4338ca
+TBC,Jun 2026,Database Performance Tuning,"Hands-on session on query optimisation, indexing strategies, and execution plan analysis for QBE databases.",Workshop,TBC,#4338ca
+TBC,Jul 2026,Cloud Database Migration Patterns,"Overview of database migration approaches for Oracle and MSSQL to cloud-native platforms.",Knowledge Share,TBC,#4338ca
+24,Jul 2026,Performance Tuning and Index Issues,"Advanced session on performance optimization techniques and index design strategies for database platforms.",Session,TBC,#4338ca
