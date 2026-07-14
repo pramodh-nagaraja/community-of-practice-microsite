@@ -352,10 +352,13 @@ function syncGenericCoP(id, dir) {
     linksByStage[stageNum].push({ label: l.label, url: l.url })
   })
 
-  // Build certification stage lines with optional links
-  const buildCertStage = (num, title, subtitle, count, color, bg, border, desc) => {
+  // Build certification stage lines with optional links and detail
+  const buildCertStage = (num, title, subtitle, count, color, bg, border, desc, trainingCount) => {
     const stageLinks = linksByStage[String(num)]
     let line = `    { num: ${num}, title: ${s(title)}, subtitle: ${s(subtitle)}, count: ${count}, totalCohort: ${totalCohort}, color: ${s(color)}, bg: ${s(bg)}, border: ${s(border)}, desc: ${s(desc)}`
+    if (trainingCount > 0) {
+      line += `, detail: ${s(trainingCount + ' trainings')}`
+    }
     if (stageLinks && stageLinks.length > 0) {
       const linksStr = stageLinks.map(l => `{ label: ${s(l.label)}, url: ${s(l.url)} }`).join(', ')
       line += `, links: [${linksStr}]`
@@ -365,9 +368,9 @@ function syncGenericCoP(id, dir) {
   }
 
   const certStageLines = [
-    buildCertStage(1, 'Trained', 'Foundation training completed', stageCounts.Trained, '#16a34a', '#dcfce7', '#86efac', trainingCounts.Trained > 0 ? `${trainingCounts.Trained} foundational trainings · Build core ${copName} skills` : 'Members who have completed foundational ' + copName + ' training.'),
-    buildCertStage(2, 'Intermediate', 'Intermediate certification in progress', stageCounts.Intermediate, '#2563eb', '#dbeafe', '#93c5fd', trainingCounts.Intermediate > 0 ? `${trainingCounts.Intermediate} intermediate trainings · Deepen platform expertise` : 'Members pursuing intermediate ' + copName + ' certification.'),
-    buildCertStage(3, 'Certified', 'Full certification achieved', stageCounts.Certified, '#A100FF', '#F5E6FF', '#d8b4fe', trainingCounts.Certified > 0 ? `${trainingCounts.Certified} expert trainings · Master advanced concepts` : 'Members holding full ' + copName + ' certification — domain champions.'),
+    buildCertStage(1, 'Trained', 'Foundation training completed', stageCounts.Trained, '#16a34a', '#dcfce7', '#86efac', trainingCounts.Trained > 0 ? `${trainingCounts.Trained} foundational trainings · Build core ${copName} skills` : 'Members who have completed foundational ' + copName + ' training.', trainingCounts.Trained),
+    buildCertStage(2, 'Intermediate', 'Intermediate certification in progress', stageCounts.Intermediate, '#2563eb', '#dbeafe', '#93c5fd', trainingCounts.Intermediate > 0 ? `${trainingCounts.Intermediate} intermediate trainings · Deepen platform expertise` : 'Members pursuing intermediate ' + copName + ' certification.', trainingCounts.Intermediate),
+    buildCertStage(3, 'Certified', 'Full certification achieved', stageCounts.Certified, '#A100FF', '#F5E6FF', '#d8b4fe', trainingCounts.Certified > 0 ? `${trainingCounts.Certified} expert trainings · Master advanced concepts` : 'Members holding full ' + copName + ' certification — domain champions.', trainingCounts.Certified),
   ]
   sections.push(`  certStages: [\n${certStageLines.join('\n')}\n  ],`)
 

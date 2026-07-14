@@ -332,6 +332,7 @@ function CPPathway({ stages, spotlight, flavors }: { stages: CertStage[]; spotli
                     <p className="cp-pathway-subtitle">{s.subtitle}</p>
                     <div className="cp-pathway-count" style={{ color: s.color }}>
                       {s.count}<span> members</span>
+                      {s.detail && <><span style={{ marginLeft: '1.5rem' }}>{s.detail}</span></>}
                     </div>
                     <div className="cp-pathway-bar-wrap">
                       <div className="cp-pathway-bar-fill"
