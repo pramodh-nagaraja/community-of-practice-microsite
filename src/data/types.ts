@@ -64,6 +64,7 @@ export interface CertStage {
   desc: string
   progressRate?: string
   detail?: string
+  trainings?: number
   hideProgress?: boolean
   links?: { label: string; url: string }[]
 }

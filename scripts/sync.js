@@ -357,7 +357,9 @@ function syncGenericCoP(id, dir) {
     const stageLinks = linksByStage[String(num)]
     let line = `    { num: ${num}, title: ${s(title)}, subtitle: ${s(subtitle)}, count: ${count}, totalCohort: ${totalCohort}, color: ${s(color)}, bg: ${s(bg)}, border: ${s(border)}, desc: ${s(desc)}`
     if (trainingCount > 0) {
-      line += `, detail: ${s(trainingCount + ' trainings')}`
+      line += `, detail: ${s(trainingCount + ' trainings')}, trainings: ${trainingCount}`
+    } else {
+      line += `, trainings: 0`
     }
     if (stageLinks && stageLinks.length > 0) {
       const linksStr = stageLinks.map(l => `{ label: ${s(l.label)}, url: ${s(l.url)} }`).join(', ')
