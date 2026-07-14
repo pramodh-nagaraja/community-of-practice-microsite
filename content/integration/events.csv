@@ -1,3 +1,5 @@
 day,month,title,desc,type,time,accentColor
-TBC,Jun 2026,API Design & Integration Patterns,Deep dive into API-led connectivity and enterprise integration patterns applied to QBE systems.,Knowledge Share,TBC,#0d9488
-TBC,Jul 2026,Integration Certification Prep,Session on MuleSoft and Azure Integration certification pathways and hands-on practice.,Workshop,TBC,#0d9488
+04,Apr 2025,Introduction to Azure API Marketplace,"Learn about Digital APIs Market Place. Know their purpose and usage, APIs management platform, Secure APIs via Gateway, RBACs in APIs, and how to subscribe and use.",Workshop,TBC,#0d9488
+09,Dec 2025,API Management (APIM),"Azure API Management (APIM) - Introduction to APIM, Core Components, APIM Best Practices, Monitoring & Analytics, Challenges, and Estimation Assumptions.",Workshop,TBC,#0d9488
+02,Mar 2026,Enterprise Integration & MuleSoft Agentic AI,"Integrate. Innovate. Modernize — Powering the Enterprise Integration Landscape. Enterprise Integration Technology Landscape, MuleSoft & Agentic AI Next-Gen Integration, Integration Modernization, MuleSoft Deployment Models, and API Management & Governance.",Workshop,TBC,#0d9488
+09,Jun 2026,Securing Enterprise Integrations,"Driving Secure, Scalable & Governed Integration Ecosystems. Firewall Security, Access Management, Cyber Security, Outbound Traffic Controls, and Internal Traffic Security.",Workshop,TBC,#0d9488
