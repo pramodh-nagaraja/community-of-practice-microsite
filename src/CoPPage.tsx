@@ -342,6 +342,11 @@ function CPPathway({ stages, spotlight, flavors }: { stages: CertStage[]; spotli
                       {Math.round((s.count / s.totalCohort) * 100)}% of total cohort
                     </div>
                     <p className="cp-pathway-desc">{s.desc}</p>
+                    {s.trainings !== undefined && s.trainings > 0 && (
+                      <div style={{ padding: '8px 12px', background: s.bg, border: `2px solid ${s.color}`, borderRadius: '6px', color: s.color, fontWeight: 600, fontSize: '14px', marginBottom: '12px' }}>
+                        {s.trainings} trainings
+                      </div>
+                    )}
                     {s.progressRate && (
                       <div className="cp-pathway-rate" style={{ color: s.color, borderColor: s.border }}>
                         ↑ {s.progressRate}
