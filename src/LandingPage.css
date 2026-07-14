@@ -313,38 +313,76 @@
    VISION & MISSION  (compact)
    ══════════════════════════════════════════════════════ */
 .lp-vm {
-  background: #fff;
+  background: linear-gradient(135deg, #f8fafc 0%, #f5f3ff 100%);
   border-top: 1px solid #E2E8F0;
   border-bottom: 1px solid #E2E8F0;
-  padding: 60px 40px;
+  padding: 80px 40px;
 }
 .lp-vm-inner {
-  max-width: 1100px; margin: 0 auto;
-  display: grid; grid-template-columns: 1fr auto 1fr;
-  gap: 0 52px; align-items: start;
+  max-width: 1200px; margin: 0 auto;
 }
-.lp-vm-sep {
-  width: 1px; align-self: stretch; min-height: 200px;
-  background: linear-gradient(to bottom, transparent, #ddd6fe 20%, #7C3AED 50%, #ddd6fe 80%, transparent);
+.lp-vm-pillars {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  align-items: stretch;
 }
-.lp-vm-col { display: flex; flex-direction: column; gap: 16px; }
-.lp-vm-label {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.16em;
-  padding: 4px 12px; border-radius: 100px; width: fit-content;
+.lp-vm-pillar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 32px;
+  background: white;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.lp-vm-label::before { content: ''; width: 6px; height: 6px; border-radius: 50%; }
-.lp-vm-vision  { background: #f5e6ff; color: #6D28D9; border: 1px solid #d8b4fe; }
-.lp-vm-vision::before { background: #7C3AED; }
-.lp-vm-mission { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
-.lp-vm-mission::before { background: #2563eb; }
-.lp-vm-quote {
-  font-size: clamp(1.05rem, 1.8vw, 1.3rem); font-weight: 700; font-style: italic;
-  color: #0f172a; line-height: 1.45; margin: 0;
-  padding-left: 16px; border-left: 3px solid #7C3AED; letter-spacing: -0.01em;
+.lp-vm-pillar:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  border-color: #d8b4fe;
 }
-.lp-vm-col:nth-child(3) .lp-vm-quote { border-left-color: #2563eb; }
-.lp-vm-body { font-size: 13.5px; color: #475569; line-height: 1.8; margin: 0; }
+.lp-vm-pillar-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lp-vm-pillar-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.lp-vm-pillar-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.lp-vm-pillar-title {
+  font-size: clamp(1.1rem, 3vw, 1.3rem);
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #7C3AED 0%, #2563eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.lp-vm-pillar-subtitle {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0;
+  font-weight: 500;
+}
 
 /* ══════════════════════════════════════════════════════
    PROGRAM ETHOS  (tabbed: Values | Pillars)
@@ -713,9 +751,10 @@
   .lp-header-inner  { padding: 0 24px; }
   .lp-header-tagline { display: none; }
   .lp-hero          { padding: 72px 24px 90px; }
-  .lp-vm            { padding: 48px 24px; }
-  .lp-vm-inner      { grid-template-columns: 1fr; gap: 36px 0; }
-  .lp-vm-sep        { display: none; }
+  .lp-vm            { padding: 60px 24px; }
+  .lp-vm-inner      { padding: 0; }
+  .lp-vm-pillars    { grid-template-columns: 1fr; gap: 28px; }
+  .lp-vm-pillar     { padding: 24px; gap: 20px; }
   .lp-ethos         { padding: 48px 24px 56px; }
   .lp-ethos-grid    { grid-template-columns: repeat(2, 1fr); }
   .lp-communities   { padding: 60px 24px 80px; }

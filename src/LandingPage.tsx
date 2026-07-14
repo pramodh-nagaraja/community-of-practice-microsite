@@ -275,27 +275,40 @@ function HeroTopology() {
 
 function VisionMission() {
   const { ref, on } = useReveal()
+
+  const pillars = [
+    {
+      title: 'DELIVER CONSISTENTLY',
+      subtitle: 'Standardise how we work across every region so quality and consistency are a given, not a variable.',
+      image: `${import.meta.env.BASE_URL}deliver-consistently.png`,
+    },
+    {
+      title: 'INNOVATE MEANINGFULLY',
+      subtitle: 'Drive innovation through AI and automation that generates real efficiencies.',
+      image: `${import.meta.env.BASE_URL}innovate-meaningfully.png`,
+    },
+    {
+      title: 'UPSKILL RELENTLESSLY',
+      subtitle: 'Grow our talent through certifications, knowledge sessions, and cross-skilling.',
+      image: `${import.meta.env.BASE_URL}upskill-relentlessly.png`,
+    },
+  ]
+
   return (
     <section ref={ref} className={`lp-vm${on ? ' lp-revealed' : ''}`}>
       <div className="lp-vm-inner">
-        <div className="lp-vm-col">
-          <span className="lp-vm-label lp-vm-vision">Vision</span>
-          <blockquote className="lp-vm-quote">
-            "Engineering a smarter, more resilient insurance technology platform — together."
-          </blockquote>
-          <p className="lp-vm-body">
-            To be the definitive internal community where infrastructure, application, and automation professionals collaborate, innovate, and continuously raise the bar. We envision a future where our systems are robust and secure, our delivery is disciplined, and intelligent automation is thoughtfully embedded — not as an end in itself, but as a tool that amplifies what our people can achieve for the client.
-          </p>
-        </div>
-        <div className="lp-vm-sep" aria-hidden="true" />
-        <div className="lp-vm-col">
-          <span className="lp-vm-label lp-vm-mission">Mission</span>
-          <blockquote className="lp-vm-quote">
-            "Connect, grow, automate thoughtfully, and deliver with purpose."
-          </blockquote>
-          <p className="lp-vm-body">
-            Our mission is to unite infrastructure, application, and automation engineers across the account to share knowledge, co-create solutions, and continuously improve how we build and operate. We embrace AI and automation as practical enablers — helping us reduce toil, improve reliability, and free our people to focus on higher-value work. Above all, we invest in the craft, curiosity, and growth of every member — so that together we deliver measurable, lasting value to our insurance client.
-          </p>
+        <div className="lp-vm-pillars">
+          {pillars.map((pillar, i) => (
+            <div key={i} className="lp-vm-pillar">
+              <div className="lp-vm-pillar-image">
+                <img src={pillar.image} alt={pillar.title} loading="lazy" />
+              </div>
+              <div className="lp-vm-pillar-content">
+                <h3 className="lp-vm-pillar-title">{pillar.title}</h3>
+                <p className="lp-vm-pillar-subtitle">{pillar.subtitle}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
