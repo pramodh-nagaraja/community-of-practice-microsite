@@ -370,9 +370,9 @@ function syncGenericCoP(id, dir) {
   }
 
   const certStageLines = [
-    buildCertStage(1, 'Trained', 'Foundation training completed', stageCounts.Trained, '#16a34a', '#dcfce7', '#86efac', trainingCounts.Trained > 0 ? `${trainingCounts.Trained} foundational trainings · Build core ${copName} skills` : 'Members who have completed foundational ' + copName + ' training.', trainingCounts.Trained),
-    buildCertStage(2, 'Intermediate', 'Intermediate certification in progress', stageCounts.Intermediate, '#2563eb', '#dbeafe', '#93c5fd', trainingCounts.Intermediate > 0 ? `${trainingCounts.Intermediate} intermediate trainings · Deepen platform expertise` : 'Members pursuing intermediate ' + copName + ' certification.', trainingCounts.Intermediate),
-    buildCertStage(3, 'Certified', 'Full certification achieved', stageCounts.Certified, '#A100FF', '#F5E6FF', '#d8b4fe', trainingCounts.Certified > 0 ? `${trainingCounts.Certified} expert trainings · Master advanced concepts` : 'Members holding full ' + copName + ' certification — domain champions.', trainingCounts.Certified),
+    buildCertStage(1, 'Trained', 'Foundation training completed', stageCounts.Trained, '#16a34a', '#dcfce7', '#86efac', 'Members who have completed foundational ' + copName + ' training.', trainingCounts.Trained),
+    buildCertStage(2, 'Intermediate', 'Intermediate certification in progress', stageCounts.Intermediate, '#2563eb', '#dbeafe', '#93c5fd', 'Members pursuing intermediate ' + copName + ' certification.', trainingCounts.Intermediate),
+    buildCertStage(3, 'Certified', 'Full certification achieved', stageCounts.Certified, '#A100FF', '#F5E6FF', '#d8b4fe', 'Members holding full ' + copName + ' certification — domain champions.', trainingCounts.Certified),
   ]
   sections.push(`  certStages: [\n${certStageLines.join('\n')}\n  ],`)
 
