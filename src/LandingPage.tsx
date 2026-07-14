@@ -280,17 +280,17 @@ function VisionMission() {
     {
       title: 'DELIVER CONSISTENTLY',
       subtitle: 'Standardise how we work across every region so quality and consistency are a given, not a variable.',
-      image: `${import.meta.env.BASE_URL}Deliver Consistently.png`,
+      image: `${import.meta.env.BASE_URL}deliver-consistently.png`,
     },
     {
       title: 'INNOVATE MEANINGFULLY',
       subtitle: 'Drive innovation through AI and automation that generates real efficiencies.',
-      image: `${import.meta.env.BASE_URL}Innovate meaningfully.png`,
+      image: `${import.meta.env.BASE_URL}innovate-meaningfully.png`,
     },
     {
       title: 'UPSKILL RELENTLESSLY',
       subtitle: 'Grow our talent through certifications, knowledge sessions, and cross-skilling.',
-      image: `${import.meta.env.BASE_URL}Upskill relentlessly.png`,
+      image: `${import.meta.env.BASE_URL}upskill-relentlessly.png`,
     },
   ]
 
