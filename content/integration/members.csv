@@ -1,16 +1,17 @@
-name,initials,level
-Name 1,N1,Foundation
-Name 2,N2,Foundation
-Name 3,N3,Foundation
-Name 4,N4,Foundation
-Name 5,N5,Foundation
-Name 6,N6,Foundation
-Name 7,N7,Foundation
-Name 8,N8,Foundation
-Name 9,N9,Associate
-Name 10,NA,Associate
-Name 11,NB,Associate
-Name 12,NC,Associate
-Name 13,ND,Associate
-Name 14,NE,Expert
-Name 15,NF,Expert
+name,initials,level,skills
+Anand Paul Kollapu,APK,Foundation,Azure
+Chaitra Garampalli,CG,Associate,Mulesoft|Azure
+Naman Agarwal,NA,Foundation,Azure
+Pooja Neeraganti,PN,Foundation,Azure
+Kamal Kumar Nayak,KKN,Foundation,GitHub Copilot
+Karri Sai Komali,KSK,Expert,Google Cloud|TOSCA|Azure|Tricentis|Mulesoft
+Sivapriya Muthusamy,SM,Associate,Mulesoft|Azure
+Nithya Natarajan,NN,Foundation,IBM
+Anusha Venkatesh,AV,Foundation,Mulesoft
+Hareesh Madhuranthakam,HM,Foundation,Mulesoft
+Mahaalakshumi Manikumar,MM,Foundation,Azure
+Kruthika GV,KG,Foundation,Mulesoft
+Khadar Imran Shaik,KIS,Foundation,Mulesoft
+Paluru Nagasivani,PN2,Foundation,Mulesoft
+Satyanarayana Venkata Nara,SVN,Expert,Mulesoft|Azure|Boomi
+Aisha Mulla,AM,Associate,Boomi|AWS
