@@ -1,4 +1,18 @@
 stage,label,url
-1,View Foundational Curriculum,#/integration
-2,View Intermediate Curriculum,#/integration
-3,View Expert Curriculum,#/integration
+1,AZ-900 Azure Fundamentals,#/integration
+1,SC-900 Security Compliance and Identity Fundamentals,#/integration
+1,AI-900 Azure AI Fundamentals,#/integration
+1,AWS Technical Professional Online,#/integration
+2,AI-102 Azure AI Engineer Associate,#/integration
+2,AZ-204 Azure Developer Associate,#/integration
+2,Mulesoft Certified Developer,#/integration
+2,GitHub Copilot - Microsoft,#/integration
+2,Google Cloud Certified Generative AI Leader,#/integration
+2,Professional Developer,#/integration
+2,TOSCA Automation Specialist Level 1,#/integration
+2,Tricentis Tosca Deep Dive - TDS1,#/integration
+2,Tricentis Tosca Deep Dive - AE1,#/integration
+3,IBM Certified Solution Developer v10,#/integration
+3,Associate Dell Boomi Developer Certification,#/integration
+3,TOSCA Automation Specialist Level 2,#/integration
+3,FULL-STACK AUTOMATION ENGINEER,#/integration
