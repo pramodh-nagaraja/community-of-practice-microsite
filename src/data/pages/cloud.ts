@@ -193,9 +193,9 @@ export const Cloud_DATA: CoPPageData = {
   ],
   joinInterests: ['General', 'AWS', 'Azure', 'GCP', 'FinOps', 'Cloud Architecture', 'Certifications'],
   certStages: [
-    { num: 1, title: 'Trained', subtitle: 'Foundation training completed', count: 8, totalCohort: 15, color: '#16a34a', bg: '#dcfce7', border: '#86efac', desc: 'Members who have completed foundational Cloud training.', links: [{ label: 'AZ 900', url: 'https://accenture.percipio.com/channels/4d4bfec8-2fd0-4fc8-9e22-2d5ff792c0b2' }] },
-    { num: 2, title: 'Intermediate', subtitle: 'Intermediate certification in progress', count: 5, totalCohort: 15, color: '#2563eb', bg: '#dbeafe', border: '#93c5fd', desc: 'Members pursuing intermediate Cloud certification.', links: [{ label: 'AZ 104', url: 'https://accenture.percipio.com/channels/cc1c9d7b-af9a-42b7-a727-d9988fe3c941' }] },
-    { num: 3, title: 'Certified', subtitle: 'Full certification achieved', count: 2, totalCohort: 15, color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe', desc: 'Members holding full Cloud certification — domain champions.' },
+    { num: 1, title: 'Trained', subtitle: 'Foundation training completed', count: 8, totalCohort: 15, color: '#16a34a', bg: '#dcfce7', border: '#86efac', desc: 'Members who have completed foundational Cloud training.', trainings: 0, links: [{ label: 'AZ 900', url: 'https://accenture.percipio.com/channels/4d4bfec8-2fd0-4fc8-9e22-2d5ff792c0b2' }] },
+    { num: 2, title: 'Intermediate', subtitle: 'Intermediate certification in progress', count: 5, totalCohort: 15, color: '#2563eb', bg: '#dbeafe', border: '#93c5fd', desc: 'Members pursuing intermediate Cloud certification.', trainings: 0, links: [{ label: 'AZ 104', url: 'https://accenture.percipio.com/channels/cc1c9d7b-af9a-42b7-a727-d9988fe3c941' }] },
+    { num: 3, title: 'Certified', subtitle: 'Full certification achieved', count: 2, totalCohort: 15, color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe', desc: 'Members holding full Cloud certification — domain champions.', trainings: 0 },
   ],
   spotlight: {
     title: 'Top SME',

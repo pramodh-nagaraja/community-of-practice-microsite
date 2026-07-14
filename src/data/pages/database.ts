@@ -333,9 +333,9 @@ export const Database_DATA: CoPPageData = {
   ],
   joinInterests: ['General', 'Oracle', 'MS SQL', 'DB2', 'MongoDB', 'PostgreSQL', 'Database Migration', 'Performance Tuning', 'Certifications'],
   certStages: [
-    { num: 1, title: 'Trained', subtitle: 'Foundation training completed', count: 3, totalCohort: 27, color: '#16a34a', bg: '#dcfce7', border: '#86efac', desc: 'Members who have completed foundational Database training.' },
-    { num: 2, title: 'Intermediate', subtitle: 'Intermediate certification in progress', count: 10, totalCohort: 27, color: '#2563eb', bg: '#dbeafe', border: '#93c5fd', desc: 'Members pursuing intermediate Database certification.' },
-    { num: 3, title: 'Certified', subtitle: 'Full certification achieved', count: 14, totalCohort: 27, color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe', desc: 'Members holding full Database certification — domain champions.' },
+    { num: 1, title: 'Trained', subtitle: 'Foundation training completed', count: 3, totalCohort: 27, color: '#16a34a', bg: '#dcfce7', border: '#86efac', desc: 'Members who have completed foundational Database training.', trainings: 0 },
+    { num: 2, title: 'Intermediate', subtitle: 'Intermediate certification in progress', count: 10, totalCohort: 27, color: '#2563eb', bg: '#dbeafe', border: '#93c5fd', desc: 'Members pursuing intermediate Database certification.', trainings: 0 },
+    { num: 3, title: 'Certified', subtitle: 'Full certification achieved', count: 14, totalCohort: 27, color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe', desc: 'Members holding full Database certification — domain champions.', trainings: 0 },
   ],
   skillFlavors: [
     {

@@ -193,9 +193,9 @@ export const Microsoft_DATA: CoPPageData = {
   ],
   joinInterests: ['General', 'Azure Cloud', 'M365', 'Power Platform', '.NET Development', 'Certifications'],
   certStages: [
-    { num: 1, title: 'Trained', subtitle: 'Foundation training completed', count: 8, totalCohort: 15, color: '#16a34a', bg: '#dcfce7', border: '#86efac', desc: 'Members who have completed foundational Microsoft training.' },
-    { num: 2, title: 'Intermediate', subtitle: 'Intermediate certification in progress', count: 5, totalCohort: 15, color: '#2563eb', bg: '#dbeafe', border: '#93c5fd', desc: 'Members pursuing intermediate Microsoft certification.' },
-    { num: 3, title: 'Certified', subtitle: 'Full certification achieved', count: 2, totalCohort: 15, color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe', desc: 'Members holding full Microsoft certification — domain champions.' },
+    { num: 1, title: 'Trained', subtitle: 'Foundation training completed', count: 8, totalCohort: 15, color: '#16a34a', bg: '#dcfce7', border: '#86efac', desc: 'Members who have completed foundational Microsoft training.', trainings: 0 },
+    { num: 2, title: 'Intermediate', subtitle: 'Intermediate certification in progress', count: 5, totalCohort: 15, color: '#2563eb', bg: '#dbeafe', border: '#93c5fd', desc: 'Members pursuing intermediate Microsoft certification.', trainings: 0 },
+    { num: 3, title: 'Certified', subtitle: 'Full certification achieved', count: 2, totalCohort: 15, color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe', desc: 'Members holding full Microsoft certification — domain champions.', trainings: 0 },
   ],
   spotlight: {
     title: 'Top SME',
