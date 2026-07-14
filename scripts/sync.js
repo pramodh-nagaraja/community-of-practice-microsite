@@ -307,6 +307,11 @@ function syncGenericCoP(id, dir) {
   })
   const joinEmail = copLead?.email || page.joinEmail || ''
 
+  // Parse contactEmails (pipe-separated)
+  const contactEmailsArray = page.contactEmails
+    ? page.contactEmails.split('|').map(e => s(e.trim())).join(', ')
+    : null
+
   // Optional stat fields — only emit when present in CSV
   const stats = []
   if (page.certCount)    stats.push(`  certCount: ${n(page.certCount)},`)
@@ -401,7 +406,7 @@ ${stats.join('\n')}
 ${leaderLines.join('\n')}
   ],
   joinEmail: ${s(joinEmail)},
-${sections.join('\n')}
+${contactEmailsArray ? `  contactEmails: [${contactEmailsArray}],\n` : ''}${sections.join('\n')}
 }
 `
 

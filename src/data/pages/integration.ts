@@ -65,6 +65,7 @@ export const Integration_DATA: CoPPageData = {
     },
   ],
   joinEmail: 'aisha.m.mulla@accenture.com',
+  contactEmails: ['aisha.m.mulla@accenture.com', 'QBE-Integration-CoP@accenture.com'],
   members: [
     {
       name: 'Anand Paul Kollapu',
