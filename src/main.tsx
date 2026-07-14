@@ -4,6 +4,7 @@ import './index.css'
 import LandingPage   from './LandingPage'
 import App           from './App'
 import CoPTemplate   from './CoPTemplate'
+import CoPPage       from './CoPPage'
 import { COMMUNITIES } from './data/communities'
 import { COP_DATA }    from './data/pages/index'
 
@@ -56,12 +57,19 @@ function Root() {
 
   // Any other active CoP registered in COP_DATA
   if (route && COP_DATA[route]) {
+    // Use CoPPage for data-databricks, CoPTemplate for others
+    if (route === 'data-databricks') {
+      return <CoPPage data={COP_DATA[route]} />
+    }
     return <CoPTemplate data={COP_DATA[route]} />
   }
 
   // Look up by community route for any active CoP
   const cop = COMMUNITIES.find(c => c.route === `#/${route}` && c.status === 'active')
   if (cop && COP_DATA[cop.id]) {
+    if (cop.id === 'data-databricks') {
+      return <CoPPage data={COP_DATA[cop.id]} />
+    }
     return <CoPTemplate data={COP_DATA[cop.id]} />
   }
 
