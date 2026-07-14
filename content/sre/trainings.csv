@@ -1,0 +1,13 @@
+platform,level,title
+SRE,Trained,Linux fundamentals
+SRE,Trained,Git
+SRE,Trained,Bash scripting
+SRE,Trained,Docker basics
+SRE,Trained,Ansible
+SRE,Intermediate,Kubernetes
+SRE,Intermediate,Terraform
+SRE,Intermediate,Jenkins
+SRE,Intermediate,GitHub Actions
+SRE,Certified,Platform Engineering
+SRE,Certified,GitOps
+SRE,Certified,Azure Cloud / AWS Cloud
