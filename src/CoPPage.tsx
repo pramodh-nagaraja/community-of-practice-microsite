@@ -740,8 +740,14 @@ function CPFooter({ data }: { data: CoPPageData }) {
           </div>
           <div className="cp-footer-contact">
             <h4>Contact</h4>
-            {copLead && <p>📧 {copLead.email}</p>}
-            {globalLead && <p>📧 {globalLead.email}</p>}
+            {data.contactEmails && data.contactEmails.length > 0 ? (
+              data.contactEmails.map((email, i) => <p key={i}>📧 {email}</p>)
+            ) : (
+              <>
+                {copLead && <p>📧 {copLead.email}</p>}
+                {globalLead && <p>📧 {globalLead.email}</p>}
+              </>
+            )}
           </div>
         </div>
         <div className="cp-footer-bottom">
