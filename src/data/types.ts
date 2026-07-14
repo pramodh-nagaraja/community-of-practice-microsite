@@ -116,5 +116,6 @@ export interface CoPPageData {
   // Always rendered
   leadership: CoPLeader[]
   joinEmail: string
+  contactEmails?: string[]
   joinInterests?: string[]
 }
