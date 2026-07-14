@@ -244,9 +244,9 @@ export const Integration_DATA: CoPPageData = {
   ],
   joinInterests: ['General', 'API Design', 'ESB / Messaging', 'MuleSoft', 'Azure Integration', 'Certifications'],
   certStages: [
-    { num: 1, title: 'Trained', subtitle: 'Foundation training completed', count: 11, totalCohort: 16, color: '#16a34a', bg: '#dcfce7', border: '#86efac', desc: 'Members who have completed foundational Integration training.' },
-    { num: 2, title: 'Intermediate', subtitle: 'Intermediate certification in progress', count: 3, totalCohort: 16, color: '#2563eb', bg: '#dbeafe', border: '#93c5fd', desc: 'Members pursuing intermediate Integration certification.' },
-    { num: 3, title: 'Certified', subtitle: 'Full certification achieved', count: 2, totalCohort: 16, color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe', desc: 'Members holding full Integration certification — domain champions.' },
+    { num: 1, title: 'Trained', subtitle: 'Foundation training completed', count: 11, totalCohort: 16, color: '#16a34a', bg: '#dcfce7', border: '#86efac', desc: '4 foundational trainings · Build core Integration skills' },
+    { num: 2, title: 'Intermediate', subtitle: 'Intermediate certification in progress', count: 3, totalCohort: 16, color: '#2563eb', bg: '#dbeafe', border: '#93c5fd', desc: '9 intermediate trainings · Deepen platform expertise' },
+    { num: 3, title: 'Certified', subtitle: 'Full certification achieved', count: 2, totalCohort: 16, color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe', desc: '4 expert trainings · Master advanced concepts' },
   ],
   skillFlavors: [
     {

@@ -226,12 +226,13 @@ function syncGenericCoP(id, dir) {
     return false
   }
 
-  const page    = readKV(pagePath)
-  const members = readCSV(path.join(dir, 'members.csv'))
-  const events  = readCSV(path.join(dir, 'events.csv'))
-  const leaders = readCSV(path.join(dir, 'leadership.csv'))
-  const links   = readCSV(path.join(dir, 'links.csv'))
-  const flavors = readCSV(path.join(dir, 'flavors.csv'))
+  const page     = readKV(pagePath)
+  const members  = readCSV(path.join(dir, 'members.csv'))
+  const events   = readCSV(path.join(dir, 'events.csv'))
+  const leaders  = readCSV(path.join(dir, 'leadership.csv'))
+  const links    = readCSV(path.join(dir, 'links.csv'))
+  const flavors  = readCSV(path.join(dir, 'flavors.csv'))
+  const trainings = readCSV(path.join(dir, 'trainings.csv'))
 
   // Deduplicate members by name (case-insensitive, keep first occurrence)
   const seenNames = new Set()
@@ -334,6 +335,15 @@ function syncGenericCoP(id, dir) {
   const totalCohort = uniqueMembers.length || 15
   const copName = page.name || id
 
+  // Count trainings by level
+  const trainingCounts = { Trained: 0, Intermediate: 0, Certified: 0 }
+  trainings.forEach(t => {
+    const level = (t.level || '').toLowerCase()
+    if (level === 'trained') trainingCounts.Trained++
+    else if (level === 'intermediate') trainingCounts.Intermediate++
+    else if (level === 'certified') trainingCounts.Certified++
+  })
+
   // Build links map by stage
   const linksByStage = {}
   links.forEach(l => {
@@ -355,9 +365,9 @@ function syncGenericCoP(id, dir) {
   }
 
   const certStageLines = [
-    buildCertStage(1, 'Trained', 'Foundation training completed', stageCounts.Trained, '#16a34a', '#dcfce7', '#86efac', 'Members who have completed foundational ' + copName + ' training.'),
-    buildCertStage(2, 'Intermediate', 'Intermediate certification in progress', stageCounts.Intermediate, '#2563eb', '#dbeafe', '#93c5fd', 'Members pursuing intermediate ' + copName + ' certification.'),
-    buildCertStage(3, 'Certified', 'Full certification achieved', stageCounts.Certified, '#A100FF', '#F5E6FF', '#d8b4fe', 'Members holding full ' + copName + ' certification — domain champions.'),
+    buildCertStage(1, 'Trained', 'Foundation training completed', stageCounts.Trained, '#16a34a', '#dcfce7', '#86efac', trainingCounts.Trained > 0 ? `${trainingCounts.Trained} foundational trainings · Build core ${copName} skills` : 'Members who have completed foundational ' + copName + ' training.'),
+    buildCertStage(2, 'Intermediate', 'Intermediate certification in progress', stageCounts.Intermediate, '#2563eb', '#dbeafe', '#93c5fd', trainingCounts.Intermediate > 0 ? `${trainingCounts.Intermediate} intermediate trainings · Deepen platform expertise` : 'Members pursuing intermediate ' + copName + ' certification.'),
+    buildCertStage(3, 'Certified', 'Full certification achieved', stageCounts.Certified, '#A100FF', '#F5E6FF', '#d8b4fe', trainingCounts.Certified > 0 ? `${trainingCounts.Certified} expert trainings · Master advanced concepts` : 'Members holding full ' + copName + ' certification — domain champions.'),
   ]
   sections.push(`  certStages: [\n${certStageLines.join('\n')}\n  ],`)
 
