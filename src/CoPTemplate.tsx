@@ -418,11 +418,6 @@ function TCertification({ data }: { data: CoPPageData }) {
                       </>
                     )}
                     <p className="pathway-desc">{stage.desc}</p>
-                    {stage.detail && (
-                      <p className="pathway-detail" style={{ color: stage.color, borderColor: stage.border }}>
-                        {stage.detail}
-                      </p>
-                    )}
                     {stage.links && stage.links.length > 0 && (
                       <div className="pathway-links">
                         {stage.links.map((lnk, li) => (
