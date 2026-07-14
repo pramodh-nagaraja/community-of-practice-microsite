@@ -22,8 +22,8 @@ import { COP_DATA }    from './data/pages/index'
 //    3. Uncomment in src/data/pages/index.ts
 //    4. Set status: 'active' in src/data/communities.ts
 //
-//  Active CoPs: 14 (including N&O, Mainframe)
-//  Latest: Removed AI & GenWizard and Microsoft; enhanced Database with platform filtering
+//  Active CoPs: 15 (including N&O, Mainframe, and Data and Databricks)
+//  Latest: Restored Database to stable version; synced Git and Azure deployments
 // ═══════════════════════════════════════════════════════════════
 
 function Root() {
