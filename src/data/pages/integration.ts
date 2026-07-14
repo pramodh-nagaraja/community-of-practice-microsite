@@ -10,17 +10,17 @@ const BASE = import.meta.env.BASE_URL
 export const Integration_DATA: CoPPageData = {
   id: 'integration',
   name: 'Integration',
-  tagline: 'Connecting systems through API-led architecture and integration patterns at QBE.',
-  description: 'Connecting systems and services through API-led architecture, ESB, and integration patterns.',
+  tagline: 'Enabling seamless, secure, and scalable connectivity across the QBE\'s enterprise integration platform through collaboration, innovation, and engineering excellence.',
+  description: 'Connect • Innovate • Secure • Scale • Together',
   accentColor: '#0F766E',
   icon: `${BASE}Integration.png`,
   memberCount: 16,
   certCount: 2,
   sessionsHeld: 0,
   launchYear: 2026,
-  mission: 'To build deep integration expertise across QBE Account through API design, messaging patterns, and enterprise service bus knowledge sharing.',
-  vision: 'To establish QBE Account as a model of integration excellence where all systems are connected, observable, and resilient.',
-  values: 'API-first thinking, reusability, and a commitment to building integrations that are secure, scalable, and maintainable.',
+  mission: 'Advance the QBE\'s integration platform by promoting best practices, reusable solutions, modern integration capabilities, accelerating adoption of scalable, secure, and future-ready integration solutions.',
+  vision: 'To be the driving force behind a modern, secure, and scalable integration ecosystem that empowers the QBE\'s digital transformation, that enables seamless connectivity, accelerates innovation, and powers business growth.',
+  values: 'Customer First – Deliver integration solutions that create business value. Collaboration – Learn, share, grow and solve challenges together. Innovation – Embrace modern integration technologies and automation. Security & Reliability – Build secure, resilient, and governed integrations. Continuous Improvement – Continuously evolve the platform, skills, and practices. Community – Support, mentor, and inspire one another.',
   leadership: [
     {
       name: 'Madhvan Gopalan',
