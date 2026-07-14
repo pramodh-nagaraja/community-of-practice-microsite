@@ -333,10 +333,6 @@ function TCertification({ data }: { data: CoPPageData }) {
     return trainings.filter(t => t.platform === platform)
   }
 
-  const getTrainingsForLevel = (level: string) => {
-    return trainings.filter(t => t.level === level)
-  }
-
   const groupTrainingsByLevel = (platformTrainings: typeof trainings) => {
     const grouped: Record<string, typeof trainings> = {}
     platformTrainings.forEach(t => {
@@ -376,9 +372,6 @@ function TCertification({ data }: { data: CoPPageData }) {
 
             <div className="pathway-pipeline">
               {stages.map((stage, i) => {
-                const levelMap: Record<string, string> = { 'Trained': 'Foundational', 'Intermediate': 'Intermediate', 'Certified': 'Expert' }
-                const levelKey = levelMap[stage.title]
-                const trainingCount = levelKey ? getTrainingsForLevel(levelKey).length : 0
                 const actualMemberCount = memberCountsByLevel[stage.title as keyof typeof memberCountsByLevel] || 0
                 const totalCohort = members.length
 
@@ -393,13 +386,8 @@ function TCertification({ data }: { data: CoPPageData }) {
                     </div>
                     <h3 style={{ color: stage.color }}>{stage.title}</h3>
                     <p className="pathway-subtitle">{stage.subtitle}</p>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', margin: '16px 0' }}>
-                      <div className="pathway-count" style={{ color: stage.color }}>
-                        {actualMemberCount}<span>members</span>
-                      </div>
-                      <div className="pathway-count" style={{ color: stage.color }}>
-                        {trainingCount}<span>trainings</span>
-                      </div>
+                    <div className="pathway-count" style={{ color: stage.color }}>
+                      {actualMemberCount}<span>members</span>
                     </div>
                     {!stage.hideProgress && (
                       <>
