@@ -672,6 +672,7 @@ function CPJoin({ data }: { data: CoPPageData }) {
   const [role,     setRole]     = useState('')
   const [interest, setInterest] = useState('')
   const [note,     setNote]     = useState('')
+  const [message,  setMessage]  = useState<{ type: 'success' | 'error'; text: string } | null>(null)
 
   const interests = data.joinInterests ?? [
     'General', 'Certifications', 'Knowledge Sharing', 'Events', 'Tools & Automation',
@@ -679,11 +680,43 @@ function CPJoin({ data }: { data: CoPPageData }) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    const subject = encodeURIComponent(`CoP Membership Request — ${name}`)
+    setMessage(null)
+
+    const storageKey = `cop_members_${data.id}`
+    const existingMembers = JSON.parse(localStorage.getItem(storageKey) || '[]')
+
+    const nameLower = name.toLowerCase().trim()
+    if (existingMembers.some((m: any) => (m.name || '').toLowerCase().trim() === nameLower)) {
+      setMessage({ type: 'error', text: 'You have already joined this community!' })
+      setTimeout(() => setMessage(null), 4000)
+      return
+    }
+
+    const initials = name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase()
+    existingMembers.push({
+      name,
+      initials,
+      levelLabel: 'Trained',
+      levelColor: '#16a34a',
+      levelBg: '#dcfce7',
+      levelText: '#065f46',
+    })
+    localStorage.setItem(storageKey, JSON.stringify(existingMembers))
+    window.dispatchEvent(new Event('memberAdded'))
+
+    const subject = encodeURIComponent(`${data.name} CoP Membership Request — ${name}`)
     const body = encodeURIComponent(
-      `New ${data.name} CoP Membership Request\n\nName: ${name}\nEmail: ${email}\nRole: ${role}\nArea of Interest: ${interest}${note ? `\n\nMessage:\n${note}` : ''}`
+      `Hi CoP Lead,\n\n${name} has requested to join the ${data.name} Community of Practice.\n\nDetails:\n- Email: ${email}\n- Role: ${role}\n- Interest: ${interest}${note ? `\n- Message: ${note}` : ''}\n\nPlease reach out to onboard them.\n\nThank you.`
     )
     window.open(`mailto:${data.joinEmail}?subject=${subject}&body=${body}`)
+
+    setMessage({ type: 'success', text: '✓ Added to community! Email to CoP Lead is opening...' })
+    setName('')
+    setEmail('')
+    setRole('')
+    setInterest('')
+    setNote('')
+    setTimeout(() => setMessage(null), 4000)
   }
 
   return (
@@ -705,6 +738,19 @@ function CPJoin({ data }: { data: CoPPageData }) {
           </div>
           <div className="cp-join-form-wrap">
             <h3>Request to Join</h3>
+            {message && (
+              <div style={{
+                padding: '12px 16px',
+                marginBottom: '16px',
+                borderRadius: '8px',
+                fontSize: '14px',
+                backgroundColor: message.type === 'success' ? '#ecfdf5' : '#fef2f2',
+                color: message.type === 'success' ? '#065f46' : '#7f1d1d',
+                border: `1px solid ${message.type === 'success' ? '#86efac' : '#fca5a5'}`,
+              }}>
+                {message.text}
+              </div>
+            )}
             <form onSubmit={handleSubmit} className="cp-join-form">
               <input type="text"  placeholder="Full Name"        required value={name}     onChange={e => setName(e.target.value)} />
               <input type="email" placeholder="Work Email"        required value={email}    onChange={e => setEmail(e.target.value)} />
@@ -715,7 +761,7 @@ function CPJoin({ data }: { data: CoPPageData }) {
               </select>
               <textarea placeholder="Brief introduction (optional)" rows={3} value={note} onChange={e => setNote(e.target.value)} />
               <button type="submit" className="cp-submit-btn">Submit Request ↗</button>
-              <p className="cp-join-hint">Clicking Submit opens your email client pre-filled to the CoP Lead.</p>
+              <p className="cp-join-hint">You'll be added to the members list and an email will open for you to send to the CoP Lead.</p>
             </form>
           </div>
         </div>

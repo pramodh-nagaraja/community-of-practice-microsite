@@ -1110,7 +1110,8 @@ function Join({ template }: { template: Template }) {
       stage: 1,
     }
 
-    if (existingMembers.some((m: any) => m.name === formName)) {
+    const formNameLower = formName.toLowerCase().trim()
+    if (existingMembers.some((m: any) => (m.name || '').toLowerCase().trim() === formNameLower)) {
       setMessage({ type: 'error', text: 'You have already joined this community!' })
       setTimeout(() => setMessage(null), 4000)
       return
@@ -1121,9 +1122,10 @@ function Join({ template }: { template: Template }) {
 
     window.dispatchEvent(new Event('memberAdded'))
 
-    const subject = encodeURIComponent(`CoP Membership Request -- ${formName}`)
+    const copName = template === 'network' ? 'Network and Security' : 'Network and Observability'
+    const subject = encodeURIComponent(`${copName} CoP Membership Request — ${formName}`)
     const body = encodeURIComponent(
-      `New CoP Membership Request\n\nName: ${formName}\nEmail: ${formEmail}\nRole / Title: ${formRole}\nArea of Interest: ${formInterest}${formNote ? `\n\nMessage:\n${formNote}` : ''}`
+      `Hi CoP Lead,\n\n${formName} has requested to join the ${copName} Community of Practice.\n\nDetails:\n- Email: ${formEmail}\n- Role: ${formRole}\n- Interest: ${formInterest}${formNote ? `\n- Message: ${formNote}` : ''}\n\nPlease reach out to onboard them.\n\nThank you.`
     )
     window.open(`mailto:pramodh.nagaraja@accenture.com?subject=${subject}&body=${body}`)
 
