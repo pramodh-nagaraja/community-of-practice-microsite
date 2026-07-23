@@ -342,8 +342,12 @@ export const Cloud_DATA: CoPPageData = {
       bg: '#dbeafe',
       border: '#93c5fd',
       desc: 'Members holding associate-level Azure certifications including AZ-104, AZ-204, or AI-900.',
-      trainings: 0,
-      links: [{ label: 'AZ-104 — Azure Administrator', url: 'https://accenture.percipio.com/channels/cc1c9d7b-af9a-42b7-a727-d9988fe3c941' }],
+      trainings: 2,
+      links: [
+        { label: 'AZ-104 — Azure Administrator', url: 'https://accenture.percipio.com/channels/cc1c9d7b-af9a-42b7-a727-d9988fe3c941' },
+        { label: 'Kubernetes Administrator 2024: Architecture & Components (1.5h)', url: 'https://accenture.percipio.com' },
+        { label: 'Advanced Azure: Containerized Workloads on AKS (1h)', url: 'https://accenture.percipio.com' },
+      ],
     },
     {
       num: 3,
