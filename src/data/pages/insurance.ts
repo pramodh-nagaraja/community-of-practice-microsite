@@ -56,7 +56,7 @@ export const Insurance_DATA: CoPPageData = {
       email: 'mavelyn.r.pascual@accenture.com',
     },
   ],
-  joinEmail: 'allen.m.tuazon@accenture.com',
+  joinEmail: 'mavelyn.r.pascual@accenture.com',
   members: [
     {
       name: 'Name 1',
