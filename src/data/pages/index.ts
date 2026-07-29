@@ -22,6 +22,7 @@ import { Insurance_DATA } from './insurance'
 import { Middleware_DATA } from './middleware'
 import { Sre_DATA } from './sre'
 import { ServiceMgmt_DATA } from './service-mgmt'
+import { AgenticAI_DATA } from './agentic-ai'
 
 // ── Registry — maps CoP id → CoPPageData ────────────────────────
 // NOTE: 'noc' (Network & Security + Observability) uses App.tsx,
@@ -40,4 +41,5 @@ export const COP_DATA: Record<string, CoPPageData> = {
   'middleware': Middleware_DATA,
   'sre': Sre_DATA,
   'service-mgmt': ServiceMgmt_DATA,
+  'agentic-ai': AgenticAI_DATA,
 }
