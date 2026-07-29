@@ -636,24 +636,30 @@ function TEvents({ data }: { data: CoPPageData }) {
         <div className="events-grid">
           {(data.events ?? []).map((ev, i) => (
             <div key={i} className="event-card">
-              <div className="event-date-block" style={{ background: ev.accentColor }}>
+              <div className="event-date-block" style={{ background: ev.completed ? '#6b7280' : ev.accentColor }}>
                 <span className="event-day">{ev.day}</span>
                 <span className="event-month">{ev.month}</span>
               </div>
               <div className="event-details">
-                <div className="event-details-top">
+                <div className="event-details-top" style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                   <span className="event-badge">{ev.type}</span>
+                  {ev.completed && <span className="event-badge" style={{ background: '#d1fae5', color: '#065f46', border: '1px solid #6ee7b7' }}>Completed</span>}
                 </div>
                 <h3>{ev.title}</h3>
                 <p>{ev.desc}</p>
                 <div className="event-meta">
-                  <span>🕐 {ev.time}</span>
-                  <button
-                    className="event-register"
-                    onClick={() => setModal({ title: ev.title, type: ev.type })}
-                  >
-                    Want to attend?
-                  </button>
+                  {!ev.completed && <span>🕐 {ev.time}</span>}
+                  {ev.completed && ev.recordingUrl
+                    ? <a href={ev.recordingUrl} target="_blank" rel="noopener noreferrer" className="event-register" style={{ textDecoration: 'none' }}>▶ Watch Recording</a>
+                    : !ev.completed && (
+                      <button
+                        className="event-register"
+                        onClick={() => setModal({ title: ev.title, type: ev.type })}
+                      >
+                        Want to attend?
+                      </button>
+                    )
+                  }
                 </div>
               </div>
             </div>
