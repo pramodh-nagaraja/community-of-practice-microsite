@@ -202,6 +202,15 @@ export const Insurance_DATA: CoPPageData = {
       completed: true,
       recordingUrl: 'https://mediaexchange.accenture.com/media/t/1_nlz5v951',
     },
+    {
+      day: 'TBD',
+      month: 'Q4 2026',
+      title: 'QBE Insurance CoP | Industry Day - Learning Session',
+      desc: 'Q4 Industry Day learning session deepening insurance knowledge across the QBE Account team.',
+      type: 'Knowledge Share',
+      time: 'TBD',
+      accentColor: '#075985',
+    },
   ],
   joinInterests: ['General', 'P&C Insurance', 'Regulations & Compliance', 'InsurTech', 'Industry Trends', 'Certifications'],
   certStages: [
