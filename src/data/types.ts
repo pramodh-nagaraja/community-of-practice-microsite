@@ -32,6 +32,8 @@ export interface CoPEvent {
   type: string            // e.g. 'Boot Camp', 'Webinar'
   time: string            // e.g. 'All Day · 2 Days'
   accentColor: string     // hex for the date block
+  completed?: boolean
+  recordingUrl?: string
 }
 
 export interface CoPResourceItem {

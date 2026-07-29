@@ -434,16 +434,24 @@ function CPEvents({ events }: { events: CoPEvent[] }) {
         </p>
         <div className="cp-events-grid">
           {events.map((ev, i) => (
-            <div key={i} className="cp-event-card">
-              <div className="cp-event-date" style={{ background: ev.accentColor }}>
+            <div key={i} className={`cp-event-card${ev.completed ? ' cp-event-card--completed' : ''}`}>
+              <div className="cp-event-date" style={{ background: ev.completed ? '#6b7280' : ev.accentColor }}>
                 <span className="cp-event-day">{ev.day}</span>
                 <span className="cp-event-month">{ev.month}</span>
               </div>
               <div className="cp-event-body">
-                <span className="cp-event-badge">{ev.type}</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                  <span className="cp-event-badge">{ev.type}</span>
+                  {ev.completed && <span className="cp-event-badge" style={{ background: '#d1fae5', color: '#065f46', border: '1px solid #6ee7b7' }}>Completed</span>}
+                </div>
                 <h3>{ev.title}</h3>
                 <p>{ev.desc}</p>
-                <div className="cp-event-time">🕐 {ev.time}</div>
+                {!ev.completed && <div className="cp-event-time">🕐 {ev.time}</div>}
+                {ev.completed && ev.recordingUrl && (
+                  <a href={ev.recordingUrl} target="_blank" rel="noopener noreferrer" className="cp-cert-link" style={{ marginTop: '8px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                    ▶ Watch Recording
+                  </a>
+                )}
               </div>
             </div>
           ))}
