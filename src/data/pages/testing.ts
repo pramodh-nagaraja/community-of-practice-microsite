@@ -191,6 +191,7 @@ export const Testing_DATA: CoPPageData = {
       accentColor: '#16a34a',
     },
   ],
+  showLearningJourney: true,
   careerTracks: [
     {
       name: 'Manual Testing',

@@ -115,6 +115,7 @@ export interface CoPPageData {
   values: string
 
   // Optional sections — rendered only when data is present
+  showLearningJourney?: boolean
   careerTracks?: CareerTrack[]
   certStages?: CertStage[]
   skillFlavors?: SkillFlavor[]

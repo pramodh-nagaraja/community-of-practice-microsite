@@ -81,8 +81,9 @@ export default function CoPTemplate({ data }: { data: CoPPageData }) {
       <TNavbar    data={data} />
       <THero      data={data} />
       <TAbout     data={data} />
-      {!!data.certStages?.length   && <TCertification  data={data} />}
-      {!!data.careerTracks?.length && <TCareerTracks   data={data} />}
+      {!!data.certStages?.length        && <TCertification    data={data} />}
+      {data.showLearningJourney         && <TLearningJourney  data={data} />}
+      {!!data.careerTracks?.length      && <TCareerTracks     data={data} />}
       {!!data.events?.length       && <TEvents         data={data} />}
       {!!data.resources?.length   && <TKnowledgeHub  data={data} />}
       {!!data.members?.length     && <TMembers       data={data} />}
@@ -604,6 +605,227 @@ function TCertification({ data }: { data: CoPPageData }) {
             )}
           </>
         )}
+      </div>
+    </section>
+  )
+}
+
+// ── Learning Journey Framework ───────────────────────────────────
+function TLearningJourney({ data }: { data: CoPPageData }) {
+  const ac = data.accentColor
+
+  const CONTAINER_H = 540
+  const STEP_H      = 90
+  const STEP_RISE   = 72
+
+  const steps = [
+    {
+      num: 1, label: 'EXPLORE', subtitle: 'Build Foundations',
+      color: '#2563EB',
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+      ),
+      desc: 'Understand testing fundamentals, domain knowledge, tools, and proven best practices.',
+    },
+    {
+      num: 2, label: 'PRACTICE', subtitle: 'Develop Skills',
+      color: '#16A34A',
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+        </svg>
+      ),
+      desc: 'Participate in labs, hands-on sessions, simulations, and guided exercises.',
+    },
+    {
+      num: 3, label: 'CERTIFY', subtitle: 'Validate Competence',
+      color: '#7C3AED',
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
+        </svg>
+      ),
+      desc: 'Achieve recognised certifications and complete proficiency assessments.',
+    },
+    {
+      num: 4, label: 'APPLY', subtitle: 'Deliver Value',
+      color: '#EA580C',
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+        </svg>
+      ),
+      desc: 'Implement skills in projects, real-world engagements, and business situations.',
+    },
+    {
+      num: 5, label: 'MENTOR', subtitle: 'Enable Others',
+      color: '#0F766E',
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+      ),
+      desc: 'Share expertise, guide team members, and contribute to the Testing CoP community.',
+    },
+  ]
+
+  // Percentage coordinates for the SVG diagonal connector
+  const lineX1 = 10
+  const lineY1 = ((CONTAINER_H - STEP_H / 2) / CONTAINER_H) * 100
+  const lineX2 = 90
+  const lineY2 = ((CONTAINER_H - (4 * STEP_RISE + STEP_H / 2)) / CONTAINER_H) * 100
+
+  return (
+    <section className="reveal" style={{ padding: '72px 24px', background: '#FFFFFF' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+
+        {/* Section header */}
+        <div style={{ textAlign: 'center', marginBottom: 52 }}>
+          <span style={{
+            display: 'inline-block',
+            padding: '4px 16px',
+            borderRadius: 999,
+            background: `${ac}18`,
+            color: ac,
+            fontSize: 12,
+            fontWeight: 700,
+            letterSpacing: '0.1em',
+            textTransform: 'uppercase',
+            marginBottom: 12,
+          }}>How We Grow</span>
+          <h2 style={{ fontSize: 28, fontWeight: 800, color: '#0F172A', margin: '0 0 12px' }}>
+            Learning Journey Framework
+          </h2>
+          <p style={{ color: '#64748B', fontSize: 15, maxWidth: 520, margin: '0 auto' }}>
+            A structured 5-stage progression — from exploration to mentorship.
+          </p>
+        </div>
+
+        {/* Staircase — scrolls horizontally on small screens */}
+        <div style={{ overflowX: 'auto', paddingBottom: 4 }}>
+          <div style={{
+            position: 'relative',
+            height: CONTAINER_H,
+            minWidth: 680,
+            display: 'flex',
+          }}>
+
+            {/* Diagonal connector line */}
+            <svg
+              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }}
+              viewBox="0 0 100 100"
+              preserveAspectRatio="none"
+            >
+              <line
+                x1={lineX1} y1={lineY1}
+                x2={lineX2} y2={lineY2}
+                stroke="#CBD5E1"
+                strokeWidth="0.35"
+                strokeDasharray="2.5,1.8"
+                vectorEffect="non-scaling-stroke"
+              />
+            </svg>
+
+            {steps.map((step, i) => {
+              const stepBottom = i * STEP_RISE
+              const cardBottom = stepBottom + STEP_H + 16
+              return (
+                <div key={i} style={{ flex: 1, position: 'relative' }}>
+
+                  {/* Floating info card */}
+                  <div style={{
+                    position: 'absolute',
+                    bottom: cardBottom,
+                    left: 8,
+                    right: 8,
+                    background: '#FFFFFF',
+                    border: '1px solid #E2E8F0',
+                    borderLeft: `3px solid ${step.color}`,
+                    borderRadius: 12,
+                    padding: '14px 14px 12px',
+                    boxShadow: '0 4px 16px rgba(0,0,0,0.07)',
+                  }}>
+                    <div style={{ color: step.color, marginBottom: 8 }}>{step.icon}</div>
+                    <div style={{ fontWeight: 700, fontSize: 13, color: '#0F172A', marginBottom: 5, lineHeight: 1.3 }}>
+                      {step.subtitle}
+                    </div>
+                    <div style={{ fontSize: 11.5, color: '#64748B', lineHeight: 1.6 }}>
+                      {step.desc}
+                    </div>
+                  </div>
+
+                  {/* Step block */}
+                  <div style={{
+                    position: 'absolute',
+                    bottom: stepBottom,
+                    left: 8,
+                    right: 8,
+                    height: STEP_H,
+                    background: step.color,
+                    borderRadius: 10,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    padding: '0 16px',
+                    boxShadow: `0 6px 20px ${step.color}50`,
+                  }}>
+                    <div style={{
+                      color: 'rgba(255,255,255,0.55)',
+                      fontSize: 10,
+                      fontWeight: 700,
+                      letterSpacing: '0.12em',
+                      textTransform: 'uppercase',
+                      marginBottom: 1,
+                    }}>Step {step.num}</div>
+                    <div style={{
+                      color: '#FFFFFF',
+                      fontSize: 17,
+                      fontWeight: 800,
+                      letterSpacing: '0.05em',
+                      lineHeight: 1,
+                      marginBottom: 3,
+                    }}>{step.label}</div>
+                    <div style={{ color: 'rgba(255,255,255,0.78)', fontSize: 11 }}>
+                      {step.subtitle}
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+
+        {/* Journey progress bar */}
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: 6,
+          marginTop: 20,
+          padding: '12px 16px',
+          background: '#F8FAFC',
+          borderRadius: 10,
+          border: '1px solid #E2E8F0',
+        }}>
+          {steps.map((s, i) => (
+            <span key={i} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+              <span style={{
+                width: 20, height: 20, borderRadius: '50%',
+                background: s.color,
+                display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                color: '#fff', fontSize: 10, fontWeight: 800,
+              }}>{s.num}</span>
+              <span style={{ color: s.color, fontWeight: 700, fontSize: 13 }}>{s.label}</span>
+              {i < steps.length - 1 && (
+                <span style={{ color: '#CBD5E1', fontSize: 14, marginLeft: 2 }}>→</span>
+              )}
+            </span>
+          ))}
+        </div>
       </div>
     </section>
   )
