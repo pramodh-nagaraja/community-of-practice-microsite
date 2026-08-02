@@ -85,6 +85,16 @@ export interface SkillFlavor {
   bg?: string
 }
 
+export interface CareerTrack {
+  name: string
+  icon: string
+  foundation: string[]
+  intermediate: string[]
+  advanced: string[]
+  certifications: string[]
+  targetRoles: string[]
+}
+
 export interface CoPPageData {
   id: string
   name: string
@@ -105,6 +115,7 @@ export interface CoPPageData {
   values: string
 
   // Optional sections — rendered only when data is present
+  careerTracks?: CareerTrack[]
   certStages?: CertStage[]
   skillFlavors?: SkillFlavor[]
   trainings?: CoPTraining[]

@@ -81,8 +81,9 @@ export default function CoPTemplate({ data }: { data: CoPPageData }) {
       <TNavbar    data={data} />
       <THero      data={data} />
       <TAbout     data={data} />
-      {!!data.certStages?.length  && <TCertification data={data} />}
-      {!!data.events?.length      && <TEvents        data={data} />}
+      {!!data.certStages?.length   && <TCertification  data={data} />}
+      {!!data.careerTracks?.length && <TCareerTracks   data={data} />}
+      {!!data.events?.length       && <TEvents         data={data} />}
       {!!data.resources?.length   && <TKnowledgeHub  data={data} />}
       {!!data.members?.length     && <TMembers       data={data} />}
       {!!data.celebrateLearning   && <TCelebrate      data={data} />}
@@ -603,6 +604,134 @@ function TCertification({ data }: { data: CoPPageData }) {
             )}
           </>
         )}
+      </div>
+    </section>
+  )
+}
+
+// ── Career Pathways ──────────────────────────────────────────────
+function TCareerTracks({ data }: { data: CoPPageData }) {
+  const tracks = data.careerTracks ?? []
+  const ac = data.accentColor
+
+  const levels = [
+    { key: 'foundation'    as const, label: 'Foundation',   color: '#15803D', bg: '#DCFCE7', border: '#86EFAC' },
+    { key: 'intermediate'  as const, label: 'Intermediate', color: '#1D4ED8', bg: '#DBEAFE', border: '#93C5FD' },
+    { key: 'advanced'      as const, label: 'Advanced',     color: '#7C3AED', bg: '#EDE9FE', border: '#C4B5FD' },
+  ]
+
+  return (
+    <section className="reveal" style={{ padding: '72px 24px', background: '#F8FAFC' }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+        {/* Header */}
+        <div style={{ textAlign: 'center', marginBottom: 48 }}>
+          <span style={{
+            display: 'inline-block',
+            padding: '4px 16px',
+            borderRadius: 999,
+            background: `${ac}18`,
+            color: ac,
+            fontSize: 12,
+            fontWeight: 700,
+            letterSpacing: '0.1em',
+            textTransform: 'uppercase',
+            marginBottom: 12,
+          }}>Career Development</span>
+          <h2 style={{ fontSize: 28, fontWeight: 800, color: '#0F172A', margin: '0 0 12px' }}>
+            Testing Career Pathways
+          </h2>
+          <p style={{ color: '#64748B', fontSize: 15, maxWidth: 560, margin: '0 auto' }}>
+            10 specialised tracks — from foundation skills to advanced expertise and industry certifications.
+          </p>
+        </div>
+
+        {/* Track cards grid */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))',
+          gap: 24,
+        }}>
+          {tracks.map((track, i) => (
+            <div key={i} style={{
+              background: '#FFFFFF',
+              borderRadius: 16,
+              overflow: 'hidden',
+              boxShadow: '0 1px 4px rgba(0,0,0,0.08)',
+              border: '1px solid #E2E8F0',
+              display: 'flex',
+              flexDirection: 'column',
+            }}>
+              {/* Card header */}
+              <div style={{
+                background: `linear-gradient(135deg, ${ac} 0%, ${darkenHex(ac, 0.18)} 100%)`,
+                padding: '20px 24px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 14,
+              }}>
+                <span style={{ fontSize: 28, lineHeight: 1 }}>{track.icon}</span>
+                <div>
+                  <div style={{ color: '#FFFFFF', fontWeight: 700, fontSize: 15, lineHeight: 1.3 }}>{track.name}</div>
+                  <div style={{ color: 'rgba(255,255,255,0.72)', fontSize: 12, marginTop: 3 }}>
+                    {track.targetRoles.join(' · ')}
+                  </div>
+                </div>
+              </div>
+
+              {/* Level columns */}
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 0, flex: 1 }}>
+                {levels.map(lvl => (
+                  <div key={lvl.key} style={{ padding: '14px 12px', borderRight: lvl.key !== 'advanced' ? '1px solid #F1F5F9' : undefined }}>
+                    <div style={{
+                      fontSize: 10,
+                      fontWeight: 700,
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.06em',
+                      color: lvl.color,
+                      marginBottom: 8,
+                    }}>{lvl.label}</div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
+                      {(track[lvl.key] as string[]).map((item, j) => (
+                        <span key={j} style={{
+                          fontSize: 11,
+                          padding: '2px 7px',
+                          borderRadius: 6,
+                          background: lvl.bg,
+                          color: lvl.color,
+                          border: `1px solid ${lvl.border}`,
+                          lineHeight: 1.4,
+                          display: 'block',
+                        }}>{item}</span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Certifications footer */}
+              {track.certifications.length > 0 && (
+                <div style={{ padding: '12px 16px', borderTop: '1px solid #F1F5F9', background: '#FFFBEB' }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#92400E', marginBottom: 7 }}>
+                    Certifications
+                  </div>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
+                    {track.certifications.map((cert, j) => (
+                      <span key={j} style={{
+                        fontSize: 11,
+                        padding: '2px 8px',
+                        borderRadius: 6,
+                        background: '#FEF3C7',
+                        color: '#92400E',
+                        border: '1px solid #FCD34D',
+                        fontWeight: 600,
+                      }}>{cert}</span>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )
