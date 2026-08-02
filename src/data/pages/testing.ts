@@ -18,9 +18,9 @@ export const Testing_DATA: CoPPageData = {
   certCount: 2,
   sessionsHeld: 0,
   launchYear: 2026,
-  mission: 'To build quality engineering expertise across QBE Account through test automation, shift-left practices, and a culture of quality at every stage of delivery.',
-  vision: 'To make quality engineering a core discipline at QBE Account where automated testing, continuous quality gates, and proactive defect prevention are the norm.',
-  values: 'Quality by design, automation over manual, and a shift-left mindset that builds confidence in every release.',
+  mission: 'To build a thriving testing community that empowers professionals through knowledge sharing, capability development, innovation, and collaboration, enabling consistent delivery of quality solutions across the organization.',
+  vision: 'To be recognized as the trusted center of excellence for Quality Engineering, driving innovation, developing future-ready talent, and shaping the next generation of testing practices.',
+  values: 'Learn Continuously: Promote lifelong learning and encourage curiosity across emerging testing technologies and methodologies. Share Openly: Create an environment where experiences, lessons learned, assets, and best practices are freely exchanged. Innovate Boldly: Leverage automation, AI, engineering excellence, and modern quality practices to solve business challenges. Collaborate Effectively: Connect teams, domains, and technologies to build stronger testing capabilities and outcomes. Deliver Quality: Champion quality as a shared responsibility and an integral part of every software delivery lifecycle.',
   leadership: [
     {
       name: 'Madhvan Gopalan',
