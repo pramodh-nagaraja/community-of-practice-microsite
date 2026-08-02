@@ -901,9 +901,9 @@ function TCareerTracks({ data }: { data: CoPPageData }) {
               </div>
 
               {/* Level columns */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 0, flex: 1 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) minmax(0,1fr) minmax(0,1fr)', gap: 0, flex: 1 }}>
                 {levels.map(lvl => (
-                  <div key={lvl.key} style={{ padding: '14px 12px', borderRight: lvl.key !== 'advanced' ? '1px solid #F1F5F9' : undefined }}>
+                  <div key={lvl.key} style={{ padding: '14px 10px', minWidth: 0, borderRight: lvl.key !== 'advanced' ? '1px solid #F1F5F9' : undefined }}>
                     <div style={{
                       fontSize: 10,
                       fontWeight: 700,
@@ -916,13 +916,15 @@ function TCareerTracks({ data }: { data: CoPPageData }) {
                       {(track[lvl.key] as string[]).map((item, j) => (
                         <span key={j} style={{
                           fontSize: 11,
-                          padding: '2px 7px',
+                          padding: '2px 6px',
                           borderRadius: 6,
                           background: lvl.bg,
                           color: lvl.color,
                           border: `1px solid ${lvl.border}`,
-                          lineHeight: 1.4,
+                          lineHeight: 1.45,
                           display: 'block',
+                          wordBreak: 'break-word',
+                          overflowWrap: 'break-word',
                         }}>{item}</span>
                       ))}
                     </div>
