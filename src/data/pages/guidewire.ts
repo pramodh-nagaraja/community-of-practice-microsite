@@ -15,7 +15,7 @@ export const Guidewire_DATA: CoPPageData = {
   accentColor: '#B91C1C',
   icon: `${BASE}Guidewire.png`,
   memberCount: 30,
-  certCount: 15,
+  certCount: 9,
   sessionsHeld: 1,
   launchYear: 2026,
   mission: 'To build Guidewire implementation expertise across QBE Account enabling high-quality PolicyCenter, BillingCenter, and ClaimCenter delivery.',

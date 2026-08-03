@@ -103,15 +103,15 @@ export const COMMUNITIES: CoPCommunity[] = [
     category: 'Data',
     lead: 'Kaseeswar Reddy',
     leadEmail: 'kaseeswar.reddy@accenture.com',
-    memberCount: 26,
+    memberCount: 27,
     status: 'active',
     route: '#/database',
     highlights: [
-      '26 members — 14 Certified, 9 Intermediate, 3 Trained',
+      '27 members — 14 Certified, 10 Intermediate, 3 Trained',
       '10 database platforms: Oracle, SQL Server, DB2, MongoDB, PostgreSQL, and more',
       'Performance tuning, migration, and reliability expertise',
     ],
-    lastUpdated: '2026-07-01',
+    lastUpdated: '2026-08-03',
   },
   {
     id: 'guidewire',
@@ -126,11 +126,11 @@ export const COMMUNITIES: CoPCommunity[] = [
     status: 'active',
     route: '#/guidewire',
     highlights: [
-      '30 members — 15 Certified, 7 Intermediate, 8 Trained',
+      '30 members — 9 Certified, 5 Intermediate, 16 Trained',
       '3 Top Subject Matter Experts recognized',
       'Ongoing Guidewire Developer Training from June 2026',
     ],
-    lastUpdated: '2026-06-30',
+    lastUpdated: '2026-08-03',
   },
   {
     id: 'insurance',
@@ -297,11 +297,11 @@ export const COMMUNITIES: CoPCommunity[] = [
     status: 'active',
     route: '#/testing',
     highlights: [
-      '15 QA and test automation experts',
-      'Test frameworks, automation, and strategies',
-      'Quality engineering and continuous testing',
+      '10 career pathways — Manual, Selenium, Playwright, Tosca & more',
+      '5-stage Learning Journey Framework — Explore to Mentor',
+      'Quality engineering, automation, and continuous testing',
     ],
-    lastUpdated: '2026-04-30',
+    lastUpdated: '2026-08-03',
   },
   {
     id: 'workday',
