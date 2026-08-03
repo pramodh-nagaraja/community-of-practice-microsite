@@ -45,20 +45,20 @@ export const DataDatabricks_DATA: CoPPageData = {
       email: 'tbd@accenture.com',
     },
     {
-      name: 'Shashank Johari',
-      initials: 'SJ',
-      badge: 'CoP Lead',
-      role: 'CoP Lead',
-      badgeStyle: 'cop' as 'sponsor' | 'global' | 'cop',
-      email: 's.a.kumar.johari@accenture.com',
-    },
-    {
       name: 'Priya Kanu Singh',
       initials: 'PKS',
       badge: 'CoP Lead',
       role: 'CoP Lead',
       badgeStyle: 'cop' as 'sponsor' | 'global' | 'cop',
       email: 'kanu.priya.singh@accenture.com',
+    },
+    {
+      name: 'Shashank Johari',
+      initials: 'SJ',
+      badge: 'CoP Lead',
+      role: 'CoP Lead',
+      badgeStyle: 'cop' as 'sponsor' | 'global' | 'cop',
+      email: 's.a.kumar.johari@accenture.com',
     },
     {
       name: 'Srikar Rao Deshpande',
@@ -69,7 +69,7 @@ export const DataDatabricks_DATA: CoPPageData = {
       email: 'srikar.rao.deshpande@accenture.com',
     },
   ],
-  joinEmail: 's.a.kumar.johari@accenture.com',
+  joinEmail: 'kanu.priya.singh@accenture.com',
   members: [
     // ── Databricks Certified Data Engineer Associates ──
     { name: 'Kirankumar Dalei',          initials: 'KD', ...CERTIFIED, tags: [DBX] },

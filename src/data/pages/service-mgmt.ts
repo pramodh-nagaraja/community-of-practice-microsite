@@ -19,8 +19,8 @@ export const ServiceMgmt_DATA: CoPPageData = {
   description: 'Strengthening ITSM practices, ITIL adoption, and continuous improvement across QBE operations.',
   accentColor: '#334155',
   icon: `${BASE}Service_Management.png`,
-  memberCount: 23,
-  certCount: 6,
+  memberCount: 24,
+  certCount: 7,
   sessionsHeld: 0,
   launchYear: 2026,
   mission: 'To strengthen ITSM practices, ITIL adoption, and continuous improvement across the QBE Account through collaboration and knowledge sharing, enabling consistent, high-quality, and measurable service delivery.',
@@ -64,6 +64,7 @@ export const ServiceMgmt_DATA: CoPPageData = {
   joinEmail: 'dharshan.surendran@accenture.com',
   members: [
     { name: 'Dharshan Surendran',   initials: 'DS', role: 'CFS Lead',                              ...CERTIFIED,    tags: ['ITIL Expert', 'ITIL V4 Foundation', 'SNOW License Mgmt', 'MS SAM', 'Six Sigma'] },
+    { name: 'Pramodh Nagaraja',     initials: 'PN', role: 'ITIL SME',                              ...CERTIFIED,    tags: ['ITIL Expert'] },
     { name: 'Josephine J. Joseph',  initials: 'JJ', role: 'Service Management Lead',               ...CERTIFIED,    tags: ['ITIL V4 Foundation', 'PL-300 (Power BI)', 'Dynatrace', 'Six Sigma'] },
     { name: 'Mukesh C. Mishra',     initials: 'MM', role: 'Service Management Lead',               ...CERTIFIED,    tags: ['ITIL V4 Foundation', 'CCNA', 'GCP Associate'] },
     { name: 'Varshini Natrajan',    initials: 'VN', role: 'Major Incident Management (MIM)',       ...CERTIFIED,    tags: ['ITIL V4 Foundation', 'PL-300 (Power BI)', 'SolarWinds'] },
@@ -146,7 +147,7 @@ export const ServiceMgmt_DATA: CoPPageData = {
   joinInterests: ['General', 'ITIL / ITSM', 'Incident Management', 'Change Management', 'Problem Management', 'Disaster Recovery', 'Dynatrace / Observability', 'Automation & AI', 'Certifications'],
   certStages: [
     {
-      num: 1, title: 'Trained', subtitle: 'Foundation training completed', count: 13, totalCohort: 23,
+      num: 1, title: 'Trained', subtitle: 'Foundation training completed', count: 13, totalCohort: 24,
       color: '#16a34a', bg: '#dcfce7', border: '#86efac',
       desc: 'Members grounded in ITIL/ITSM fundamentals and building their first certifications.',
       trainings: 0,
@@ -156,7 +157,7 @@ export const ServiceMgmt_DATA: CoPPageData = {
       ],
     },
     {
-      num: 2, title: 'Intermediate', subtitle: 'Multi-skilled across ITSM & tooling', count: 4, totalCohort: 23,
+      num: 2, title: 'Intermediate', subtitle: 'Multi-skilled across ITSM & tooling', count: 4, totalCohort: 24,
       color: '#2563eb', bg: '#dbeafe', border: '#93c5fd',
       desc: 'Members expanding into observability, cloud, and analytics certifications alongside ITSM.',
       trainings: 0,
@@ -166,7 +167,7 @@ export const ServiceMgmt_DATA: CoPPageData = {
       ],
     },
     {
-      num: 3, title: 'Certified', subtitle: 'Domain champions — multi-certified', count: 6, totalCohort: 23,
+      num: 3, title: 'Certified', subtitle: 'Domain champions — multi-certified', count: 7, totalCohort: 24,
       color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe',
       desc: 'ITIL Expert and multi-certified specialists driving ITSM excellence across the account.',
       trainings: 0,
