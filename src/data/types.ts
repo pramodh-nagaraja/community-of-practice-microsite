@@ -22,6 +22,7 @@ export interface CoPMember {
   levelBg: string         // hex for badge background
   levelText: string       // hex for badge text
   tags?: string[]         // e.g. ['Oracle', 'SQL', 'DB2 LUW']
+  role?: string           // e.g. 'Change Management' — ITSM function / focus area
 }
 
 export interface CoPEvent {

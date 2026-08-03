@@ -1241,6 +1241,11 @@ function TMembers({ data }: { data: CoPPageData }) {
                           </div>
                           <div className="member-info">
                             <h4>{member.name}</h4>
+                            {member.role && (
+                              <div style={{ fontSize: '0.72rem', color: '#64748b', fontWeight: 600, marginBottom: '4px', lineHeight: 1.3 }}>
+                                {member.role}
+                              </div>
+                            )}
                             <span
                               className="member-stage-badge"
                               style={{
