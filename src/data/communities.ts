@@ -141,15 +141,15 @@ export const COMMUNITIES: CoPCommunity[] = [
     category: 'Business Applications',
     lead: 'Mavelyn Pascual',
     leadEmail: 'mavelyn.r.pascual@accenture.com',
-    memberCount: 269,
+    memberCount: 505,
     status: 'active',
     route: '#/insurance',
     highlights: [
-      '269 members — all Insurance Foundation certified',
+      '505 members — all Insurance Foundation certified',
       '2 Industry Day learning sessions held — Q2 Feb & Q3 Jun 2026',
       'Foundation & Intermediate training pathways active',
     ],
-    lastUpdated: '2026-07-29',
+    lastUpdated: '2026-08-03',
   },
   {
     id: 'integration',

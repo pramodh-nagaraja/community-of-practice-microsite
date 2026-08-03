@@ -3,9 +3,98 @@
 //  Auto-generated from content/insurance/*.csv via `npm run sync`.
 //  To update: edit the CSV files and re-run `npm run sync`.
 // ═══════════════════════════════════════════════════════════════
-import type { CoPPageData } from '../types'
+import type { CoPPageData, CoPMember } from '../types'
 
 const BASE = import.meta.env.BASE_URL
+
+// ── Philippines Foundation cohort ────────────────────────────────
+//  QBE Account members who completed the Insurance Foundation training.
+//  Stored as EIDs (email prefixes) and expanded into member cards below.
+//  To add more: append the EID (the part before @accenture.com).
+const PH_FOUNDATION_EIDS = [
+  'allen.m.tuazon', 'anuerin.g.diaz', 'donna.g.datu', 'christina.l.canlas', 'marie.c.c.millar',
+  'eloisa.d.garcia', 'sheryl.l.erese', 'michelle.s.carlos', 'noel.h.bayutas', 'emerson.c.condino',
+  'marlon.a.mazo', 'mavelyn.r.pascual', 'jade.myred.n.gurtiza', 'anna.mae.pantanilla', 'm.salazar-dimapilis',
+  'jeanette.o.ruiz', 'juan.c.u.castillo', 'kristine.p.santos', 'chiara.m.f.de.leon', 'mariel.v.panganiban',
+  'joan.l.chua', 'kristel.j.l.bautista', 'kenneth.floyd.p.erni', 'justin.a.s.abaquin', 'l.valencia-casuncad',
+  'marivic.m.supan', 'joanna.m.quiwa', 'angely.b.brito', 'may.s.moya', 'ma.c.b.castillo',
+  'marc.l.c.atanacio', 'margeth.p.artizada', 'chester.s.dela.cruz', 'conrad.j.f.sapuay', 'irving.d.corpuz',
+  'chester.b.del.prado', 'kathleen.p.sayaman', 'sharina.f.canonoy', 'bien.m.b.francisco', 'john.paul.m.rellones',
+  'vernice.a.p.lancion', 'karl.lester.r.givera', 'mark.alvin.g.de.leon', 'babykit.m.n.nuestro', 'esper.m.santos',
+  'carmela.s.m.lucena', 'kenneth.p.jarapa', 'april.ann.l.zuniga', 'shiela.m.l.ablong', 'janeth.n.gabutan',
+  'jeverly.ann.c.cleofe', 'sheena.mae.d.amboy', 'julius.c.de.castro', 'romnick.l.rea', 'christian.valenzuela',
+  'adrian.a.colina', 'erl.s.i.quelnan', 'joana.r.miras', 'natasha.m.g.aves', 'iris.j.t.farnacio',
+  'renelle.s.cuevas', 'june.c.vallecera', 'cecille.c.alipao', 'christian.a.delgado', 'brainold.b.barbero',
+  'kier.erikko.m.luna', 'r.c.bacquiano', 'albert.l.g.marcelino', 'john.a.a.volante.jr', 'barbara.c.p.tamala',
+  'gian.n.d.apante', 'carl.j.m.banting', 'alyssa.m.c.manuntag', 'sarah.mae.p.payoyo', 'jessica.c.dionisio',
+  'janelamill.f.jarlego', 'marjorie.d.ambrocio', 'k.d.evangelista', 'emmanuel.b.reyes', 'mary.g.manglallan',
+  'donna.j.m.pahimulin', 'reubenjo.g.salen', 'james.k.d.villocillo', 'mickee.l.s.abera', 'verra.mae.m.noche',
+  'ethel.a.suliano', 'jeanilou.s.labajo', 'jasmine.mae.montano', 'patricia.abrenica', 'jhon.mar.santos',
+  'paul.richard.ginete', 'noel.layante', 'alexis.abella', 'jhon.abel.lopez', 'kriswald.supangco',
+  'rhancell.alejo', 'kim.k.hernandez', 'aubrey.gayle.frane', 'christian.b.santos', 'gregory.cacho',
+  'kaiela.romero', 'sherie.a.dela.cruz', 'graciella.mae.adier', 'eareckson.buyan', 'jannie.pardinan',
+  'dave.joseph.ebao', 'jeric.raye.bas', 'cedric.cabana', 'rico.c.balibalita', 'ralph.a.villanueva',
+  'rey.mart.castillo', 'monica.e.barcelon', 'haira.cuevas', 'maricar.desaliza', 'kelvin.baello',
+  'john.aeddriane.tapar', 'jan.paul.kien.chu', 'john.gerard.perania', 'dan.joas.bonifacio', 'amiel.m.titular',
+  'john.michael.manuel', 'jonard.libertino', 'joniffer.bianan', 'angela.may.garcia', 'xena.marie.delin',
+  'mary.jessica.cabelin', 'kenneth.ranque', 'vanessa.quintero', 'aldrin.baldonado', 'mario.albert.abiar',
+  'john.paul.tocol', 'diane.k.sarmiento', 'rose.ann.carbonell', 'manny.franco', 'j.fernando',
+  'james.bryan.elemia', 'jay-ar.de.leon', 'rhosdon.jesus.canas', 'hernalyn.canete', 'janandrew.lukban',
+  'eugene.anor', 'roland.ian.regala', 'john.eleazar.ibanez', 'katy.lay.gabriel', 'nika.paolene.aguilar',
+  'jennica.noquiera', 'dennis.raymundo', 'heiznsen.jove', 'carene.may.indo', 'gabriel.j.miguel',
+  'salde.francisco.jr', 'marinel.antiquiera', 'john.marlon.lazaga', 'dexter.louie.dulnuan', 'melody.conda',
+  'edrian.p.razonable', 'jemuel.pelesco', 'maria.g.asuncion', 'diego.luis.misumi', 'r.sarne',
+  'jannah.faith.miguel', 'rodney.altamera', 'sharmaine.tee', 'ezekiel.flores', 'lesley.borja',
+  'michael.tacsay', 'mikayla.castillo', 'shaine.m.dacumos', 'reileen.may.antazo', 'j.gulas',
+  'janet.fajardo', 'rowena.torotoro', 'michael.faeldonea', 'j.caribo', 'marie.g.vecina',
+  'uldarico.ramos.jr', 'maria.f.cupin.iv', 'jhon.paul.santos', 'lemuel.jason.ubungen', 'christian.larano',
+  'ivy.gweneth.acebuche', 'alpher.john.cagatin', 'harddy.eco', 'jan.jeric.naorbe', 'eunice.g.anonuevo',
+  'jessie.lou.allerite', 'johayra.magsalin', 'brigida.maglalang', 'mae.k.pagbilao', 'maria.jessa.himotas',
+  'lourydem.dawis', 'renzel.obillano', 'huey.andrea.nalayog', 'daniel.maceda', 'william.j.rosmarino',
+  'loi.antolihao', 'joseph.evian.suanino', 'april.yambot', 'franz.albert.yawder', 'rizza.navartey',
+  'micaella.san.gabriel', 'jessy.e.cabiles', 'jazmine.jocen.sia', 'myrose.cuntapay', 'maika.chavez',
+  'vienna.c.gloriane', 'ma.a.f.aballe-bulado', 'joshua.a.perez', 'christian.vince.tuan', 'charles.w.perez',
+  'christa.m.montimor', 'mart.lester.manabat', 'cyrine.osorio', 'aprille.manalo', 'luigi.verceles',
+  'janelle.liwanag', 'jose.m.constantino', 'matthew.bryan.ahito', 'eiyah.therese.tusi', 'dianne.almenanza',
+  'charisse.camarista', 'fritz.jan.cadungog', 'nicole.castuera', 'john.l.castro', 'jason.a.javier',
+  'ericson.m.dalay', 'karen.g.nipin', 'james.l.r.fuentes', 'justin.r.m.yambao', 'jero.paolo.d.balucas',
+  'jan.simon.d.posadas', 'roi.john.f.koch', 'ma.b.cacanog', 'angelica.g.laguitan', 'janssen.radh.yumang',
+  'angela.mae.r.molina',
+]
+
+const NAME_SUFFIXES: Record<string, string> = { jr: 'Jr.', sr: 'Sr.', ii: 'II', iii: 'III', iv: 'IV' }
+
+// Convert an EID token to title case, preserving hyphenated surnames.
+function eidTitle(token: string): string {
+  return token.split('-').map(p => (p ? p[0].toUpperCase() + p.slice(1) : p)).join('-')
+}
+
+// 'allen.m.tuazon' -> 'Allen M. Tuazon'   ·   'm.salazar-dimapilis' -> 'M. Salazar-Dimapilis'
+function eidToName(eid: string): string {
+  return eid.split('.').map(t => {
+    if (NAME_SUFFIXES[t]) return NAME_SUFFIXES[t]
+    if (t.length === 1) return `${t.toUpperCase()}.`
+    return eidTitle(t)
+  }).join(' ')
+}
+
+// First-name + last-name initial for the avatar (skips suffixes).
+function eidToInitials(eid: string): string {
+  const toks = eid.split('.').filter(t => !NAME_SUFFIXES[t])
+  const first = toks[0] || eid
+  const last  = toks.length > 1 ? toks[toks.length - 1] : first
+  return `${first[0] || ''}${last[0] || ''}`.toUpperCase() || 'NA'
+}
+
+const PH_FOUNDATION_MEMBERS: CoPMember[] = PH_FOUNDATION_EIDS.map(eid => ({
+  name: eidToName(eid),
+  initials: eidToInitials(eid),
+  levelLabel: 'Trained',
+  levelColor: '#16a34a',
+  levelBg: '#dcfce7',
+  levelText: '#14532d',
+  tags: ['Foundation'],
+}))
 
 export const Insurance_DATA: CoPPageData = {
   id: 'insurance',
@@ -14,7 +103,7 @@ export const Insurance_DATA: CoPPageData = {
   description: 'Building domain knowledge in insurance products, regulations, and industry technology trends.',
   accentColor: '#075985',
   icon: `${BASE}Insurance.png`,
-  memberCount: 269,
+  memberCount: 505,
   certCount: 0,
   sessionsHeld: 2,
   launchYear: 2026,
@@ -330,6 +419,8 @@ export const Insurance_DATA: CoPPageData = {
     { name: 'Selvi Arumugam', initials: 'SA', levelLabel: 'Trained', levelColor: '#16a34a', levelBg: '#dcfce7', levelText: '#14532d', tags: ['Foundation'] },
     { name: 'Shrishaila N Alva', initials: 'SA', levelLabel: 'Trained', levelColor: '#16a34a', levelBg: '#dcfce7', levelText: '#14532d', tags: ['Foundation'] },
     { name: 'Priyabrata Mahanta', initials: 'PM', levelLabel: 'Trained', levelColor: '#16a34a', levelBg: '#dcfce7', levelText: '#14532d', tags: ['Foundation'] },
+    // ── Philippines Foundation cohort (236) — generated from EIDs above ──
+    ...PH_FOUNDATION_MEMBERS,
   ],
   events: [
     {
@@ -366,9 +457,9 @@ export const Insurance_DATA: CoPPageData = {
   ],
   joinInterests: ['General', 'P&C Insurance', 'Regulations & Compliance', 'InsurTech', 'Industry Trends', 'Certifications'],
   certStages: [
-    { num: 1, title: 'Trained', subtitle: 'Foundation training completed', count: 269, totalCohort: 269, color: '#16a34a', bg: '#dcfce7', border: '#86efac', desc: 'Members who have completed foundational Insurance training.', trainings: 1, links: [{ label: 'Insurance Industry', url: 'https://networks.learning.accenture.com/app/#/details?id=2&tab=1' }] },
-    { num: 2, title: 'Intermediate', subtitle: 'Intermediate certification in progress', count: 0, totalCohort: 269, color: '#2563eb', bg: '#dbeafe', border: '#93c5fd', desc: 'Members pursuing intermediate Insurance certification.', trainings: 1, links: [{ label: 'Insurance Industry', url: 'https://networks.learning.accenture.com/app/#/details?id=2&tab=4' }] },
-    { num: 3, title: 'Certified', subtitle: 'Full certification achieved', count: 0, totalCohort: 269, color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe', desc: 'Members holding full Insurance certification — domain champions.', trainings: 0 },
+    { num: 1, title: 'Trained', subtitle: 'Foundation training completed', count: 505, totalCohort: 505, color: '#16a34a', bg: '#dcfce7', border: '#86efac', desc: 'Members who have completed foundational Insurance training.', trainings: 1, links: [{ label: 'Insurance Industry', url: 'https://networks.learning.accenture.com/app/#/details?id=2&tab=1' }] },
+    { num: 2, title: 'Intermediate', subtitle: 'Intermediate certification in progress', count: 0, totalCohort: 505, color: '#2563eb', bg: '#dbeafe', border: '#93c5fd', desc: 'Members pursuing intermediate Insurance certification.', trainings: 1, links: [{ label: 'Insurance Industry', url: 'https://networks.learning.accenture.com/app/#/details?id=2&tab=4' }] },
+    { num: 3, title: 'Certified', subtitle: 'Full certification achieved', count: 0, totalCohort: 505, color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe', desc: 'Members holding full Insurance certification — domain champions.', trainings: 0 },
   ],
   spotlight: {
     title: 'Top SME',
