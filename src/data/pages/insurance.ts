@@ -89,10 +89,10 @@ function eidToInitials(eid: string): string {
 const PH_FOUNDATION_MEMBERS: CoPMember[] = PH_FOUNDATION_EIDS.map(eid => ({
   name: eidToName(eid),
   initials: eidToInitials(eid),
-  levelLabel: 'Trained',
-  levelColor: '#16a34a',
-  levelBg: '#dcfce7',
-  levelText: '#14532d',
+  levelLabel: 'Intermediate',
+  levelColor: '#2563eb',
+  levelBg: '#dbeafe',
+  levelText: '#1e3a8a',
   tags: ['Foundation'],
 }))
 
@@ -457,9 +457,9 @@ export const Insurance_DATA: CoPPageData = {
   ],
   joinInterests: ['General', 'P&C Insurance', 'Regulations & Compliance', 'InsurTech', 'Industry Trends', 'Certifications'],
   certStages: [
-    { num: 1, title: 'Trained', subtitle: 'Foundation training completed', count: 505, totalCohort: 505, color: '#16a34a', bg: '#dcfce7', border: '#86efac', desc: 'Members who have completed foundational Insurance training.', trainings: 1, links: [{ label: 'Insurance Industry', url: 'https://networks.learning.accenture.com/app/#/details?id=2&tab=1' }] },
-    { num: 2, title: 'Intermediate', subtitle: 'Intermediate certification in progress', count: 0, totalCohort: 505, color: '#2563eb', bg: '#dbeafe', border: '#93c5fd', desc: 'Members pursuing intermediate Insurance certification.', trainings: 1, links: [{ label: 'Insurance Industry', url: 'https://networks.learning.accenture.com/app/#/details?id=2&tab=4' }] },
-    { num: 3, title: 'Certified', subtitle: 'Full certification achieved', count: 0, totalCohort: 505, color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe', desc: 'Members holding full Insurance certification — domain champions.', trainings: 0 },
+    { num: 1, title: 'Trained',      subtitle: 'Foundation training completed',          count: 269, totalCohort: 505, color: '#16a34a', bg: '#dcfce7', border: '#86efac', desc: 'Members who have completed foundational Insurance training.',                      trainings: 1, links: [{ label: 'Insurance Industry', url: 'https://networks.learning.accenture.com/app/#/details?id=2&tab=1' }] },
+    { num: 2, title: 'Intermediate', subtitle: 'Intermediate certification in progress', count: 236, totalCohort: 505, color: '#2563eb', bg: '#dbeafe', border: '#93c5fd', desc: 'Members who completed Foundation and are progressing to Intermediate certification.', trainings: 1, links: [{ label: 'Insurance Industry', url: 'https://networks.learning.accenture.com/app/#/details?id=2&tab=4' }] },
+    { num: 3, title: 'Certified',    subtitle: 'Full certification achieved',            count: 0,   totalCohort: 505, color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe', desc: 'Members holding full Insurance certification — domain champions.',                  trainings: 0 },
   ],
   spotlight: {
     title: 'Top SME',

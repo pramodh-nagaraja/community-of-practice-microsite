@@ -176,7 +176,18 @@ export const ServiceMgmt_DATA: CoPPageData = {
   spotlight: {
     title: 'CoP Recognition & Awards',
     desc: 'Celebrating standout achievements across our Service Management community.',
-    names: ['Josephine J. Joseph (P4 Expert)', 'Arthi Krishna (ACE Award)'],
+    names: [
+      'Shreeja Mo (Elevate Excellence Award)',
+      'Arthi Krishna (Elevate Excellence Award)',
+      'Shreya Sharma (Elevate Excellence Award)',
+      'Mary Jane (Elevate Excellence Award)',
+      'John Volante (Elevate Excellence Award)',
+      'Dharshan Surendran (ACE Award)',
+      'Josephine J. Joseph (ACE Award)',
+      'Varshini Natrajan (ACE Award)',
+      'Arthi Krishna (ACE Award)',
+      'Mukesh C. Mishra (ACE Award)',
+    ],
   },
   celebrateLearning: {
     title: 'Service Management Learning Achievers',

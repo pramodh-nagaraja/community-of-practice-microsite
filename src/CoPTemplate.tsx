@@ -1475,22 +1475,32 @@ function TJoin({ data }: { data: CoPPageData }) {
     const storageKey = `cop_members_${data.id}`
     const existingMembers = JSON.parse(localStorage.getItem(storageKey) || '[]')
 
+    const formNameLower  = formName.toLowerCase().trim()
+    const formEmailLower = formEmail.toLowerCase().trim()
+
+    // Check against official members (by name) and localStorage (by name or email)
+    const officialNames = new Set((data.members ?? []).map((m: any) => (m.name || '').toLowerCase().trim()))
+    const isDuplicateInStorage = existingMembers.some(
+      (m: any) =>
+        (m.name || '').toLowerCase().trim() === formNameLower ||
+        (m.email && m.email.toLowerCase().trim() === formEmailLower),
+    )
+
+    if (officialNames.has(formNameLower) || isDuplicateInStorage) {
+      setMessage({ type: 'error', text: 'You are already a member of this community!' })
+      setTimeout(() => setMessage(null), 4000)
+      return
+    }
+
     const initials = formName.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase()
     const newMember = {
       name: formName,
+      email: formEmail,
       initials,
       levelLabel: 'Trained',
       levelColor: '#16a34a',
       levelBg: '#dcfce7',
       levelText: '#065f46',
-    }
-
-    // Check if member already exists (case-insensitive)
-    const formNameLower = formName.toLowerCase().trim()
-    if (existingMembers.some((m: any) => (m.name || '').toLowerCase().trim() === formNameLower)) {
-      setMessage({ type: 'error', text: 'You have already joined this community!' })
-      setTimeout(() => setMessage(null), 4000)
-      return
     }
 
     existingMembers.push(newMember)
