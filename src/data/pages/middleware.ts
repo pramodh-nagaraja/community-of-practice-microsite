@@ -7,7 +7,8 @@ import type { CoPPageData } from '../types'
 
 const BASE = import.meta.env.BASE_URL
 
-const TRAINED = { levelLabel: 'Trained', levelColor: '#16a34a', levelBg: '#dcfce7', levelText: '#14532d' }
+const CERTIFIED    = { levelLabel: 'Certified',    levelColor: '#A100FF', levelBg: '#F5E6FF', levelText: '#5700AB' }
+const INTERMEDIATE = { levelLabel: 'Intermediate', levelColor: '#2563eb', levelBg: '#dbeafe', levelText: '#1e3a8a' }
 
 export const Middleware_DATA: CoPPageData = {
   id: 'middleware',
@@ -17,7 +18,7 @@ export const Middleware_DATA: CoPPageData = {
   accentColor: '#92400E',
   icon: `${BASE}Middleware.png`,
   memberCount: 25,
-  certCount: 0,
+  certCount: 14,
   sessionsHeld: 0,
   launchYear: 2026,
   mission: 'To be the center of excellence for middleware and messaging technologies within QBE, empowering teams with the knowledge, tools, and best practices required to deliver secure, resilient, and high-performing integration & middleware solutions.',
@@ -52,31 +53,31 @@ export const Middleware_DATA: CoPPageData = {
   ],
   joinEmail: 'd.roshan.shetty@accenture.com',
   members: [
-    { name: 'Shlesha Sahay',           initials: 'SS', ...TRAINED, tags: ['Weblogic', 'Tomcat', 'Certificate Management'] },
-    { name: 'Naveen Nagarajasetty',    initials: 'NN', ...TRAINED, tags: ['WAS', 'Weblogic'] },
-    { name: 'Kuldeep Rajpoot',         initials: 'KR', ...TRAINED, tags: ['F5', 'Netscaler'] },
-    { name: 'Kriswald Supango',        initials: 'KS', ...TRAINED, tags: ['F5'] },
-    { name: 'Marinel Antiquiera',      initials: 'MA', ...TRAINED, tags: ['TCServer', 'JBOSS', 'Certificate Management'] },
-    { name: 'Peta Vemaiah',            initials: 'PV', ...TRAINED, tags: ['Weblogic', 'Mulesoft'] },
-    { name: 'Jaji Sirisha Menda',      initials: 'JS', ...TRAINED, tags: ['MQ'] },
-    { name: 'Kim Kristofer Fernandez', initials: 'KK', ...TRAINED, tags: ['TCServer', 'JBOSS', 'Certificate Management'] },
-    { name: 'Salde Francisco Jr',      initials: 'SF', ...TRAINED, tags: ['F5', 'Netscaler'] },
-    { name: 'Rodney Altamera',         initials: 'RA', ...TRAINED, tags: ['F5'] },
-    { name: 'Melody Conda',            initials: 'MC', ...TRAINED, tags: ['TCServer', 'JBOSS', 'Certificate Management'] },
-    { name: 'John Tapar',              initials: 'JT', ...TRAINED, tags: ['Weblogic', 'Mulesoft', 'Certificate Management'] },
-    { name: 'Mohan Krisna Kodela',     initials: 'MK', ...TRAINED, tags: ['TCServer', 'JBOSS'] },
-    { name: 'Prajakta Patwardhan',     initials: 'PP', ...TRAINED, tags: ['TCServer', 'JBOSS', 'Certificate Management'] },
-    { name: 'James Bryan Elemia',      initials: 'JB', ...TRAINED, tags: ['TCServer', 'JBOSS', 'IIS', 'Certificate Management'] },
-    { name: 'Heiznsen Jove',           initials: 'HJ', ...TRAINED, tags: ['TCServer', 'JBOSS', 'IIS', 'WAS', 'Certificate Management'] },
-    { name: 'Nika Paolene Aguilar',    initials: 'NP', ...TRAINED, tags: ['MQ'] },
-    { name: 'Deepa Roshan Shetty',     initials: 'DR', ...TRAINED, tags: ['Tomcat', 'Mulesoft', 'WebMethods'] },
-    { name: 'Sachin Ghate',            initials: 'SG', ...TRAINED, tags: ['Tomcat', 'Wildfly', 'IIS', 'Sharepoint', 'WAS'] },
-    { name: 'Ateeb Syed',              initials: 'AS', ...TRAINED, tags: ['WAS', 'Mulesoft', 'MQ', 'Netscaler', 'Certificate Management'] },
-    { name: 'Adil',                    initials: 'AD', ...TRAINED, tags: ['Netscaler'] },
-    { name: 'Bisman Kaur',             initials: 'BK', ...TRAINED, tags: ['Tomcat', 'Mulesoft', 'WebMethods', 'WAS'] },
-    { name: 'Amit Tiwari',             initials: 'AT', ...TRAINED, tags: ['Netscaler'] },
-    { name: 'Jataveda Chakraborty',    initials: 'JC', ...TRAINED, tags: ['Tomcat', 'IIS', 'Certificate Management'] },
-    { name: 'Juliet Rayappa',          initials: 'JR', ...TRAINED, tags: ['Tomcat', 'IIS', 'Certificate Management', 'Sharepoint'] },
+    { name: 'Shlesha Sahay',           initials: 'SS', ...CERTIFIED,    tags: ['Weblogic', 'Tomcat', 'Certificate Management'] },
+    { name: 'Naveen Nagarajasetty',    initials: 'NN', ...CERTIFIED,    tags: ['WAS', 'Weblogic'] },
+    { name: 'Kuldeep Rajpoot',         initials: 'KR', ...CERTIFIED,    tags: ['F5', 'Netscaler'] },
+    { name: 'Kriswald Supango',        initials: 'KS', ...CERTIFIED,    tags: ['F5'] },
+    { name: 'Marinel Antiquiera',      initials: 'MA', ...CERTIFIED,    tags: ['TCServer', 'JBOSS', 'Certificate Management'] },
+    { name: 'Peta Vemaiah',            initials: 'PV', ...INTERMEDIATE, tags: ['Weblogic', 'Mulesoft'] },
+    { name: 'Jaji Sirisha Menda',      initials: 'JS', ...CERTIFIED,    tags: ['MQ'] },
+    { name: 'Kim Kristofer Fernandez', initials: 'KK', ...INTERMEDIATE, tags: ['TCServer', 'JBOSS', 'Certificate Management'] },
+    { name: 'Salde Francisco Jr',      initials: 'SF', ...CERTIFIED,    tags: ['F5', 'Netscaler'] },
+    { name: 'Rodney Altamera',         initials: 'RA', ...CERTIFIED,    tags: ['F5'] },
+    { name: 'Melody Conda',            initials: 'MC', ...INTERMEDIATE, tags: ['TCServer', 'JBOSS', 'Certificate Management'] },
+    { name: 'John Tapar',              initials: 'JT', ...INTERMEDIATE, tags: ['Weblogic', 'Mulesoft', 'Certificate Management'] },
+    { name: 'Mohan Krisna Kodela',     initials: 'MK', ...CERTIFIED,    tags: ['TCServer', 'JBOSS'] },
+    { name: 'Prajakta Patwardhan',     initials: 'PP', ...INTERMEDIATE, tags: ['TCServer', 'JBOSS', 'Certificate Management'] },
+    { name: 'James Bryan Elemia',      initials: 'JB', ...INTERMEDIATE, tags: ['TCServer', 'JBOSS', 'IIS', 'Certificate Management'] },
+    { name: 'Heiznsen Jove',           initials: 'HJ', ...CERTIFIED,    tags: ['TCServer', 'JBOSS', 'IIS', 'WAS', 'Certificate Management'] },
+    { name: 'Nika Paolene Aguilar',    initials: 'NP', ...INTERMEDIATE, tags: ['MQ'] },
+    { name: 'Deepa Roshan Shetty',     initials: 'DR', ...CERTIFIED,    tags: ['Tomcat', 'Mulesoft', 'WebMethods'] },
+    { name: 'Sachin Ghate',            initials: 'SG', ...CERTIFIED,    tags: ['Tomcat', 'Wildfly', 'IIS', 'Sharepoint', 'WAS'] },
+    { name: 'Ateeb Syed',              initials: 'AS', ...CERTIFIED,    tags: ['WAS', 'Mulesoft', 'MQ', 'Netscaler', 'Certificate Management'] },
+    { name: 'Adil',                    initials: 'AD', ...INTERMEDIATE, tags: ['Netscaler'] },
+    { name: 'Bisman Kaur',             initials: 'BK', ...CERTIFIED,    tags: ['Tomcat', 'Mulesoft', 'WebMethods', 'WAS'] },
+    { name: 'Amit Tiwari',             initials: 'AT', ...INTERMEDIATE, tags: ['Netscaler'] },
+    { name: 'Jataveda Chakraborty',    initials: 'JC', ...INTERMEDIATE, tags: ['Tomcat', 'IIS', 'Certificate Management'] },
+    { name: 'Juliet Rayappa',          initials: 'JR', ...INTERMEDIATE, tags: ['Tomcat', 'IIS', 'Certificate Management', 'Sharepoint'] },
   ],
   events: [
     {
@@ -125,9 +126,9 @@ export const Middleware_DATA: CoPPageData = {
     { platform: 'Sharepoint',            level: 'Foundational', title: 'SharePoint Administration',                    url: 'https://accenture.percipio.com/courses/41a0eba0-a994-4c4e-81ab-3db11d33f341' },
   ],
   certStages: [
-    { num: 1, title: 'Trained',       subtitle: 'Foundation training completed',          count: 25, totalCohort: 25, color: '#16a34a', bg: '#dcfce7', border: '#86efac', desc: 'Members who have completed foundational Middleware training.',               trainings: 12 },
-    { num: 2, title: 'Intermediate',  subtitle: 'Intermediate certification in progress', count: 0,  totalCohort: 25, color: '#2563eb', bg: '#dbeafe', border: '#93c5fd', desc: 'Members pursuing intermediate Middleware certification.',                    trainings: 0  },
-    { num: 3, title: 'Certified',     subtitle: 'Full certification achieved',            count: 0,  totalCohort: 25, color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe', desc: 'Members holding full Middleware certification — domain champions.',          trainings: 0  },
+    { num: 1, title: 'Trained',       subtitle: 'Foundation training completed',          count: 0,  totalCohort: 25, color: '#16a34a', bg: '#dcfce7', border: '#86efac', desc: 'Members who have completed foundational Middleware training.',               trainings: 12 },
+    { num: 2, title: 'Intermediate',  subtitle: 'Intermediate proficiency confirmed',     count: 11, totalCohort: 25, color: '#2563eb', bg: '#dbeafe', border: '#93c5fd', desc: 'Members with confirmed intermediate-level Middleware expertise.',             trainings: 0  },
+    { num: 3, title: 'Certified',     subtitle: 'Expert proficiency achieved',            count: 14, totalCohort: 25, color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe', desc: 'Expert-level members — deep multi-platform Middleware specialists.',          trainings: 0  },
   ],
   spotlight: {
     title: 'Top SME',

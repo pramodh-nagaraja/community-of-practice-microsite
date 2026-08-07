@@ -202,8 +202,8 @@ export const COMMUNITIES: CoPCommunity[] = [
     status: 'active',
     route: '#/middleware',
     highlights: [
-      '25 members — Weblogic, WAS, Tomcat, JBOSS, IIS, Netscaler, Mulesoft & more',
-      '12 Percipio training resources across 9 middleware platforms',
+      '25 members — 14 Expert, 11 Intermediate across 9 middleware platforms',
+      '12 Percipio training resources — Weblogic, WAS, Tomcat, JBOSS, Netscaler & more',
       'Center of excellence for integration & middleware at QBE',
     ],
     lastUpdated: '2026-08-07',
