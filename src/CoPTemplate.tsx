@@ -1051,12 +1051,15 @@ function TEvents({ data }: { data: CoPPageData }) {
 // ── Members Directory ────────────────────────────────────────────
 type LevelFilter = 'all' | 'Trained' | 'Intermediate' | 'Certified'
 
+const MEMBERS_PAGE_SIZE = 50
+
 function TMembers({ data }: { data: CoPPageData }) {
   const [sectionOpen, setSectionOpen]   = useState(true)
   const [streamOpen,  setStreamOpen]    = useState(true)
   const [search,      setSearch]        = useState('')
   const [activeFilter,setActiveFilter]  = useState<LevelFilter>('all')
   const [activePlatforms, setActivePlatforms] = useState<Set<string>>(new Set())
+  const [visibleCount,    setVisibleCount]    = useState(MEMBERS_PAGE_SIZE)
   const [localMembers, setLocalMembers] = useState(() => {
     const storageKey = `cop_members_${data.id}`
     return JSON.parse(localStorage.getItem(storageKey) || '[]')
@@ -1151,11 +1154,11 @@ function TMembers({ data }: { data: CoPPageData }) {
                   type="text"
                   placeholder={`Search ${data.name} members…`}
                   value={search}
-                  onChange={e => setSearch(e.target.value)}
+                  onChange={e => { setSearch(e.target.value); setVisibleCount(MEMBERS_PAGE_SIZE) }}
                   className="members-search"
                 />
                 {search && (
-                  <button className="search-clear" onClick={() => setSearch('')}>✕</button>
+                  <button className="search-clear" onClick={() => { setSearch(''); setVisibleCount(MEMBERS_PAGE_SIZE) }}>✕</button>
                 )}
               </div>
               <div className="dir-total-pill">
@@ -1188,7 +1191,7 @@ function TMembers({ data }: { data: CoPPageData }) {
                       <button
                         key={String(f.key)}
                         className={`stage-filter-btn ${activeFilter === f.key ? 'active' : ''}`}
-                        onClick={() => setActiveFilter(f.key)}
+                        onClick={() => { setActiveFilter(f.key); setVisibleCount(MEMBERS_PAGE_SIZE) }}
                       >
                         {f.label}
                         <span className="filter-count">{f.count}</span>
@@ -1214,6 +1217,7 @@ function TMembers({ data }: { data: CoPPageData }) {
                                 newPlatforms.add(platform)
                               }
                               setActivePlatforms(newPlatforms)
+                              setVisibleCount(MEMBERS_PAGE_SIZE)
                             }}
                             style={{
                               padding: '6px 12px',
@@ -1235,8 +1239,9 @@ function TMembers({ data }: { data: CoPPageData }) {
                   )}
 
                   {filtered.length > 0 ? (
+                    <>
                     <div className="members-grid">
-                      {filtered.map((member, idx) => (
+                      {filtered.slice(0, visibleCount).map((member, idx) => (
                         <div key={member.name} className="member-card">
                           <div
                             className="member-avatar"
@@ -1288,12 +1293,32 @@ function TMembers({ data }: { data: CoPPageData }) {
                         </div>
                       ))}
                     </div>
+                    {visibleCount < filtered.length && (
+                      <div style={{ textAlign: 'center', marginTop: 24 }}>
+                        <button
+                          onClick={() => setVisibleCount(c => c + MEMBERS_PAGE_SIZE)}
+                          style={{
+                            padding: '10px 28px',
+                            borderRadius: 8,
+                            border: '1.5px solid var(--acc-purple)',
+                            background: 'white',
+                            color: 'var(--acc-purple)',
+                            fontWeight: 700,
+                            fontSize: '0.9rem',
+                            cursor: 'pointer',
+                          }}
+                        >
+                          Show more ({filtered.length - visibleCount} remaining)
+                        </button>
+                      </div>
+                    )}
+                    </>
                   ) : (
                     <div className="members-empty">
                       <div className="empty-icon">🔍</div>
                       <p>No members match <strong>"{search}"</strong></p>
                       <button
-                        onClick={() => { setSearch(''); setActiveFilter('all') }}
+                        onClick={() => { setSearch(''); setActiveFilter('all'); setVisibleCount(MEMBERS_PAGE_SIZE) }}
                         className="clear-search-btn"
                       >
                         Reset
