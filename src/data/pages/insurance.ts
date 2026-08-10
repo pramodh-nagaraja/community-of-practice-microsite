@@ -104,7 +104,7 @@ export const Insurance_DATA: CoPPageData = {
   accentColor: '#075985',
   icon: `${BASE}Insurance.png`,
   memberCount: 505,
-  certCount: 0,
+  certCount: 1,
   sessionsHeld: 2,
   launchYear: 2026,
   mission: 'To deepen insurance domain knowledge across QBE Account enabling technology professionals to deliver solutions aligned with insurance business needs.',
@@ -147,6 +147,8 @@ export const Insurance_DATA: CoPPageData = {
   ],
   joinEmail: 'mavelyn.r.pascual@accenture.com',
   members: [
+    // ── Certified ────────────────────────────────────────────────
+    { name: 'Kamalaksh Shenoy', initials: 'KS', levelLabel: 'Certified', levelColor: '#A100FF', levelBg: '#F5E6FF', levelText: '#5700AB', tags: ['AINS', 'Domain Expert'] },
     // ── Part 1 (1–99) ────────────────────────────────────────────
     { name: 'Archna Kumari Verma', initials: 'AV', levelLabel: 'Trained', levelColor: '#16a34a', levelBg: '#dcfce7', levelText: '#14532d', tags: ['Foundation'] },
     { name: 'Mahesh Yarlagadda', initials: 'MY', levelLabel: 'Trained', levelColor: '#16a34a', levelBg: '#dcfce7', levelText: '#14532d', tags: ['Foundation'] },
@@ -459,16 +461,16 @@ export const Insurance_DATA: CoPPageData = {
   certStages: [
     { num: 1, title: 'Trained',      subtitle: 'Foundation training completed',          count: 269, totalCohort: 505, color: '#16a34a', bg: '#dcfce7', border: '#86efac', desc: 'Members who have completed foundational Insurance training.',                      trainings: 1, links: [{ label: 'Insurance Industry', url: 'https://networks.learning.accenture.com/app/#/details?id=2&tab=1' }] },
     { num: 2, title: 'Intermediate', subtitle: 'Intermediate certification in progress', count: 236, totalCohort: 505, color: '#2563eb', bg: '#dbeafe', border: '#93c5fd', desc: 'Members who completed Foundation and are progressing to Intermediate certification.', trainings: 1, links: [{ label: 'Insurance Industry', url: 'https://networks.learning.accenture.com/app/#/details?id=2&tab=4' }] },
-    { num: 3, title: 'Certified',    subtitle: 'Full certification achieved',            count: 0,   totalCohort: 505, color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe', desc: 'Members holding full Insurance certification — domain champions.',                  trainings: 0 },
+    { num: 3, title: 'Certified',    subtitle: 'Full certification achieved',            count: 1,   totalCohort: 505, color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe', desc: 'Members holding full Insurance certification — domain champions.',                  trainings: 1, links: [{ label: 'AINS — Associate in Insurance', url: 'https://web.theinstitutes.org/designations/associate-insurance' }] },
   ],
   spotlight: {
     title: 'Top SME',
     desc: 'Recognising our most active Insurance Subject Matter Experts.',
-    names: ['Name 1', 'Name 2', 'Name 3'],
+    names: ['Kamalaksh Shenoy'],
   },
   celebrateLearning: {
     title: 'Insurance Learning Achievers',
-    desc: 'recognising outstanding commitment to Insurance professional development and certification excellence.',
-    names: ['Name 1', 'Name 2', 'Name 3'],
+    desc: 'Recognising outstanding commitment to Insurance professional development and certification excellence.',
+    names: ['Kamalaksh Shenoy'],
   },
 }
