@@ -103,7 +103,7 @@ export const Insurance_DATA: CoPPageData = {
   description: 'Building domain knowledge in insurance products, regulations, and industry technology trends.',
   accentColor: '#075985',
   icon: `${BASE}Insurance.png`,
-  memberCount: 505,
+  memberCount: 506,
   certCount: 1,
   sessionsHeld: 2,
   launchYear: 2026,
@@ -459,9 +459,9 @@ export const Insurance_DATA: CoPPageData = {
   ],
   joinInterests: ['General', 'P&C Insurance', 'Regulations & Compliance', 'InsurTech', 'Industry Trends', 'Certifications'],
   certStages: [
-    { num: 1, title: 'Trained',      subtitle: 'Foundation training completed',          count: 269, totalCohort: 505, color: '#16a34a', bg: '#dcfce7', border: '#86efac', desc: 'Members who have completed foundational Insurance training.',                      trainings: 1, links: [{ label: 'Insurance Industry', url: 'https://networks.learning.accenture.com/app/#/details?id=2&tab=1' }] },
-    { num: 2, title: 'Intermediate', subtitle: 'Intermediate certification in progress', count: 236, totalCohort: 505, color: '#2563eb', bg: '#dbeafe', border: '#93c5fd', desc: 'Members who completed Foundation and are progressing to Intermediate certification.', trainings: 1, links: [{ label: 'Insurance Industry', url: 'https://networks.learning.accenture.com/app/#/details?id=2&tab=4' }] },
-    { num: 3, title: 'Certified',    subtitle: 'Full certification achieved',            count: 1,   totalCohort: 505, color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe', desc: 'Members holding full Insurance certification — domain champions.',                  trainings: 1, links: [{ label: 'AINS — Associate in Insurance', url: 'https://web.theinstitutes.org/designations/associate-insurance' }] },
+    { num: 1, title: 'Trained',      subtitle: 'Foundation training completed',          count: 269, totalCohort: 506, color: '#16a34a', bg: '#dcfce7', border: '#86efac', desc: 'Members who have completed foundational Insurance training.',                      trainings: 1, links: [{ label: 'Insurance Industry', url: 'https://networks.learning.accenture.com/app/#/details?id=2&tab=1' }] },
+    { num: 2, title: 'Intermediate', subtitle: 'Intermediate certification in progress', count: 236, totalCohort: 506, color: '#2563eb', bg: '#dbeafe', border: '#93c5fd', desc: 'Members who completed Foundation and are progressing to Intermediate certification.', trainings: 1, links: [{ label: 'Insurance Industry', url: 'https://networks.learning.accenture.com/app/#/details?id=2&tab=4' }] },
+    { num: 3, title: 'Certified',    subtitle: 'Full certification achieved',            count: 1,   totalCohort: 506, color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe', desc: 'Members holding full Insurance certification — domain champions.',                  trainings: 1, links: [{ label: 'AINS — Associate in Insurance', url: 'https://web.theinstitutes.org/designations/associate-insurance' }] },
   ],
   spotlight: {
     title: 'Top SME',
