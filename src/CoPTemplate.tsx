@@ -81,6 +81,11 @@ export default function CoPTemplate({ data }: { data: CoPPageData }) {
       <TNavbar    data={data} />
       <THero      data={data} />
       <TAbout     data={data} />
+      {!!data.whatWeDo?.length          && <TWhatWeDo         data={data} />}
+      {!!data.whyJoin?.length           && <TWhyJoin          data={data} />}
+      {!!data.roadmap?.length           && <TRoadmap          data={data} />}
+      {!!data.learningTracks?.length    && <TLearningTracks   data={data} />}
+      {!!data.focusAreas?.length        && <TFocusAreas       data={data} />}
       {!!data.certStages?.length        && <TCertification    data={data} />}
       {data.showLearningJourney         && <TLearningJourney  data={data} />}
       {!!data.careerTracks?.length      && <TCareerTracks     data={data} />}
@@ -1395,6 +1400,183 @@ function TCelebrate({ data }: { data: CoPPageData }) {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// ── What We Do ───────────────────────────────────────────────────
+function TWhatWeDo({ data }: { data: CoPPageData }) {
+  const items = data.whatWeDo ?? []
+  const ac = data.accentColor
+  return (
+    <section className="reveal" style={{ padding: '72px 24px', background: '#FFFFFF' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: 48 }}>
+          <span style={{ display: 'inline-block', padding: '4px 16px', borderRadius: 999, background: `${ac}18`, color: ac, fontSize: 12, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 12 }}>Our Work</span>
+          <h2 style={{ fontSize: 28, fontWeight: 800, color: '#0F172A', margin: 0 }}>What We Do</h2>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: 16 }}>
+          {items.map((item, i) => (
+            <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start', padding: '16px 20px', background: `${ac}08`, borderRadius: 12, border: `1px solid ${ac}22` }}>
+              <span style={{ color: ac, fontSize: 16, flexShrink: 0, marginTop: 2, fontWeight: 700 }}>✦</span>
+              <span style={{ color: '#334155', fontSize: 14, fontWeight: 500, lineHeight: 1.6 }}>{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// ── Why Join ─────────────────────────────────────────────────────
+function TWhyJoin({ data }: { data: CoPPageData }) {
+  const items = data.whyJoin ?? []
+  const ac = data.accentColor
+  return (
+    <section className="reveal" style={{ padding: '72px 24px', background: '#F8FAFC' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: 48 }}>
+          <span style={{ display: 'inline-block', padding: '4px 16px', borderRadius: 999, background: `${ac}18`, color: ac, fontSize: 12, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 12 }}>Get Involved</span>
+          <h2 style={{ fontSize: 28, fontWeight: 800, color: '#0F172A', margin: 0 }}>Why Join the {data.name} CoP?</h2>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: 14 }}>
+          {items.map((item, i) => (
+            <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start', padding: '16px 20px', background: '#FFFFFF', borderRadius: 12, boxShadow: '0 1px 4px rgba(0,0,0,0.06)', border: '1px solid #E2E8F0' }}>
+              <span style={{ color: '#16a34a', fontSize: 16, flexShrink: 0, marginTop: 1 }}>✅</span>
+              <span style={{ color: '#334155', fontSize: 14, fontWeight: 500, lineHeight: 1.6 }}>{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// ── CoP Roadmap ──────────────────────────────────────────────────
+function TRoadmap({ data }: { data: CoPPageData }) {
+  const sections = data.roadmap ?? []
+  const ac = data.accentColor
+  return (
+    <section className="reveal" style={{ padding: '72px 24px', background: '#FFFFFF' }}>
+      <div style={{ maxWidth: 1000, margin: '0 auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: 48 }}>
+          <span style={{ display: 'inline-block', padding: '4px 16px', borderRadius: 999, background: `${ac}18`, color: ac, fontSize: 12, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 12 }}>CoP Roadmap</span>
+          <h2 style={{ fontSize: 28, fontWeight: 800, color: '#0F172A', margin: '0 0 12px' }}>Learning & Certification Programs</h2>
+          <p style={{ color: '#64748B', fontSize: 15, maxWidth: 520, margin: '0 auto' }}>A phased approach to building momentum — from launch to scale.</p>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
+          {sections.map((sec, i) => (
+            <div key={i} style={{ border: '1px solid #E2E8F0', borderRadius: 16, overflow: 'hidden', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
+              <div style={{ background: `linear-gradient(135deg, ${ac} 0%, ${darkenHex(ac, 0.18)} 100%)`, padding: '18px 28px' }}>
+                <div style={{ color: '#FFFFFF', fontWeight: 700, fontSize: 15 }}>{sec.badge}</div>
+                <div style={{ color: 'rgba(255,255,255,0.72)', fontSize: 12, marginTop: 4 }}>{sec.category}</div>
+              </div>
+              <div style={{ background: '#FFFFFF' }}>
+                {sec.items.map((item, j) => (
+                  <div key={j} style={{ padding: '20px 28px', borderBottom: j < sec.items.length - 1 ? '1px solid #F1F5F9' : undefined, display: 'flex', gap: 16, alignItems: 'flex-start' }}>
+                    {item.num && (
+                      <span style={{ flexShrink: 0, width: 28, height: 28, borderRadius: '50%', background: `${ac}15`, color: ac, fontWeight: 700, fontSize: 13, display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: 2 }}>
+                        {item.num.replace('.', '')}
+                      </span>
+                    )}
+                    <div>
+                      <div style={{ fontWeight: 600, color: '#0F172A', fontSize: 14, marginBottom: 5 }}>{item.title}</div>
+                      <div style={{ color: '#64748B', fontSize: 13, lineHeight: 1.65 }}>{item.desc}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// ── Learning & Certification Pathway ─────────────────────────────
+function TLearningTracks({ data }: { data: CoPPageData }) {
+  const tracks = data.learningTracks ?? []
+  const ac = data.accentColor
+
+  const levelMeta: Record<string, { color: string; bg: string; border: string }> = {
+    Beginner:     { color: '#15803D', bg: '#DCFCE7', border: '#86EFAC' },
+    Intermediate: { color: '#1D4ED8', bg: '#DBEAFE', border: '#93C5FD' },
+    Advanced:     { color: '#7C3AED', bg: '#EDE9FE', border: '#C4B5FD' },
+    Expert:       { color: '#9D174D', bg: '#FCE7F3', border: '#F9A8D4' },
+  }
+
+  return (
+    <section className="reveal" style={{ padding: '72px 24px', background: '#F8FAFC' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: 48 }}>
+          <span style={{ display: 'inline-block', padding: '4px 16px', borderRadius: 999, background: `${ac}18`, color: ac, fontSize: 12, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 12 }}>Learning Pathway</span>
+          <h2 style={{ fontSize: 28, fontWeight: 800, color: '#0F172A', margin: '0 0 12px' }}>Learning & Certification Pathway</h2>
+          <p style={{ color: '#64748B', fontSize: 15, maxWidth: 560, margin: '0 auto' }}>A progressive learning journey — from AI curious to Agentic AI practitioner.</p>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+          {tracks.map((t, i) => {
+            const meta = levelMeta[t.level] ?? { color: ac, bg: `${ac}12`, border: `${ac}40` }
+            return (
+              <div key={i} style={{ background: '#FFFFFF', borderRadius: 14, border: '1px solid #E2E8F0', overflow: 'hidden', display: 'grid', gridTemplateColumns: '2fr 1fr 2fr 2fr', boxShadow: '0 1px 3px rgba(0,0,0,0.05)' }}>
+                <div style={{ padding: '20px 24px', borderRight: '1px solid #F1F5F9', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#94A3B8', marginBottom: 6 }}>Track</div>
+                  <div style={{ fontWeight: 700, color: '#0F172A', fontSize: 15 }}>{t.track}</div>
+                </div>
+                <div style={{ padding: '20px 16px', borderRight: '1px solid #F1F5F9', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-start' }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#94A3B8', marginBottom: 8 }}>Level</div>
+                  <span style={{ fontSize: 12, padding: '3px 10px', borderRadius: 8, background: meta.bg, color: meta.color, border: `1px solid ${meta.border}`, fontWeight: 700 }}>{t.level}</span>
+                </div>
+                <div style={{ padding: '20px 16px', borderRight: '1px solid #F1F5F9' }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#94A3B8', marginBottom: 8 }}>Focus Areas</div>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
+                    {t.focusAreas.map((f, j) => (
+                      <span key={j} style={{ fontSize: 11, padding: '2px 8px', borderRadius: 6, background: '#F1F5F9', color: '#475569', border: '1px solid #E2E8F0', fontWeight: 500 }}>{f}</span>
+                    ))}
+                  </div>
+                </div>
+                <div style={{ padding: '20px 16px' }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#92400E', marginBottom: 8 }}>Certifications</div>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
+                    {t.certifications.map((c, j) => (
+                      <span key={j} style={{ fontSize: 11, padding: '2px 8px', borderRadius: 6, background: '#FEF3C7', color: '#92400E', border: '1px solid #FCD34D', fontWeight: 600 }}>{c}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// ── Initial Focus Areas ───────────────────────────────────────────
+function TFocusAreas({ data }: { data: CoPPageData }) {
+  const areas = data.focusAreas ?? []
+  const ac = data.accentColor
+
+  const areaIcons = ['📋', '🔗', '⚡', '📊']
+
+  return (
+    <section className="reveal" style={{ padding: '72px 24px', background: '#FFFFFF' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: 48 }}>
+          <span style={{ display: 'inline-block', padding: '4px 16px', borderRadius: 999, background: `${ac}18`, color: ac, fontSize: 12, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 12 }}>QBE Focus</span>
+          <h2 style={{ fontSize: 28, fontWeight: 800, color: '#0F172A', margin: '0 0 12px' }}>Initial Focus Areas for QBE</h2>
+          <p style={{ color: '#64748B', fontSize: 15, maxWidth: 520, margin: '0 auto' }}>Where Agentic AI delivers the most immediate value across QBE NA workstreams.</p>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 20 }}>
+          {areas.map((area, i) => (
+            <div key={i} style={{ background: '#FFFFFF', borderRadius: 14, border: `1px solid ${ac}22`, boxShadow: '0 2px 8px rgba(0,0,0,0.06)', padding: '24px 24px 20px', borderTop: `3px solid ${ac}` }}>
+              <div style={{ fontSize: 28, marginBottom: 14, lineHeight: 1 }}>{areaIcons[i % areaIcons.length]}</div>
+              <h3 style={{ fontWeight: 700, color: '#0F172A', fontSize: 16, margin: '0 0 10px' }}>{area.title}</h3>
+              <p style={{ color: '#64748B', fontSize: 13, lineHeight: 1.7, margin: 0 }}>{area.desc}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

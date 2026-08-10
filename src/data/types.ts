@@ -96,6 +96,30 @@ export interface CareerTrack {
   targetRoles: string[]
 }
 
+export interface RoadmapItem {
+  num?: string
+  title: string
+  desc: string
+}
+
+export interface RoadmapSection {
+  badge: string
+  category: string
+  items: RoadmapItem[]
+}
+
+export interface LearningTrack {
+  track: string
+  level: string
+  focusAreas: string[]
+  certifications: string[]
+}
+
+export interface FocusArea {
+  title: string
+  desc: string
+}
+
 export interface CoPPageData {
   id: string
   name: string
@@ -116,6 +140,11 @@ export interface CoPPageData {
   values: string
 
   // Optional sections — rendered only when data is present
+  whatWeDo?: string[]
+  whyJoin?: string[]
+  roadmap?: RoadmapSection[]
+  learningTracks?: LearningTrack[]
+  focusAreas?: FocusArea[]
   showLearningJourney?: boolean
   careerTracks?: CareerTrack[]
   certStages?: CertStage[]

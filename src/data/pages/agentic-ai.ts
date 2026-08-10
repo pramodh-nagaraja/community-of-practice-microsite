@@ -16,9 +16,69 @@ export const AgenticAI_DATA: CoPPageData = {
   certCount: 0,
   sessionsHeld: 0,
   launchYear: 2026,
-  mission: 'To build Agentic AI expertise across QBE Account — enabling teams to design, build, and operate AI-powered solutions responsibly and effectively.',
-  vision: 'To make QBE Account a leader in practical AI adoption, where intelligent agents and AI-assisted workflows amplify every team\'s delivery capability.',
-  values: 'Responsible innovation, curiosity-driven learning, and a commitment to applying AI in ways that are ethical, explainable, and impactful for QBE.',
+  mission: 'To build a vibrant, curiosity-driven community that empowers QBE NA professionals to harness the potential of Agentic AI — accelerating delivery, driving innovation, and shaping the future of intelligent automation within our account.',
+  vision: 'To be the go-to center of excellence for Agentic AI on the QBE account — fostering a culture where AI augments every workstream, every team member grows confidently with AI, and every delivery benefits from intelligent automation.',
+  values: 'Explore Fearlessly · Share Openly · Build Responsibly · Deliver Impact · Grow Together — bold experimentation, open knowledge sharing, ethical AI use, measurable delivery value, and investing in each other\'s growth.',
+
+  whatWeDo: [
+    'Certification Guidance & Learning Pathways',
+    'Knowledge Sharing Sessions & Agent Demos',
+    'Agentic AI Use Case Discovery & Prioritization',
+    'Prototype Builds and Showcases',
+    'Reusable Agent Accelerators & Asset Library',
+    'Expert Connect, Guest Speakers & Mentorship',
+  ],
+
+  whyJoin: [
+    'Be at the forefront of AI innovation on the QBE account',
+    'Learn from hands-on practitioners and AI thought leaders',
+    'Access curated learning content, tools, and accelerators',
+    'Contribute to real PoCs and delivery use cases',
+    'Grow your AI skills and earn recognition for contributions',
+    'Network with peers across QBE NA workstreams',
+    'Shape how Agentic AI is adopted across the account',
+  ],
+
+  roadmap: [
+    {
+      badge: '🏆 Accenture Reinvention Program — Agentic AI',
+      category: 'Complete all 3 to earn Badge / Certificate',
+      items: [
+        { num: '1.', title: 'Agentic QA', desc: 'Complete the Agentic QA learning module covering AI-driven test automation, agent-based quality workflows, and intelligent defect analysis.' },
+        { num: '2.', title: 'Agentic AI Workshop', desc: 'Attend and complete the hands-on Agentic AI workshop — covering agent design, orchestration patterns, and practical use case delivery.' },
+        { num: '3.', title: 'Stanford Course', desc: 'Complete the Stanford-accredited Agentic AI course covering foundational AI principles, LLM applications, and enterprise agent deployment.' },
+      ],
+    },
+    {
+      badge: '🎓 Accenture FDE — Forward Deploy Engineer Certification',
+      category: 'FDE Certification',
+      items: [
+        { title: 'Forward Deploy Engineer (FDE) — Anthropic', desc: 'Earn the Accenture FDE certification by demonstrating hands-on expertise in deploying and operationalizing AI solutions — validating capability to deliver forward-deployed agentic AI in enterprise environments.' },
+      ],
+    },
+    {
+      badge: '🤖 Accenture GenWizard — Agentic AI Capability Building',
+      category: 'GenWizard',
+      items: [
+        { title: 'Agentic AI Learning via GenWizard Tool', desc: 'Leverage Accenture\'s GenWizard platform to explore agentic AI capabilities, complete guided learning journeys, and build hands-on familiarity with enterprise AI tooling.' },
+      ],
+    },
+  ],
+
+  learningTracks: [
+    { track: 'Agentic AI Fundamentals', level: 'Beginner',      focusAreas: ['Prompt Engineering', 'Agent Concepts', 'LLM Basics'],                     certifications: ['Claude AI Foundations', 'Anthropic Certifications'] },
+    { track: 'Automation & Orchestration', level: 'Intermediate', focusAreas: ['Multi-agent Workflows', 'Tool Use', 'API Integration'],                  certifications: ['LangChain', 'AutoGen', 'CrewAI Learning Paths'] },
+    { track: 'AI Solution Design',         level: 'Advanced',     focusAreas: ['Agentic Architecture', 'Safety & Governance', 'RAG'],                    certifications: ['AWS/Azure AI Certifications', 'Solution Architect'] },
+    { track: 'Enterprise AI Delivery',     level: 'Expert',       focusAreas: ['AI at Scale', 'MLOps', 'Responsible AI'],                               certifications: ['Google Cloud AI', 'Accenture AI Certifications'] },
+  ],
+
+  focusAreas: [
+    { title: 'Claims Automation',            desc: 'Agentic workflows for claim triage, document extraction, and adjuster assist using Guidewire ClaimCenter.' },
+    { title: 'Integration Intelligence',     desc: 'AI-assisted reconciliation, postback validation, and anomaly detection across Worldpay and Majesco integrations.' },
+    { title: 'SDLC Acceleration',            desc: 'GenAI-powered code review, unit test generation, and documentation agents embedded in the delivery lifecycle.' },
+    { title: 'Policy & Underwriting Insights', desc: 'Intelligent summarization, risk flag detection, and workflow automation across MSL and EzSuite workstreams.' },
+  ],
+
   leadership: [
     {
       name: 'Madhvan Gopalan',
