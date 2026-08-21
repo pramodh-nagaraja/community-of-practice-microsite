@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { COMMUNITIES, type CoPCommunity } from './data/communities'
+import { COP_DATA } from './data/pages'
+import { MEMBERS as NOC_MEMBERS } from './data/pages/netsec'
 import './LandingPage.css'
 
 type FilterTab = 'all' | 'active' | 'coming-soon'
@@ -83,7 +85,14 @@ export default function LandingPage() {
   }, [])
 
   const activeCount  = COMMUNITIES.filter(c => c.status === 'active').length
-  const totalMembers = COMMUNITIES.reduce((s, c) => s + (c.memberCount ?? 0), 0)
+  const totalMembers = (() => {
+    const names = new Set<string>()
+    Object.values(COP_DATA).forEach(cop =>
+      cop.members?.forEach(m => { if (m.name) names.add(m.name.toLowerCase().trim()) })
+    )
+    NOC_MEMBERS.forEach(m => { if (m.name) names.add(m.name.toLowerCase().trim()) })
+    return names.size
+  })()
   const latestUpdate = COMMUNITIES.reduce((latest, c) =>
     c.lastUpdated > latest ? c.lastUpdated : latest, '')
 
