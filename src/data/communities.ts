@@ -84,11 +84,11 @@ export const COMMUNITIES: CoPCommunity[] = [
     category: 'Innovation',
     lead: 'TBD',
     leadEmail: '',
-    memberCount: 15,
+    memberCount: 10,
     status: 'active',
     route: '#/agentic-ai',
     highlights: [
-      '15 members exploring LLMs, AI agents, and RAG pipelines',
+      '10 members exploring LLMs, AI agents, and RAG pipelines',
       'Azure AI, Prompt Engineering, and Agentic AI patterns',
       'Responsible AI practices for QBE Account delivery',
     ],
