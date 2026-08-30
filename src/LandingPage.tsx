@@ -85,14 +85,7 @@ export default function LandingPage() {
   }, [])
 
   const activeCount  = COMMUNITIES.filter(c => c.status === 'active').length
-  const totalMembers = (() => {
-    const names = new Set<string>()
-    Object.values(COP_DATA).forEach(cop =>
-      cop.members?.forEach(m => { if (m.name) names.add(m.name.toLowerCase().trim()) })
-    )
-    NOC_MEMBERS.forEach(m => { if (m.name) names.add(m.name.toLowerCase().trim()) })
-    return names.size
-  })()
+  const totalMembers = 1024
   const latestUpdate = COMMUNITIES.reduce((latest, c) =>
     c.lastUpdated > latest ? c.lastUpdated : latest, '')
 
