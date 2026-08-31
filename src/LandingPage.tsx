@@ -1,7 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
 import { COMMUNITIES, type CoPCommunity } from './data/communities'
-import { COP_DATA } from './data/pages'
-import { MEMBERS as NOC_MEMBERS } from './data/pages/netsec'
 import './LandingPage.css'
 
 type FilterTab = 'all' | 'active' | 'coming-soon'
