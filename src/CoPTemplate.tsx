@@ -379,8 +379,9 @@ function TCertification({ data }: { data: CoPPageData }) {
 
             <div className="pathway-pipeline">
               {stages.map((stage, i) => {
-                const actualMemberCount = memberCountsByLevel[stage.title as keyof typeof memberCountsByLevel] || 0
-                const totalCohort = members.length
+                const dynamicCount = memberCountsByLevel[stage.title as keyof typeof memberCountsByLevel] || 0
+                const actualMemberCount = stage.count || dynamicCount
+                const totalCohort = stage.totalCohort || members.length
 
                 return (
                 <div key={i} className="pipeline-row">
@@ -398,18 +399,22 @@ function TCertification({ data }: { data: CoPPageData }) {
                     </div>
                     {!stage.hideProgress && (
                       <>
-                        <div className="pathway-bar-wrap">
-                          <div
-                            className="pathway-bar-fill"
-                            style={{
-                              width: `${totalCohort > 0 ? Math.round((actualMemberCount / totalCohort) * 100) : 0}%`,
-                              background: stage.color,
-                            }}
-                          />
-                        </div>
-                        <div className="pathway-bar-label" style={{ color: stage.color }}>
-                          {totalCohort > 0 ? Math.round((actualMemberCount / totalCohort) * 100) : 0}% of total cohort
-                        </div>
+                        {(() => {
+                          const pct = totalCohort > 0 ? Math.min(100, Math.round((actualMemberCount / totalCohort) * 100)) : 0
+                          return (
+                            <>
+                              <div className="pathway-bar-wrap">
+                                <div
+                                  className="pathway-bar-fill"
+                                  style={{ width: `${pct}%`, background: stage.color }}
+                                />
+                              </div>
+                              <div className="pathway-bar-label" style={{ color: stage.color }}>
+                                {pct}% of total cohort
+                              </div>
+                            </>
+                          )
+                        })()}
                       </>
                     )}
                     <p className="pathway-desc">{stage.desc}</p>

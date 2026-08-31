@@ -145,7 +145,7 @@ export const COMMUNITIES: CoPCommunity[] = [
     status: 'active',
     route: '#/insurance',
     highlights: [
-      '530 members — 15 Certified, 244 Intermediate, 271 Trained',
+      '530 members — 15 Certified, 244 Intermediate, 976 Trained',
       '2 Industry Day learning sessions held — Q2 Feb & Q3 Jun 2026',
       'Foundation, Intermediate & Guidewire skill pathways active',
     ],
