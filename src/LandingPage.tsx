@@ -322,32 +322,61 @@ function VisionMission() {
 
 function TeaserBanner() {
   const { ref, on } = useReveal()
-  const videoUrl = `${window.location.origin}/fde-teaser.mp4`
+  const [open, setOpen] = useState(false)
+  const videoSrc = `${import.meta.env.BASE_URL}fde-teaser.mp4`
+
+  useEffect(() => {
+    if (!open) return
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false) }
+    document.addEventListener('keydown', onKey)
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      document.body.style.overflow = ''
+    }
+  }, [open])
 
   return (
-    <section ref={ref} className={`lp-teaser${on ? ' lp-revealed' : ''}`}>
-      <div className="lp-teaser-inner">
-        <div className="lp-teaser-text">
-          <span className="lp-teaser-eyebrow">Something exciting is coming</span>
-          <p className="lp-teaser-msg">
-            Hi Team, we have something exciting in the works and wanted to share a little teaser before the big reveal!
-          </p>
-          <p className="lp-teaser-sub">More details coming very soon — watch this space!</p>
+    <>
+      <section ref={ref} className={`lp-teaser${on ? ' lp-revealed' : ''}`}>
+        <div className="lp-teaser-inner">
+          <div className="lp-teaser-text">
+            <span className="lp-teaser-eyebrow">Something exciting is coming</span>
+            <p className="lp-teaser-msg">
+              Hi Team, we have something exciting in the works and wanted to share a little teaser before the big reveal!
+            </p>
+            <p className="lp-teaser-sub">More details coming very soon — watch this space!</p>
+          </div>
+          <button
+            className="lp-teaser-play-btn"
+            onClick={() => setOpen(true)}
+            aria-label="Watch the teaser video"
+          >
+            <span className="lp-teaser-play-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40" aria-hidden="true">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </span>
+            <span className="lp-teaser-play-label">Watch the Teaser</span>
+          </button>
         </div>
-        <button
-          className="lp-teaser-play-btn"
-          onClick={() => window.open(videoUrl, '_blank', 'noopener,noreferrer')}
-          aria-label="Watch the teaser video"
-        >
-          <span className="lp-teaser-play-icon">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40" aria-hidden="true">
-              <path d="M8 5v14l11-7z"/>
-            </svg>
-          </span>
-          <span className="lp-teaser-play-label">Watch the Teaser</span>
-        </button>
-      </div>
-    </section>
+      </section>
+
+      {open && (
+        <div className="lp-video-overlay" onClick={() => setOpen(false)} role="dialog" aria-modal="true" aria-label="FDE Teaser Video">
+          <div className="lp-video-modal" onClick={e => e.stopPropagation()}>
+            <button className="lp-video-close" onClick={() => setOpen(false)} aria-label="Close video">✕</button>
+            <video
+              className="lp-video-player"
+              autoPlay
+              controls
+              playsInline
+              src={videoSrc}
+            />
+          </div>
+        </div>
+      )}
+    </>
   )
 }
 

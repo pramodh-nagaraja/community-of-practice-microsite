@@ -880,3 +880,59 @@
   text-transform: uppercase;
   color: #e9d5ff;
 }
+
+/* ── Video Modal ──────────────────────────────────────────── */
+.lp-video-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: lpFadeIn 0.2s ease;
+}
+@keyframes lpFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.lp-video-modal {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  background: #0f0a1e;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(167,139,250,0.25);
+  animation: lpSlideUp 0.25s var(--ease-out-expo);
+}
+@keyframes lpSlideUp {
+  from { transform: translateY(32px); opacity: 0; }
+  to   { transform: none; opacity: 1; }
+}
+.lp-video-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  z-index: 10;
+  background: rgba(0,0,0,0.55);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.lp-video-close:hover { background: rgba(124,58,237,0.7); }
+.lp-video-player {
+  width: 100%;
+  display: block;
+  max-height: 80vh;
+  background: #000;
+}
