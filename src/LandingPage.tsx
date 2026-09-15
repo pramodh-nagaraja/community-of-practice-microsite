@@ -322,7 +322,7 @@ function VisionMission() {
 
 function TeaserBanner() {
   const { ref, on } = useReveal()
-  const videoSrc = `${import.meta.env.BASE_URL}FDE Program Announcement (1).mp4`
+  const videoUrl = 'https://polite-sky-01a965b10.azurestaticapps.net/FDE%20Program%20Announcement%20(1).mp4'
 
   return (
     <section ref={ref} className={`lp-teaser${on ? ' lp-revealed' : ''}`}>
@@ -334,17 +334,18 @@ function TeaserBanner() {
           </p>
           <p className="lp-teaser-sub">More details coming very soon — watch this space!</p>
         </div>
-        <div className="lp-teaser-video-wrap">
-          <video
-            className="lp-teaser-video"
-            controls
-            playsInline
-            preload="metadata"
-          >
-            <source src={videoSrc} type="video/mp4" />
-            Your browser does not support video playback.
-          </video>
-        </div>
+        <button
+          className="lp-teaser-play-btn"
+          onClick={() => window.open(videoUrl, '_blank', 'noopener,noreferrer')}
+          aria-label="Watch the teaser video"
+        >
+          <span className="lp-teaser-play-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40" aria-hidden="true">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </span>
+          <span className="lp-teaser-play-label">Watch the Teaser</span>
+        </button>
       </div>
     </section>
   )

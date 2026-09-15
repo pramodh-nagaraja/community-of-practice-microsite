@@ -784,8 +784,8 @@
   .lp-brand-client  { display: none; }
   .lp-brand-divider { display: none; }
   .lp-scroll-cue    { display: none; }
-  .lp-teaser-inner  { flex-direction: column; }
-  .lp-teaser-video-wrap { width: 100%; }
+  .lp-teaser-inner  { flex-direction: column; align-items: center; }
+  .lp-teaser-play-btn { width: 180px; height: 180px; }
 }
 
 /* ── Teaser Banner ──────────────────────────────────────── */
@@ -845,18 +845,38 @@
   color: #c4b5fd;
   margin: 0;
 }
-.lp-teaser-video-wrap {
-  flex: 1.2;
-  min-width: 0;
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.45), 0 0 0 1px rgba(167,139,250,0.2);
-  background: #0f0a1e;
+.lp-teaser-play-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  border: 2px solid rgba(167,139,250,0.4);
+  background: rgba(124,58,237,0.15);
+  cursor: pointer;
+  transition: background 0.25s, border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 0 40px rgba(124,58,237,0.2);
+  flex-shrink: 0;
 }
-.lp-teaser-video {
-  width: 100%;
-  display: block;
-  max-height: 380px;
-  object-fit: contain;
-  background: #0f0a1e;
+.lp-teaser-play-btn:hover {
+  background: rgba(124,58,237,0.35);
+  border-color: #a78bfa;
+  transform: scale(1.06);
+  box-shadow: 0 0 60px rgba(124,58,237,0.45);
+}
+.lp-teaser-play-icon {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lp-teaser-play-label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #e9d5ff;
 }
