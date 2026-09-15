@@ -322,7 +322,7 @@ function VisionMission() {
 
 function TeaserBanner() {
   const { ref, on } = useReveal()
-  const videoUrl = `${window.location.origin}${import.meta.env.BASE_URL}FDE%20Program%20Announcement%20(1).mp4`
+  const videoUrl = `${window.location.origin}/fde-teaser.mp4`
 
   return (
     <section ref={ref} className={`lp-teaser${on ? ' lp-revealed' : ''}`}>
