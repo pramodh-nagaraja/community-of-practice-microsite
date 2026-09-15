@@ -4,6 +4,7 @@ import './index.css'
 import LandingPage   from './LandingPage'
 import App           from './App'
 import CoPTemplate   from './CoPTemplate'
+import FDETeaserPage from './FDETeaserPage'
 import { COMMUNITIES } from './data/communities'
 import { COP_DATA }    from './data/pages/index'
 
@@ -47,6 +48,11 @@ function Root() {
 
   const route = hash.replace(/^#\/?/, '')
   const [routeSegment, subRoute] = route.split('/')
+
+  // FDE teaser video page
+  if (route === 'fde-teaser') {
+    return <FDETeaserPage />
+  }
 
   // N&O CoP — premium custom page (App.tsx)
   if (routeSegment === 'noc') {
