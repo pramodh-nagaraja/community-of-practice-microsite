@@ -100,6 +100,7 @@ export default function LandingPage() {
       <LPHeader />
       <LPHero activeCount={activeCount} totalMembers={totalMembers} />
       <VisionMission />
+      <TeaserBanner />
 
       <section className="lp-communities">
         <div className="lp-comm-glow" aria-hidden="true" />
@@ -316,6 +317,38 @@ function VisionMission() {
 }
 
 
+
+/* ── Teaser Banner ───────────────────────────────────────── */
+
+function TeaserBanner() {
+  const { ref, on } = useReveal()
+  const videoSrc = `${import.meta.env.BASE_URL}FDE Program Announcement (1).mp4`
+
+  return (
+    <section ref={ref} className={`lp-teaser${on ? ' lp-revealed' : ''}`}>
+      <div className="lp-teaser-inner">
+        <div className="lp-teaser-text">
+          <span className="lp-teaser-eyebrow">Something exciting is coming</span>
+          <p className="lp-teaser-msg">
+            Hi Team, we have something exciting in the works and wanted to share a little teaser before the big reveal!
+          </p>
+          <p className="lp-teaser-sub">More details coming very soon — watch this space!</p>
+        </div>
+        <div className="lp-teaser-video-wrap">
+          <video
+            className="lp-teaser-video"
+            controls
+            playsInline
+            preload="metadata"
+          >
+            <source src={videoSrc} type="video/mp4" />
+            Your browser does not support video playback.
+          </video>
+        </div>
+      </div>
+    </section>
+  )
+}
 
 /* ── Sparkle particles ───────────────────────────────────── */
 

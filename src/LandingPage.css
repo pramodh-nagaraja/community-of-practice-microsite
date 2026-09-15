@@ -24,12 +24,12 @@
 .lp-root.lp-visible { opacity: 1; }
 
 /* Reveal animation (reused across sections) */
-.lp-vm, .lp-ethos {
+.lp-vm, .lp-ethos, .lp-teaser {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.65s var(--ease-out-expo), transform 0.65s var(--ease-out-expo);
 }
-.lp-vm.lp-revealed, .lp-ethos.lp-revealed { opacity: 1; transform: none; }
+.lp-vm.lp-revealed, .lp-ethos.lp-revealed, .lp-teaser.lp-revealed { opacity: 1; transform: none; }
 
 /* ── Shared keyframes ─────────────────────────────────── */
 @keyframes lpCardIn {
@@ -784,4 +784,79 @@
   .lp-brand-client  { display: none; }
   .lp-brand-divider { display: none; }
   .lp-scroll-cue    { display: none; }
+  .lp-teaser-inner  { flex-direction: column; }
+  .lp-teaser-video-wrap { width: 100%; }
+}
+
+/* ── Teaser Banner ──────────────────────────────────────── */
+.lp-teaser {
+  padding: 64px 24px;
+  background: linear-gradient(135deg, #1e1b4b 0%, #2e1065 60%, #1e1b4b 100%);
+  position: relative;
+  overflow: hidden;
+}
+.lp-teaser::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 70% 50%, rgba(124,58,237,0.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+.lp-teaser-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 56px;
+}
+.lp-teaser-text {
+  flex: 1;
+  min-width: 0;
+}
+.lp-teaser-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #a78bfa;
+  margin-bottom: 16px;
+}
+.lp-teaser-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #a78bfa;
+  animation: lpPulse 2s ease-in-out infinite;
+}
+.lp-teaser-msg {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #f1f0ff;
+  line-height: 1.6;
+  margin: 0 0 14px;
+}
+.lp-teaser-sub {
+  font-size: 0.95rem;
+  color: #c4b5fd;
+  margin: 0;
+}
+.lp-teaser-video-wrap {
+  flex: 1.2;
+  min-width: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45), 0 0 0 1px rgba(167,139,250,0.2);
+  background: #0f0a1e;
+}
+.lp-teaser-video {
+  width: 100%;
+  display: block;
+  max-height: 380px;
+  object-fit: contain;
+  background: #0f0a1e;
 }
