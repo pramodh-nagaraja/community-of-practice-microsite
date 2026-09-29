@@ -103,7 +103,7 @@ export const Insurance_DATA: CoPPageData = {
   description: 'Building domain knowledge in insurance products, regulations, and industry technology trends.',
   accentColor: '#075985',
   icon: `${BASE}Insurance.png`,
-  memberCount: 530,
+  memberCount: 294,
   certCount: 1,
   sessionsHeld: 2,
   launchYear: 2026,

@@ -141,11 +141,11 @@ export const COMMUNITIES: CoPCommunity[] = [
     category: 'Business Applications',
     lead: 'Mavelyn Pascual',
     leadEmail: 'mavelyn.r.pascual@accenture.com',
-    memberCount: 530,
+    memberCount: 294,
     status: 'active',
     route: '#/insurance',
     highlights: [
-      '530 members — 15 Certified, 244 Intermediate, 976 Trained',
+      '294 members — 15 Certified, 8 Intermediate, 271 Trained',
       '2 Industry Day learning sessions held — Q2 Feb & Q3 Jun 2026',
       'Foundation, Intermediate & Guidewire skill pathways active',
     ],

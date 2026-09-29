@@ -83,7 +83,7 @@ export default function LandingPage() {
   }, [])
 
   const activeCount  = COMMUNITIES.filter(c => c.status === 'active').length
-  const totalMembers = 1024
+  const totalMembers = COMMUNITIES.reduce((sum, c) => sum + (c.memberCount ?? 0), 0)
   const latestUpdate = COMMUNITIES.reduce((latest, c) =>
     c.lastUpdated > latest ? c.lastUpdated : latest, '')
 
