@@ -1,0 +1,6 @@
+{
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/fde-teaser.html", "/fde-teaser.mp4", "/*.png", "/*.jpg", "/*.jpeg"]
+  }
+}
