@@ -154,6 +154,7 @@ export const ServiceMgmt_DATA: CoPPageData = {
       links: [
         { label: 'ITIL® 4 Foundation ↗', url: 'https://share.percipio.com/cd/WQ9YnJjWs' },
         { label: 'Critical Incident Management ↗', url: 'https://share.percipio.com/cd/hPBcQiL61' },
+        { label: 'INC Process Refresher 2026 (Instructor-led) ↗', url: `${BASE}training/inc-process-refresher.html` },
       ],
     },
     {
@@ -171,6 +172,17 @@ export const ServiceMgmt_DATA: CoPPageData = {
       color: '#A100FF', bg: '#F5E6FF', border: '#d8b4fe',
       desc: 'ITIL Expert and multi-certified specialists driving ITSM excellence across the account.',
       trainings: 0,
+    },
+  ],
+  resources: [
+    {
+      title: 'Process Refresher Training',
+      icon: '🎓',
+      color: '#334155', bg: '#f8fafc', border: '#cbd5e1',
+      tagColor: '#5700AB', tagBg: '#F5E6FF',
+      items: [
+        { name: 'Incident Management Process Refresher 2026 — instructor-led, ~10 min, 12-question assessment (80% to pass) with certificate', type: 'Training', url: `${BASE}training/inc-process-refresher.html` },
+      ],
     },
   ],
   spotlight: {
