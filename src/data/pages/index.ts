@@ -11,7 +11,7 @@ import type { CoPPageData } from '../types'
 // ── CoP imports (auto-managed by sync.js) ────────────────────────
 import { Cloud_DATA } from './cloud'
 import { Testing_DATA } from './testing'
-// import { DataAi_DATA } from './data-ai'
+import { DataDatabricks_DATA } from './data-databricks'
 import { Database_DATA } from './database'
 import { Microsoft_DATA } from './microsoft'
 import { Mainframe_DATA } from './mainframe'
@@ -22,6 +22,7 @@ import { Insurance_DATA } from './insurance'
 import { Middleware_DATA } from './middleware'
 import { Sre_DATA } from './sre'
 import { ServiceMgmt_DATA } from './service-mgmt'
+import { AgenticAI_DATA } from './agentic-ai'
 
 // ── Registry — maps CoP id → CoPPageData ────────────────────────
 // NOTE: 'noc' (Network & Security + Observability) uses App.tsx,
@@ -29,7 +30,7 @@ import { ServiceMgmt_DATA } from './service-mgmt'
 export const COP_DATA: Record<string, CoPPageData> = {
   'cloud': Cloud_DATA,
   'testing': Testing_DATA,
-  //   'data-ai': DataAi_DATA,
+  'data-databricks': DataDatabricks_DATA,
   'database': Database_DATA,
   'microsoft': Microsoft_DATA,
   'mainframe': Mainframe_DATA,
@@ -40,4 +41,5 @@ export const COP_DATA: Record<string, CoPPageData> = {
   'middleware': Middleware_DATA,
   'sre': Sre_DATA,
   'service-mgmt': ServiceMgmt_DATA,
+  'agentic-ai': AgenticAI_DATA,
 }
