@@ -40,14 +40,6 @@ export const Integration_DATA: CoPPageData = {
       email: 'tbd@accenture.com',
     },
     {
-      name: 'Aisha Mulla',
-      initials: 'AM',
-      badge: 'CoP Lead',
-      role: 'CoP Lead',
-      badgeStyle: 'cop' as 'sponsor' | 'global' | 'cop',
-      email: 'aisha.m.mulla@accenture.com',
-    },
-    {
       name: 'Ajeet Pratap Singh',
       initials: 'APS',
       badge: 'CoP Lead',
@@ -55,9 +47,17 @@ export const Integration_DATA: CoPPageData = {
       badgeStyle: 'cop' as 'sponsor' | 'global' | 'cop',
       email: 'ajeet.pratap.singh@accenture.com',
     },
+    {
+      name: 'Aisha Mulla',
+      initials: 'AM',
+      badge: 'CoP Lead',
+      role: 'CoP Lead',
+      badgeStyle: 'cop' as 'sponsor' | 'global' | 'cop',
+      email: 'aisha.m.mulla@accenture.com',
+    },
   ],
-  joinEmail: 'aisha.m.mulla@accenture.com',
-  contactEmails: ['aisha.m.mulla@accenture.com', 'QBE-Integration-CoP@accenture.com'],
+  joinEmail: 'ajeet.pratap.singh@accenture.com',
+  contactEmails: ['ajeet.pratap.singh@accenture.com', 'aisha.m.mulla@accenture.com', 'QBE-Integration-CoP@accenture.com'],
   members: [
     {
       name: 'Anand Paul Kollapu',
